@@ -1,6 +1,6 @@
 # Mankind-VR
 
-KURZBESCHREIBUNG / VORHABEN
+KURZBESCHREIBUNG / VORHABEN /n
 Was passiert eigentlich mit dem Müll, den wir produzieren? 
 Was geschieht, wenn dieser nicht einfach irgend wo hin verschwindet?
 Mankind VR beschäftigt sich mit diesen Fragen und offenbart 
