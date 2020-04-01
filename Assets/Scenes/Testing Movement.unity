@@ -5828,7 +5828,7 @@ PrefabInstance:
         type: 3}
       propertyPath: groundCheck
       value: 
-      objectReference: {fileID: 1071444565}
+      objectReference: {fileID: 770637680}
     - target: {fileID: 4095815046815834507, guid: 6e7bd8d718556c74292f034e8f86cc39,
         type: 3}
       propertyPath: controller
@@ -5846,6 +5846,35 @@ PrefabInstance:
       objectReference: {fileID: 829056192}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e7bd8d718556c74292f034e8f86cc39, type: 3}
+--- !u!4 &770637680 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4095815048056652810, guid: 6e7bd8d718556c74292f034e8f86cc39,
+    type: 3}
+  m_PrefabInstance: {fileID: 770637679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &770637681 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4095815046815834518, guid: 6e7bd8d718556c74292f034e8f86cc39,
+    type: 3}
+  m_PrefabInstance: {fileID: 770637679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &770637682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770637681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 256323c403939c44b90ddcced559b4a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectCenter: {fileID: 770637680}
+  checkDistance: 0.4
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!143 &829056191 stripped
 CharacterController:
   m_CorrespondingSourceObject: {fileID: 4095815046815834505, guid: 6e7bd8d718556c74292f034e8f86cc39,
