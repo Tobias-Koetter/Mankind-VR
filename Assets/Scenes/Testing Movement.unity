@@ -105,7 +105,6 @@ NavMeshSettings:
   m_ObjectHideFlags: 0
   m_BuildSettings:
     serializedVersion: 2
-    agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
     agentSlope: 45
@@ -453,7 +452,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-18524
+  m_Name: pb_Mesh17176
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7962,8 +7961,7 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 940139695}
-  m_Mesh: {fileID: 1330513412}
+
 --- !u!1 &977486019
 GameObject:
   m_ObjectHideFlags: 0
@@ -8542,6 +8540,7 @@ GameObject:
   - component: {fileID: 1071444563}
   - component: {fileID: 1071444562}
   - component: {fileID: 1071444561}
+  - component: {fileID: 1071444566}
   m_Layer: 31
   m_Name: Ground
   m_TagString: Untagged
@@ -18692,9 +18691,7 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1638760283}
-  m_Mesh: {fileID: 1467307391}
---- !u!1 &1642075877
+
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
