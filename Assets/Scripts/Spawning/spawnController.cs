@@ -25,8 +25,9 @@ public class spawnController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.P) && pointer_spawnPool < spawnMax)
         {
             Transform current = objectPool[pointer_spawnPool];
-            current.position = spawnPoint.position;
             current.GetComponent<MeshRenderer>().enabled = true;
+            current.position = spawnPoint.position;
+
         }
     }
 }
