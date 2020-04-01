@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CollisionController : MonoBehaviour
+public class HandController : MonoBehaviour
 {
 
     public Transform objectCenter;
@@ -12,20 +10,19 @@ public class CollisionController : MonoBehaviour
 
     bool isCollision;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         isCollision = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         isCollision = Physics.CheckSphere(objectCenter.position, checkDistance, collisionMask);
-        if (isCollision) { 
+        if (isCollision && Input.GetMouseButtonDown(0)) { 
             print("collision");
         }
         isCollision = false;
     }
+
+
 }
