@@ -17,11 +17,24 @@ public class HandController : MonoBehaviour
 
     void Update()
     {
-        isCollision = Physics.CheckSphere(objectCenter.position, checkDistance, collisionMask);
-        if (isCollision && Input.GetMouseButtonDown(0)) { 
-            print("collision");
+        if (Input.GetMouseButtonDown(0)) { 
+            Collider[] hitColliders = Physics.OverlapSphere(objectCenter.position, checkDistance, collisionMask);
+
+            isCollision = hitColliders.Length > 0;
+
+            //if left mouse button is clicked and there is a colliding object
+            if (isCollision) {
+
+                for (int i = 0; i < hitColliders.Length; i++)
+                {   
+                    print("collider: " + hitColliders[i].ToString());
+
+                }
+
+
+            }
+            isCollision = false;
         }
-        isCollision = false;
     }
 
 
