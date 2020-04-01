@@ -5819,13 +5819,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4095815046815834507, guid: 6e7bd8d718556c74292f034e8f86cc39,
+        type: 3}
+      propertyPath: groundMask.m_Bits
+      value: 2147483648
+      objectReference: {fileID: 0}
+    - target: {fileID: 4095815046815834507, guid: 6e7bd8d718556c74292f034e8f86cc39,
+        type: 3}
+      propertyPath: groundCheck
+      value: 
+      objectReference: {fileID: 1071444565}
+    - target: {fileID: 4095815046815834507, guid: 6e7bd8d718556c74292f034e8f86cc39,
+        type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 829056191}
     - target: {fileID: 4095815046815834518, guid: 6e7bd8d718556c74292f034e8f86cc39,
         type: 3}
       propertyPath: m_Name
       value: FirstPersonPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 4095815047467177932, guid: 6e7bd8d718556c74292f034e8f86cc39,
+        type: 3}
+      propertyPath: playerBody
+      value: 
+      objectReference: {fileID: 829056192}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e7bd8d718556c74292f034e8f86cc39, type: 3}
+--- !u!143 &829056191 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 4095815046815834505, guid: 6e7bd8d718556c74292f034e8f86cc39,
+    type: 3}
+  m_PrefabInstance: {fileID: 770637679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &829056192 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4095815046815834504, guid: 6e7bd8d718556c74292f034e8f86cc39,
+    type: 3}
+  m_PrefabInstance: {fileID: 770637679}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &977486019
 GameObject:
   m_ObjectHideFlags: 0
