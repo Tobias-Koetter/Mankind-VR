@@ -29,6 +29,10 @@ public class HandController : MonoBehaviour
                 {   
                     print("collider: " + hitColliders[i].ToString());
 
+                    if (hitColliders[i].gameObject.activeSelf) {
+                        hitColliders[i].gameObject.GetComponent<Interactable>()?.Interact(); 
+                    }
+
                 }
 
 
