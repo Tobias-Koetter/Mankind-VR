@@ -26,16 +26,20 @@ public class HandController : MonoBehaviour
             if (isCollision) {
 
                 for (int i = 0; i < hitColliders.Length; i++)
-                {   
+                {
                     print("collider: " + hitColliders[i].ToString());
 
                     if (hitColliders[i].gameObject.activeSelf) {
-                        hitColliders[i].gameObject.GetComponent<Interactable>()?.Interact(); 
+                        hitColliders[i].gameObject.GetComponent<Interactable>()?.interact(); 
                     }
 
                 }
 
 
+            }
+            else
+            {
+                print("Nothing there to interact with!");
             }
             isCollision = false;
         }
