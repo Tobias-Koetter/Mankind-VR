@@ -5,24 +5,31 @@ public class Interactable : MonoBehaviour
     MeshCollider ownCollider;
     MeshRenderer ownRenderer;
     Rigidbody ownRigidBody;
+
+    private SpawnController spawnMaster;
+    public SpawnController SpawnMaster { get => spawnMaster; set => spawnMaster = value; }
+
+    private int poolNumber = 0;
+    public int PoolNumber { get => poolNumber; set => poolNumber = value; }
+
+
     void Start()
     {
         ownCollider = this.GetComponent<MeshCollider>();
         ownRenderer = this.GetComponent<MeshRenderer>();
         ownRigidBody = this.GetComponent<Rigidbody>();
     }
-    public void interact()
+    public void Interact()
     {
         
-        print(">> i was forced to interact from someone else <<");
-        selfDespawn();
+        print(">> i "+ this.name+" was forced to interact from someone else <<");
     }
 
 
-    private void selfDespawn()
+    public void Spawn(bool value)
     {
-        ownCollider.enabled = false;
-        ownRenderer.enabled = false;
-        ownRigidBody.useGravity = false;
+        ownCollider.enabled = value;
+        ownRenderer.enabled = value;
+        ownRigidBody.useGravity = value;
     }
 }

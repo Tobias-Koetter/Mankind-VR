@@ -2,7 +2,6 @@
 
 public class HandController : MonoBehaviour
 {
-
     public Transform objectCenter;
     public float checkDistance = 0.4f;
     public LayerMask collisionMask;
@@ -30,7 +29,18 @@ public class HandController : MonoBehaviour
                     print("collider: " + hitColliders[i].ToString());
 
                     if (hitColliders[i].gameObject.activeSelf) {
-                        hitColliders[i].gameObject.GetComponent<Interactable>()?.interact(); 
+                        Interactable current = hitColliders[i].gameObject.GetComponent<Interactable>();
+                        if (current)
+                        {
+                            int curID = current.PoolNumber;
+
+                            current.SpawnMaster.despawnObjectWithID(curID);
+                        }
+                        else
+                        {
+                            print("The current Object: \""+ hitColliders[i].gameObject.name +"\" was not spawned by a spawnController");
+                        }
+                        
                     }
 
                 }
