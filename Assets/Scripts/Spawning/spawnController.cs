@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-public class spawnController : MonoBehaviour
+public class SpawnController : MonoBehaviour
 {
     public Transform spawnPoint;
     public Transform spawnPool;
-    public Transform[] objectPool;
+    public Interactable[] objectPool;
 
     int spawnMax = 0;
     int pointer_spawnPool = 0;
@@ -14,11 +14,11 @@ public class spawnController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        objectPool = new Transform[spawnPool.childCount];
+        objectPool = new Interactable[spawnPool.childCount];
         spawnMax = objectPool.Length;
         for ( int i= 0; i < objectPool.Length; i++)
         {
-            objectPool[i] = spawnPool.GetChild(i);
+            objectPool[i] = spawnPool.GetChild(i).GetComponent<Interactable>();
         }
     }
 
@@ -54,17 +54,32 @@ public class spawnController : MonoBehaviour
 
         randPoint.x = Random.Range(spawnPoint.position.x - spawnRadius,
             spawnPoint.position.x + spawnRadius);
-        randPoint.z = Random.Range(spawnPoint.position.y - spawnRadius,
+        randPoint.z = Random.Range(spawnPoint.position.z - spawnRadius,
             spawnPoint.position.z + spawnRadius);
 
     // Object gets picked out of the SpawnPool and its components get reset for scene interaction
-        Transform current = objectPool[pointer_spawnPool];
-        current.position = randPoint;
-        print(current.position);
-        current.GetComponent<MeshRenderer>().enabled = true;
-        current.GetComponent<MeshCollider>().enabled = true;
-        //current.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        current.GetComponent<Rigidbody>().useGravity = true;
+        Interactable current = objectPool[pointer_spawnPool];
+        current.gameObject.transform.position = randPoint;
+        print(current.gameObject.transform.position);
+        current.Spawn(true);
+
+
+        if(current.SpawnMaster == null)
+        {
+            current.PoolNumber = pointer_spawnPool;
+            current.SpawnMaster = this;
+        }
+
+
+    // Pointer increses
         pointer_spawnPool++;
+    }
+
+    public void despawnObjectWithID(int PoolNumber)
+    {
+        Interactable current = objectPool[PoolNumber];
+        current.Spawn(false);
+        current.gameObject.transform.position = spawnPool.position;
+        current.Interact();
     }
 }
