@@ -9,7 +9,7 @@ public class spawnController : MonoBehaviour
     int spawnMax = 0;
     int pointer_spawnPool = 0;
 
-    float spawnRadius = 20f;
+    float spawnRadius = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +54,7 @@ public class spawnController : MonoBehaviour
 
         randPoint.x = Random.Range(spawnPoint.position.x - spawnRadius,
             spawnPoint.position.x + spawnRadius);
-        randPoint.z = Random.Range(spawnPoint.position.y - spawnRadius,
+        randPoint.z = Random.Range(spawnPoint.position.z - spawnRadius,
             spawnPoint.position.z + spawnRadius);
 
     // Object gets picked out of the SpawnPool and its components get reset for scene interaction
