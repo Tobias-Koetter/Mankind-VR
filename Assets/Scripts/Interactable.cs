@@ -2,7 +2,7 @@
 
 public class Interactable : MonoBehaviour
 {
-    MeshCollider ownCollider;
+    Collider ownCollider;
     MeshRenderer ownRenderer;
     Rigidbody ownRigidBody;
 
@@ -15,7 +15,7 @@ public class Interactable : MonoBehaviour
 
     void Start()
     {
-        ownCollider = this.GetComponent<MeshCollider>();
+        ownCollider = this.GetComponent<Collider>();
         ownRenderer = this.GetComponent<MeshRenderer>();
         ownRigidBody = this.GetComponent<Rigidbody>();
     }

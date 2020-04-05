@@ -6,10 +6,12 @@ public class SpawnController : MonoBehaviour
     public Transform spawnPool;
     public Interactable[] objectPool;
 
+    public float spawnRadius = 10f;
+
     int spawnMax = 0;
     int pointer_spawnPool = 0;
 
-    float spawnRadius = 2f;
+
 
     // Start is called before the first frame update
     void Start()
