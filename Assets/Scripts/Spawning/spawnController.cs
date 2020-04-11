@@ -10,14 +10,13 @@ public class SpawnController : MonoBehaviour
 
     public float maxRadius = 20f;
     public float minRadius = 20f;
-    float offsetY = 20;
 
-    int spawnMax = 0;
-    int pointer_spawnPool = 0;
+    private readonly float offsetY = 20;
+
+    private int spawnMax = 0;
 
 
 
-    // Start is called before the first frame update
     void Start()
     {
 
@@ -40,14 +39,12 @@ public class SpawnController : MonoBehaviour
         spawned = new List<Interactable>();
     }
 
-    // Update is called once per frame
     void Update()
     {
 
         if(Input.GetKeyDown(KeyCode.P))
         {
             if(spawnable.Count > 0)
-            //if (pointer_spawnPool < objectPool.Length)
             {
                 spawnObject();
             }
@@ -56,7 +53,6 @@ public class SpawnController : MonoBehaviour
                 Interactable current = spawned[0];
                 spawned.RemoveAt(0);
                 spawnable.Add(current);
-                //pointer_spawnPool = 0;
                 spawnObject();
             }
         }
@@ -75,6 +71,7 @@ public class SpawnController : MonoBehaviour
 
     // Find Random radius size between possible min and max
         float curRadius = Random.Range(minRadius, maxRadius);
+
     // Find random vector on a unit Circle border and put it in a Vector3
     // Random.insideUnitCircle returns Point inside a unit Circle and when normalized its placed on the borderline of the unit circle
         Vector2 posXZ = Random.insideUnitCircle.normalized;
@@ -86,26 +83,13 @@ public class SpawnController : MonoBehaviour
     // The calculated spawn should be behind the player, so he doesn't see the spawn.
 
 
-
-        // Object gets picked out of the SpawnPool and its components get reset for scene interaction
+    // Object gets picked out of the SpawnPool and its components get reset for scene interaction
         Interactable current = spawnable[0];
         current.gameObject.transform.position = Point;
         current.Spawn(true);
 
         spawnable.RemoveAt(0);
         spawned.Add(current);
-
-/*
-        if(current.SpawnMaster == null)
-        {
-            current.PoolNumber = pointer_spawnPool;
-            current.SpawnMaster = this;
-        }
-
-
-    // Pointer increses
-        pointer_spawnPool++;
-        */
     }
 
     public void despawnObjectWithID(int PoolNumber)
