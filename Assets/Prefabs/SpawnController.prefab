@@ -47,7 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   center: {fileID: 0}
   spawnPool: {fileID: 0}
-  objectPool: []
+  spawnable: []
+  spawned: []
   maxRadius: 20
   minRadius: 20
 --- !u!33 &7568410967672893258

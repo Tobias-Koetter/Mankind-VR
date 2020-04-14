@@ -29,6 +29,7 @@ public class HandController : MonoBehaviour
             Collider[] hitColliders = Physics.OverlapSphere(objectCenter.position, checkDistance, collisionMask);
 
             isCollision = hitColliders.Length > 0;
+            print(isCollision);
 
             //if left mouse button is clicked and there is a colliding object
             if (isCollision) {
@@ -36,25 +37,26 @@ public class HandController : MonoBehaviour
                 for (int i = 0; i < hitColliders.Length; i++)
                 {
                     print("collider: " + hitColliders[i].ToString());
-
-                    if (hitColliders[i].gameObject.activeSelf) {
-                        Interactable current = hitColliders[i].gameObject.GetComponent<Interactable>();
-                        if (current && current.SpawnMaster)
+                    GameObject colliderObject = hitColliders[i].gameObject;
+                    if (colliderObject.activeSelf) {
+                        Interactable current = colliderObject.GetComponent<Interactable>();
+                        Interactable parent = colliderObject.GetComponentInParent<Interactable>();
+                        print(current);
+                        if(current is Spawned spawn)
                         {
-                            int curID = current.PoolNumber;
+                            int curID = spawn.PoolNumber;
 
-                            current.SpawnMaster.despawnObjectWithID(curID);
+                            spawn.SpawnMaster.despawnObjectWithID(curID);
                         }
-                        else if(current && current.tag == "PointOfInterest")
+                        else if (parent is Trees tree)
                         {
-                            current.Spawn(false);
-                            current.Interact();
+                            tree.Interact();
                         }
                         else
                         {
-                            print("The current Object: \""+ hitColliders[i].gameObject.name +"\" was not spawned by a spawnController");
+                            print("The current Object: \"" + colliderObject.name + "\" was not spawned by a spawnController");
                         }
-                        
+
                     }
 
                 }

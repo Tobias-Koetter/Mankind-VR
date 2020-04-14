@@ -5,8 +5,8 @@ public class SpawnController : MonoBehaviour
 {
     public Transform center;
     public Transform spawnPool;
-    public List<Interactable> spawnable;
-    public List<Interactable> spawned;
+    public List<Spawned> spawnable;
+    public List<Spawned> spawned;
 
     public float maxRadius = 20f;
     public float minRadius = 20f;
@@ -26,17 +26,17 @@ public class SpawnController : MonoBehaviour
         }
 
 
-        spawnable = new List<Interactable>();
+        spawnable = new List<Spawned>();
         spawnMax = spawnPool.childCount;
         for ( int i= 0; i < spawnMax; i++)
         {
-            Interactable curObject = spawnPool.GetChild(i).GetComponent<Interactable>();
+            Spawned curObject = spawnPool.GetChild(i).GetComponent<Spawned>();
             spawnable.Add(curObject);
             curObject.SpawnMaster = this;
             curObject.PoolNumber = i;
         }
 
-        spawned = new List<Interactable>();
+        spawned = new List<Spawned>();
     }
 
     void Update()
@@ -50,7 +50,7 @@ public class SpawnController : MonoBehaviour
             }
             else
             {
-                Interactable current = spawned[0];
+                Spawned current = spawned[0];
                 spawned.RemoveAt(0);
                 spawnable.Add(current);
                 spawnObject();
@@ -84,7 +84,7 @@ public class SpawnController : MonoBehaviour
 
 
     // Object gets picked out of the SpawnPool and its components get reset for scene interaction
-        Interactable current = spawnable[0];
+        Spawned current = spawnable[0];
         current.gameObject.transform.position = Point;
         current.Spawn(true);
 
@@ -94,8 +94,8 @@ public class SpawnController : MonoBehaviour
 
     public void despawnObjectWithID(int PoolNumber)
     {
-        Interactable current = null;
-        foreach(Interactable i in spawned)
+        Spawned current = null;
+        foreach(Spawned i in spawned)
         {
             if (i.PoolNumber == PoolNumber)
             {
@@ -111,4 +111,10 @@ public class SpawnController : MonoBehaviour
         spawned.Remove(current);
     }
 
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawSphere(transform.position, 1f);
+    }
 }
