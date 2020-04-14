@@ -110,11 +110,4 @@ public class SpawnController : MonoBehaviour
         spawnable.Add(current);
         spawned.Remove(current);
     }
-
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawSphere(transform.position, 1f);
-    }
 }
