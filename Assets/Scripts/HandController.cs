@@ -29,19 +29,16 @@ public class HandController : MonoBehaviour
             Collider[] hitColliders = Physics.OverlapSphere(objectCenter.position, checkDistance, collisionMask);
 
             isCollision = hitColliders.Length > 0;
-            print(isCollision);
 
             //if left mouse button is clicked and there is a colliding object
             if (isCollision) {
 
                 for (int i = 0; i < hitColliders.Length; i++)
                 {
-                    print("collider: " + hitColliders[i].ToString());
                     GameObject colliderObject = hitColliders[i].gameObject;
                     if (colliderObject.activeSelf) {
                         Interactable current = colliderObject.GetComponent<Interactable>();
                         Interactable parent = colliderObject.GetComponentInParent<Interactable>();
-                        print(current);
                         if(current is Spawned spawn)
                         {
                             int curID = spawn.PoolNumber;
@@ -50,7 +47,7 @@ public class HandController : MonoBehaviour
                         }
                         else if (parent is Trees tree)
                         {
-                            tree.Interact();
+                            tree.Controller.handleTreeDestroy(tree);
                         }
                         else
                         {
