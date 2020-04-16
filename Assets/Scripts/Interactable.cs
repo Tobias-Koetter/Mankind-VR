@@ -20,5 +20,6 @@ public class Interactable: MonoBehaviour
         ownCollider.enabled = value;
         ownRenderer.enabled = value;
         ownRigidBody.useGravity = value;
+        ownRigidBody.isKinematic = !value;
     }
 }

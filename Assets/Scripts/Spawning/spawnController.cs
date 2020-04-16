@@ -11,7 +11,7 @@ public class SpawnController : MonoBehaviour
     public float maxRadius = 20f;
     public float minRadius = 20f;
 
-    private readonly float offsetY = 20;
+    private readonly float offsetY = 2;
 
     private int spawnMax = 0;
 
@@ -44,22 +44,25 @@ public class SpawnController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.P))
         {
-            if(spawnable.Count > 0)
-            {
-                spawnObject();
-            }
-            else
-            {
-                Spawned current = spawned[0];
-                spawned.RemoveAt(0);
-                spawnable.Add(current);
-                spawnObject();
-            }
+            spawnOnTimer();
         }
     }
 
 
-
+    public void spawnOnTimer()
+    {
+        if (spawnable.Count > 0)
+        {
+            spawnObject();
+        }
+        else
+        {
+            Spawned current = spawned[0];
+            spawned.RemoveAt(0);
+            spawnable.Add(current);
+            spawnObject();
+        }
+    }
 
     private void spawnObject()
     {

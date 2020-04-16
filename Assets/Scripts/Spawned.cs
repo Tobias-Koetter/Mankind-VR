@@ -13,4 +13,13 @@ public class Spawned : Interactable
         
         print(">> i "+ this.name+" was forced to interact from someone else <<");
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.gameObject.layer == 31)
+        {
+            this.ownRigidBody.velocity = Vector3.zero;
+            this.ownRigidBody.isKinematic = true;
+        }
+    }
 }
