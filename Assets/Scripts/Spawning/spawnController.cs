@@ -4,16 +4,14 @@ using UnityEngine;
 public class SpawnController : MonoBehaviour
 {
     public Transform center;
-    public Transform spawnPool;
+    public Transform[] spawnPool;
     public List<Spawned> spawnable;
     public List<Spawned> spawned;
 
     public float maxRadius = 20f;
     public float minRadius = 20f;
 
-    private readonly float offsetY = 2;
-
-    private int spawnMax = 0;
+    private readonly float offsetY = 1;
 
 
 
@@ -27,15 +25,22 @@ public class SpawnController : MonoBehaviour
 
 
         spawnable = new List<Spawned>();
-        spawnMax = spawnPool.childCount;
-        for ( int i= 0; i < spawnMax; i++)
-        {
-            Spawned curObject = spawnPool.GetChild(i).GetComponent<Spawned>();
-            spawnable.Add(curObject);
-            curObject.SpawnMaster = this;
-            curObject.PoolNumber = i;
-        }
 
+        // serves as a unique number for every trash element
+        int counter = 0;
+
+        foreach(Transform spP in spawnPool)
+        {
+            for (int i = 0; i < spP.childCount; i++)
+            {
+                Spawned curObject = spP.GetChild(i).GetComponent<Spawned>();
+                spawnable.Add(curObject);
+                curObject.SpawnMaster = this;
+                curObject.PoolNumber = counter++;
+                curObject.gameObject.SetActive(false);
+            }
+        }
+        
         spawned = new List<Spawned>();
     }
 
@@ -75,23 +80,26 @@ public class SpawnController : MonoBehaviour
     // Find Random radius size between possible min and max
         float curRadius = Random.Range(minRadius, maxRadius);
 
-    // Find random vector on a unit Circle border and put it in a Vector3
-    // Random.insideUnitCircle returns Point inside a unit Circle and when normalized its placed on the borderline of the unit circle
+/* -[Create Position behind Player]
+ *   Find random vector on a unit Circle border and put it in a Vector3
+ *   Random.insideUnitCircle returns Point inside a unit Circle and when normalized its placed on the borderline of the unit circle
+ *   is facing (negative forward vector + created random direction)
+ *   The calculated spawn should be behind the player, so he doesn't see the spawn.
+ */
         Vector2 posXZ = Random.insideUnitCircle.normalized;
         Vector3 randDir = new Vector3(posXZ.x, 0f, posXZ.y);
-    // The spawn vector is calculated from the point vector (center) and the direction vector, considering in which direction the player is facing (negative forward vector + created random direction )
-        Vector3 Point = center.position + ((-center.forward + randDir).normalized * curRadius);
-        Point.y = center.position.y + offsetY;
-
-    // The calculated spawn should be behind the player, so he doesn't see the spawn.
+        Vector3 tempPoint = center.position + ((-center.forward + randDir).normalized * curRadius);
+        tempPoint.y = center.position.y + offsetY;
+        Quaternion tempRotation = Random.rotation;
 
 
     // Object gets picked out of the SpawnPool and its components get reset for scene interaction
-        Spawned current = spawnable[0];
-        current.gameObject.transform.position = Point;
-        current.Spawn(true);
+        Spawned current = spawnable[Random.Range(0,spawnable.Count)];
+        current.gameObject.transform.position = tempPoint;
+        current.gameObject.transform.rotation = tempRotation;
+        current.gameObject.SetActive(true);
 
-        spawnable.RemoveAt(0);
+        spawnable.Remove(current);
         spawned.Add(current);
     }
 
@@ -106,9 +114,9 @@ public class SpawnController : MonoBehaviour
                 break;
             }
         }
-        current.Spawn(false);
-        current.gameObject.transform.position = spawnPool.position;
+        current.gameObject.transform.position = spawnPool[0].position;
         current.Interact();
+        current.gameObject.SetActive(false);
 
         spawnable.Add(current);
         spawned.Remove(current);

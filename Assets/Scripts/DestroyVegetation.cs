@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class TreeComparer : IComparer<Trees>
@@ -7,13 +6,23 @@ public class TreeComparer : IComparer<Trees>
     public int Compare(Trees x, Trees y) => x.TreeNumber.CompareTo(y.TreeNumber);
 }
 
+public class PoIComparer : IComparer<PoI>
+{
+    public int Compare(PoI x, PoI y) => x.Number.CompareTo(y.Number);
+}
 public class DestroyVegetation : MonoBehaviour
 {
+    public GameObject PoIParent;
     public GameObject treeParent;
     public List<Trees> aliveTrees;
     public List<Trees> deadTrees;
+    public List<PoI> PoIList;
 
     private TreeComparer tC;
+
+    private int interactableLayer = 9;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +35,14 @@ public class DestroyVegetation : MonoBehaviour
             t.TreeNumber = counter++;
             t.Controller = this;
             aliveTrees.Add(t);
+        }
+
+        counter = 0;
+        PoI[] temp2 = PoIParent.GetComponentsInChildren<PoI>();
+        foreach(PoI p in temp2)
+        {
+            p.Setup(this, counter++);
+            PoIList.Add(p);
         }
         
     }
@@ -48,4 +65,18 @@ public class DestroyVegetation : MonoBehaviour
                 print(a.ToString());
         }
     }
+
+    public bool handlePoIDestroy(PoI poi)
+    {
+        foreach(PoI p in PoIList)
+        {
+            if(p.Equals(poi))
+            {
+                p.gameObject.SetActive(false);
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

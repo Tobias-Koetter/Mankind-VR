@@ -49,9 +49,15 @@ public class HandController : MonoBehaviour
                         {
                             tree.Controller.handleTreeDestroy(tree);
                         }
+                        else if(colliderObject.tag.Equals("PointOfInterest"))
+                        {
+                            PoI p = colliderObject.GetComponent<PoI>();
+                            p.Controller.handlePoIDestroy(p);
+                        }
                         else
                         {
                             print("The current Object: \"" + colliderObject.name + "\" was not spawned by a spawnController");
+
                         }
 
                     }

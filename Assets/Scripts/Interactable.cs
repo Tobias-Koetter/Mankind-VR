@@ -11,15 +11,18 @@ public class Interactable: MonoBehaviour
     void Start()
     {
         ownCollider = this.GetComponent<Collider>();
-        ownRenderer = this.GetComponent<MeshRenderer>();
+        //ownRenderer = this.GetComponent<MeshRenderer>();
         ownRigidBody = this.GetComponent<Rigidbody>();
     }
     public virtual void Interact() { throw new System.NotImplementedException("Was not implemented in the current child class."); }
+
     public virtual void Spawn(bool value)
     {
+        /*
         ownCollider.enabled = value;
-        ownRenderer.enabled = value;
+        //ownRenderer.enabled = value;
         ownRigidBody.useGravity = value;
         ownRigidBody.isKinematic = !value;
+        */
     }
 }

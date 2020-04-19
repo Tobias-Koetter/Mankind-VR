@@ -95,6 +95,14 @@ public class GameState : MonoBehaviour
         else if(timer < 0f)
         {
             timer = 0f;
+            int curMod = Mathf.FloorToInt(timer % 1f);
+            int curInt = Mathf.FloorToInt(timer / 1f);
+            if (curInt != lastInt && curMod == 0)
+            {
+                print("Spawn after STATE FINAL");
+                trashSpawner.spawnOnTimer();
+                lastInt = curInt;
+            }
         }
 
 
