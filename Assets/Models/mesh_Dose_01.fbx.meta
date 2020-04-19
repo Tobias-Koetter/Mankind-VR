@@ -1,9 +1,24 @@
 fileFormatVersion: 2
-guid: 6646bed6396d52545b06406a60e54942
+guid: 7d3e8f0d531d6cf44afb511cfd019b51
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 108bec86cb3e4bb40bd717360461d4ab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: d0bf0dc07a474d244be2ad914982c2f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wrapping
+    second: {fileID: 2100000, guid: f336617203384a243a67ee912d417b3d, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -37,6 +52,7 @@ ModelImporter:
     - 0.25
     - 0.125
     - 0.0625
+    - 0.03125
     - 0.01
     globalScale: 1
     meshCompression: 0

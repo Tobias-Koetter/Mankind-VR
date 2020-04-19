@@ -1,9 +1,24 @@
 fileFormatVersion: 2
-guid: 6646bed6396d52545b06406a60e54942
+guid: 41d9f05c16bd58f49a9f908f7700496c
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: braun
+    second: {fileID: 2100000, guid: ab62f1fb904df0f49b1197bef37a82b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: plastic
+    second: {fileID: 2100000, guid: 64fc29a2be8816243b08a2319b1c447a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "wei\xDF"
+    second: {fileID: 2100000, guid: ae9ca28da148ff4488ca200c08e825c4, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

@@ -109,11 +109,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Interactable
       objectReference: {fileID: 0}
-    - target: {fileID: -5855050420590135703, guid: 8d5aa713980cc5141b4763c930085f2b,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 89232dd3830a88c4f9b6776cc98abeca, type: 2}
     - target: {fileID: -4216859302048453862, guid: 8d5aa713980cc5141b4763c930085f2b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -184,16 +179,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: -2260515708006310943, guid: 8d5aa713980cc5141b4763c930085f2b,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 89232dd3830a88c4f9b6776cc98abeca, type: 2}
-    - target: {fileID: -2258230441541062001, guid: 8d5aa713980cc5141b4763c930085f2b,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 89232dd3830a88c4f9b6776cc98abeca, type: 2}
     - target: {fileID: -927199367670048503, guid: 8d5aa713980cc5141b4763c930085f2b,
         type: 3}
       propertyPath: m_Name
@@ -219,11 +204,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Interactable
       objectReference: {fileID: 0}
-    - target: {fileID: 2278639235808380799, guid: 8d5aa713980cc5141b4763c930085f2b,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 89232dd3830a88c4f9b6776cc98abeca, type: 2}
     - target: {fileID: 3017468681042875394, guid: 8d5aa713980cc5141b4763c930085f2b,
         type: 3}
       propertyPath: m_Layer
@@ -234,11 +214,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Interactable
       objectReference: {fileID: 0}
-    - target: {fileID: 4504283814770979200, guid: 8d5aa713980cc5141b4763c930085f2b,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 89232dd3830a88c4f9b6776cc98abeca, type: 2}
     - target: {fileID: 5551014577142218206, guid: 8d5aa713980cc5141b4763c930085f2b,
         type: 3}
       propertyPath: m_LODs.Array.data[0].screenRelativeHeight
