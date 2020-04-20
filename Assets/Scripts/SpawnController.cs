@@ -4,12 +4,14 @@ using UnityEngine;
 public class SpawnController : MonoBehaviour
 {
     public Transform center;
-    public Transform[] spawnPool;
+    public int totalNrCopies = 100;
+    public float maxSpawnRadius = 20f;
+    public float minSpawnRadius = 20f;
+    public Spawned[] spawnPrefabs;
     public List<Spawned> spawnable;
     public List<Spawned> spawned;
 
-    public float maxRadius = 20f;
-    public float minRadius = 20f;
+
 
     private readonly float offsetY = 1;
 
@@ -18,7 +20,7 @@ public class SpawnController : MonoBehaviour
     void Start()
     {
 
-        if (maxRadius < minRadius)
+        if (maxSpawnRadius < minSpawnRadius)
         {
             throw new System.Exception("SpawnController: maxRadius is smaller then the planed min Distance to the player");
         }
@@ -28,12 +30,11 @@ public class SpawnController : MonoBehaviour
 
         // serves as a unique number for every trash element
         int counter = 0;
-
-        foreach (Transform spP in spawnPool)
+        foreach (Spawned sp in spawnPrefabs)
         {
-            for (int i = 0; i < spP.childCount; i++)
+            for (int i = 0; i < totalNrCopies; i++)
             {
-                Spawned curObject = spP.GetChild(i).GetComponent<Spawned>();
+                Spawned curObject = Instantiate<Spawned>(sp);
                 spawnable.Add(curObject);
                 curObject.SpawnMaster = this;
                 curObject.PoolNumber = counter++;
@@ -78,7 +79,7 @@ public class SpawnController : MonoBehaviour
 
 
         // Find Random radius size between possible min and max
-        float curRadius = Random.Range(minRadius, maxRadius);
+        float curRadius = Random.Range(minSpawnRadius, maxSpawnRadius);
 
         /* -[Create Position behind Player]
          *   Find random vector on a unit Circle border and put it in a Vector3
@@ -114,7 +115,7 @@ public class SpawnController : MonoBehaviour
                 break;
             }
         }
-        current.gameObject.transform.position = spawnPool[0].position;
+        current.gameObject.transform.position = transform.position;
         current.Interact();
         current.gameObject.SetActive(false);
 
