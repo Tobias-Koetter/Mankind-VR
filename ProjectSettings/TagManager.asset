@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Interactable
   - PointOfInterest
+  - Small Trash
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - 
   - PostProcessing
   - Interactable
-  - 
+  - Trash
   - 
   - 
   - 

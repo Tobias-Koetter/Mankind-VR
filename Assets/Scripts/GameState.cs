@@ -15,6 +15,10 @@ public class GameState : MonoBehaviour
     public float totalTime = 360f; // 6 minutes
     public bool DebugMode;
 
+    public SpawnController trashSpawner;
+    public DestroyVegetation plantDestroyer;
+    private int lastInt = -1;
+
     private float timer;
     private float timeInState;
     private int numberOfStates;
@@ -33,18 +37,54 @@ public class GameState : MonoBehaviour
     {
         if (timer > 0f)
         {
+            if(currentState.Equals(STATE.START))
+            {
+                int curMod = Mathf.FloorToInt(timer % 5f);
+                int curInt = Mathf.FloorToInt(timer / 5f);
+                if (curInt != lastInt && curMod == 0)
+                {
+                    print("Spawn in STATE START");
+                    trashSpawner.spawnOnTimer();
+                    lastInt = curInt;
+                }
+            }
+            if (currentState.Equals(STATE.MIDDLE))
+            {
+                int curMod = Mathf.FloorToInt(timer % 2f);
+                int curInt = Mathf.FloorToInt(timer / 2f);
+                if (curInt != lastInt && curMod == 0)
+                {
+                    print("Spawn in STATE MIDDLE");
+                    trashSpawner.spawnOnTimer();
+                    lastInt = curInt;
+                }
+            }
+            if (currentState.Equals(STATE.FINAL))
+            {
+                int curMod = Mathf.FloorToInt(timer % 1f);
+                int curInt = Mathf.FloorToInt(timer / 1f);
+                if (curInt != lastInt && curMod == 0)
+                {
+                    print("Spawn in STATE FINAL");
+                    trashSpawner.spawnOnTimer();
+                    lastInt = curInt;
+                }
+            }
             // Use the enum value of currentState to create a specific time border for the next state change
-            if (timer < totalTime - (timeInState * (float)currentState))
+            // OR: If amount of trees are dead [ 30 ]
+            if (timer < totalTime - (timeInState * (float)currentState) 
+                || (currentState.Equals(STATE.START) && plantDestroyer.deadTrees.Count == 5))
             {
                 currentState += 1;
             }
+
+            timer -= Time.deltaTime;
 
             // Prints timer and STATE to the screen
             // allows to jump to the next state by pressing the "T" key
             if (DebugMode)
             {
                 bool jumpTime = Input.GetKeyDown(KeyCode.T);
-                timer -= Time.deltaTime;
                 if (jumpTime)
                 {
                     jumpTimer();
@@ -55,6 +95,14 @@ public class GameState : MonoBehaviour
         else if(timer < 0f)
         {
             timer = 0f;
+            int curMod = Mathf.FloorToInt(timer % 1f);
+            int curInt = Mathf.FloorToInt(timer / 1f);
+            if (curInt != lastInt && curMod == 0)
+            {
+                print("Spawn after STATE FINAL");
+                trashSpawner.spawnOnTimer();
+                lastInt = curInt;
+            }
         }
 
 

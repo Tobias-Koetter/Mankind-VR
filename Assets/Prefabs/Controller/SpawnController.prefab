@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 376700265939358440}
-  - component: {fileID: 3105498044636532666}
+  - component: {fileID: 4350478253968895058}
   - component: {fileID: 7902048671191015980}
   m_Layer: 0
   m_Name: SpawnController
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3105498044636532666
+--- !u!114 &4350478253968895058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,15 +41,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 376700265939358438}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd4ce99bc1e4b5a47b90224819ace302, type: 3}
+  m_Script: {fileID: 11500000, guid: 18a285595e11d0047824e05fb991a99d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  center: {fileID: 0}
-  spawnPool: {fileID: 0}
+  center: {fileID: 376700265939358440}
+  spawnPool: []
   spawnable: []
   spawned: []
   maxRadius: 40
-  minRadius: 20
+  minRadius: 0
 --- !u!114 &7902048671191015980
 MonoBehaviour:
   m_ObjectHideFlags: 0

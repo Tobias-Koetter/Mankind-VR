@@ -24,7 +24,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8188431259394272525}
   - component: {fileID: 5730512001270702859}
-  - component: {fileID: 5178112637114839043}
   m_Layer: 9
   m_Name: prefab_pine_tree_01
   m_TagString: Untagged
@@ -63,20 +62,6 @@ MonoBehaviour:
   alive: {fileID: 8800892168798696265}
   destroyed: {fileID: 3489839177079551877}
   isDestroyed: 0
---- !u!64 &5178112637114839043
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2872210556073058108}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7333181757977028900, guid: 1f30fb2466ab2174d9accd6eca56778d, type: 3}
 --- !u!1 &7484890388883699220
 GameObject:
   m_ObjectHideFlags: 0
