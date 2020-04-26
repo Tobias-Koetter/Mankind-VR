@@ -31,6 +31,7 @@ public class GameState : MonoBehaviour
         // Time to spend in one of the States
         timeInState = totalTime / numberOfStates; 
         timer = totalTime;
+        plantDestroyer.Setup(this);
     }
 
     private void Update()

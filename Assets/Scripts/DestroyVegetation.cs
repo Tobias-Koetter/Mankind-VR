@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TreeComparer : IComparer<Trees>
@@ -19,7 +20,9 @@ public class DestroyVegetation : MonoBehaviour
     public List<PoI> PoIList;
 
     private TreeComparer tC;
-
+    private GameState state;
+    private bool isInvokingMiddle = false;
+    private bool isInvokingEnd = false;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +51,22 @@ public class DestroyVegetation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!isInvokingMiddle && state.currentState >= STATE.MIDDLE)
+        {
+            InvokeRepeating("destroyRandomTreeInMiddleState",0f,10f);
+            isInvokingMiddle = true;
+        }
+        if (!isInvokingEnd && state.currentState >= STATE.FINAL)
+        {
+            if(isInvokingMiddle)
+                CancelInvoke("destroyRandomTreeInMiddleState");
+
+            InvokeRepeating("destroyRandomTreeInMiddleState", 0.5f, 3f);
+            isInvokingMiddle = false;
+            isInvokingEnd = true;
+        }
     }
+    public void Setup(GameState state) => this.state = state;
 
     public void handleTreeDestroy(Trees t)
     {
@@ -76,6 +94,13 @@ public class DestroyVegetation : MonoBehaviour
             }
         }
         return false;
+    }
+
+    void destroyRandomTreeInMiddleState()
+    {
+        int index = Random.Range(0, aliveTrees.Count);
+        Trees t = aliveTrees.ElementAt<Trees>(index);
+        handleTreeDestroy(t);
     }
 
 }
