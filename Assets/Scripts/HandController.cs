@@ -38,15 +38,16 @@ public class HandController : MonoBehaviour
                     GameObject colliderObject = hitColliders[i].gameObject;
                     if (colliderObject.activeSelf) {
                         Interactable current = colliderObject.GetComponent<Interactable>();
-                        Interactable parent = colliderObject.GetComponentInParent<Interactable>();
-                        if(current is Spawned spawn)
+                        Interactable parent = GlobalMethods.FindParentWithTag(colliderObject, "Tree")?.GetComponent<Interactable>();
+                        if (current is Spawned spawn)
                         {
                             int curID = spawn.PoolNumber;
 
                             spawn.SpawnMaster.despawnObjectWithID(curID);
                         }
-                        else if (parent is Trees tree)
+                        else if (parent is Trees tree && colliderObject.name.EndsWith("0"))
                         {
+                            Debug.Log($"Got called because of {colliderObject}");
                             tree.Controller.handleTreeDestroy(tree);
                         }
                         else if(colliderObject.tag.Equals("PointOfInterest"))

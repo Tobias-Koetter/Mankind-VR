@@ -10,6 +10,8 @@ public class ReplaceTrashModel : MonoBehaviour
     private float verticalAdjustmant = 0.16f;
     private int groundLayerNR = 31;
     private int replaceTreshold = 2;
+
+    private bool unChecked = true;
     
 
     private void Start()
@@ -19,7 +21,23 @@ public class ReplaceTrashModel : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.gameObject.layer == groundLayerNR)
+        unChecked = false;
+        handleReplacementLogic(collision);
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if(unChecked)
+        {
+            unChecked = false;
+            handleReplacementLogic(collision);
+        }
+    }
+
+
+    private void handleReplacementLogic(Collision c)
+    {
+        if (c.collider.gameObject.layer == groundLayerNR)
         {
             List<Spawned> found = new List<Spawned>();
             if (CheckForOtherTrash(ref found))
@@ -32,7 +50,7 @@ public class ReplaceTrashModel : MonoBehaviour
     private bool CheckForOtherTrash(ref List<Spawned> found)
     {
         Vector3 mid = transform.position;
-        float dist = 5f;
+        float dist = 4f;
         LayerMask interactableCheck = LayerMask.GetMask("Trash");
         Collider[] temp = Physics.OverlapSphere(mid, dist, interactableCheck);
         if (temp.Length >= replaceTreshold)

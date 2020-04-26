@@ -44,13 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a285595e11d0047824e05fb991a99d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  center: {fileID: 376700265939358440}
+  center: {fileID: 0}
   totalNrCopies: 100
   maxSpawnRadius: 40
   minSpawnRadius: 0
   spawnPrefabs:
   - {fileID: 1154864684, guid: cbc9da26e530fc444aafc7915ef17b53, type: 3}
   - {fileID: 7572959833248099075, guid: 65c8d478f2f5f0a4dafa57d628505291, type: 3}
+  - {fileID: 2916568504340137559, guid: a77ef92d579006448a89d1585558bb58, type: 3}
   spawnable: []
   spawned: []
 --- !u!114 &7902048671191015980

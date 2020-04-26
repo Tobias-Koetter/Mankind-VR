@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class SpawnController : MonoBehaviour
 {
-    public Transform center;
+    public Transform[] center;
+    private MeshFilter[] spawnArea;
     public int totalNrCopies = 100;
     public float maxSpawnRadius = 20f;
     public float minSpawnRadius = 20f;
@@ -19,10 +20,16 @@ public class SpawnController : MonoBehaviour
 
     void Start()
     {
+        spawnArea = new MeshFilter[center.Length];
+        for (int i = 0; i < center.Length; i++)
+        {
+            spawnArea[i] = center[i].gameObject.GetComponent<MeshFilter>();
+        }
 
+        
         if (maxSpawnRadius < minSpawnRadius)
         {
-            throw new System.Exception("SpawnController: maxRadius is smaller then the planed min Distance to the player");
+            throw new System.Exception("SpawnController: maxRadius is smaller then the planed min Distance to the player.");
         }
 
 
@@ -59,14 +66,24 @@ public class SpawnController : MonoBehaviour
     {
         if (spawnable.Count > 0)
         {
-            spawnObject();
+            //spawnObject();
+            for (int i= 0; i < spawnArea.Length;i++)
+            {
+
+                spawnObjectInMesh(i);
+            }
         }
         else
         {
             Spawned current = spawned[0];
             spawned.RemoveAt(0);
             spawnable.Add(current);
-            spawnObject();
+            //spawnObject();
+            for (int i = 0; i < spawnArea.Length; i++)
+            {
+
+                spawnObjectInMesh(i);
+            }
         }
     }
 
@@ -89,8 +106,8 @@ public class SpawnController : MonoBehaviour
          */
         Vector2 posXZ = Random.insideUnitCircle.normalized;
         Vector3 randDir = new Vector3(posXZ.x, 0f, posXZ.y);
-        Vector3 tempPoint = center.position + ((-center.forward + randDir).normalized * curRadius);
-        tempPoint.y = center.position.y + offsetY;
+        Vector3 tempPoint = center[0].position + ((-center[0].forward + randDir).normalized * curRadius);
+        tempPoint.y = center[0].position.y + offsetY;
         Quaternion tempRotation = Random.rotation;
 
 
@@ -100,6 +117,21 @@ public class SpawnController : MonoBehaviour
         current.gameObject.transform.rotation = tempRotation;
         current.gameObject.SetActive(true);
 
+        spawnable.Remove(current);
+        spawned.Add(current);
+    }
+
+    private void spawnObjectInMesh(int index)
+    {
+        Mesh m = spawnArea[index].mesh;
+        Transform t = center[index];
+        Spawned current = spawnable[Random.Range(0, spawnable.Count)];
+
+        Vector3 vec = m.GetRandomPointInsideConvex();
+        vec = t.TransformPoint(vec);
+        current.gameObject.transform.position = vec;
+        current.gameObject.transform.rotation = Random.rotation;
+        current.gameObject.SetActive(true);
         spawnable.Remove(current);
         spawned.Add(current);
     }

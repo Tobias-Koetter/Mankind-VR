@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-enum STATE { START = 1, MIDDLE = 2, FINAL = 3 };
+public enum STATE { START = 1, MIDDLE = 2, FINAL = 3 };
 
 
 
 public class GameState : MonoBehaviour
 {
-    STATE currentState = STATE.START;
+    public STATE currentState = STATE.START;
     public Text debugInfo;
     public float totalTime = 360f; // 6 minutes
     public bool DebugMode;

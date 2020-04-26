@@ -20,8 +20,6 @@ public class DestroyVegetation : MonoBehaviour
 
     private TreeComparer tC;
 
-    private int interactableLayer = 9;
-
 
     // Start is called before the first frame update
     void Start()
@@ -58,11 +56,12 @@ public class DestroyVegetation : MonoBehaviour
         if(treeIndex > 0)
         {
             t.Interact();
-            aliveTrees.RemoveAt(treeIndex);
-            deadTrees.Add(t);
-            deadTrees.Sort(tC);
-            foreach (Trees a in deadTrees)
-                print(a.ToString());
+            if (t.status == TREE_STAGE.DEAD)
+            {
+                aliveTrees.RemoveAt(treeIndex);
+                deadTrees.Add(t);
+                deadTrees.Sort(tC);
+            }
         }
     }
 
