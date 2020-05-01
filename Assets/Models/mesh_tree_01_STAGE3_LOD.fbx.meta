@@ -3,7 +3,18 @@ guid: 2f652285d1294bb48aef575fc4618761
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: inner wood
+    second: {fileID: 8635525646333343865, guid: 194ae66d732862f4f8c15c23cd89ec24,
+      type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood bark
+    second: {fileID: 2100000, guid: 2aef418c7dac55146acbde4f0f04c95d, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -33,7 +44,10 @@ ModelImporter:
     clipAnimations: []
     isReadable: 0
   meshes:
-    lODScreenPercentages: []
+    lODScreenPercentages:
+    - 0.25
+    - 0.125
+    - 0.01
     globalScale: 1
     meshCompression: 0
     addColliders: 0
