@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: inner wood
-    second: {fileID: 8635525646333343865, guid: 194ae66d732862f4f8c15c23cd89ec24,
+    second: {fileID: 8635525646333343865, guid: c4fe4b5948b9ced45b867855948b3cdc,
       type: 3}
   - first:
       type: UnityEngine:Material

@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7994841416878638197}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: prefab_pine_tree_03_STAGE1-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,6 +125,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: mesh_pine_tree_03_STAGE12_LOD
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 2237b6871d6ac5c43851eb358196a341,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3579580763193415622, guid: 2237b6871d6ac5c43851eb358196a341,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4004364149306039229, guid: 2237b6871d6ac5c43851eb358196a341,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2237b6871d6ac5c43851eb358196a341, type: 3}

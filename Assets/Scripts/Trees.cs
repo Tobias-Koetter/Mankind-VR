@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
-public enum TREE_STAGE { ALIVE1, ALIVE2, BETWEEN, DEAD };
+public enum TREE_STAGE { ALIVE1, ALIVE2, BETWEEN1, BETWEEN2, DEAD };
 
 public class Trees : Interactable
 {
-    public Transform alive;
-    public GameObject[] destroyed;
+    //public Transform alive;
+    //public GameObject[] destroyed;
 
     public TREE_STAGE status = TREE_STAGE.ALIVE1;
     public bool isDestroyed = false;
@@ -15,11 +15,13 @@ public class Trees : Interactable
     private GameObject stage1;
     private GameObject stage1_2;
     private GameObject stage2;
+    private GameObject stage2_2;
     private GameObject stage3;
 
     public List<Transform> models1;
     public List<Transform> models1_2;
     public List<Transform> models2;
+    public List<Transform> models2_2;
     public List<Transform> models3;
 
     private Transform currentModel;
@@ -37,8 +39,8 @@ public class Trees : Interactable
         currentModel.gameObject.SetActive(true);
 
 
-        foreach (GameObject g in destroyed)
-            g.SetActive(false);
+        /*foreach (GameObject g in destroyed)
+            g.SetActive(false);*/
     }
 
 
@@ -86,6 +88,9 @@ public class Trees : Interactable
                 case "Stage2":
                     if (!stage2) { stage2 = t.gameObject; }
                     break;
+                case "Stage2_2":
+                    if (!stage2_2) { stage2_2 = t.gameObject; }
+                    break;
                 case "Stage3":
                     if (!stage3) { stage3 = t.gameObject; }
                     break;
@@ -119,6 +124,14 @@ public class Trees : Interactable
                 t.gameObject.SetActive(false);
             }
         }
+        foreach (Transform t in stage2_2.transform)
+        {
+            if (rg.IsMatch(t.name))
+            {
+                models2_2.Add(t);
+                t.gameObject.SetActive(false);
+            }
+        }
         foreach (Transform t in stage3.transform)
         {
             if (rg.IsMatch(t.name))
@@ -137,8 +150,10 @@ public class Trees : Interactable
                 return models1;
             case TREE_STAGE.ALIVE2:
                 return models1_2;
-            case TREE_STAGE.BETWEEN:
+            case TREE_STAGE.BETWEEN1:
                 return models2;
+            case TREE_STAGE.BETWEEN2:
+                return models2_2;
             case TREE_STAGE.DEAD:
                 return models3;
         }
