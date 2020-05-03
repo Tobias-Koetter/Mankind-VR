@@ -153,6 +153,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: mesh_CigarettPackage_01
       objectReference: {fileID: 0}
+    - target: {fileID: 5551014577142218206, guid: 41d9f05c16bd58f49a9f908f7700496c,
+        type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.47711703
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551014577142218206, guid: 41d9f05c16bd58f49a9f908f7700496c,
+        type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0.17203766
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41d9f05c16bd58f49a9f908f7700496c, type: 3}
 --- !u!4 &3057576507453824461 stripped

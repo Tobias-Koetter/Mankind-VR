@@ -217,12 +217,52 @@ PrefabInstance:
     - target: {fileID: 5551014577142218206, guid: 8d5aa713980cc5141b4763c930085f2b,
         type: 3}
       propertyPath: m_LODs.Array.data[0].screenRelativeHeight
-      value: 0.17453782
+      value: 0.41810465
       objectReference: {fileID: 0}
     - target: {fileID: 5551014577142218206, guid: 8d5aa713980cc5141b4763c930085f2b,
         type: 3}
       propertyPath: m_LODs.Array.data[1].screenRelativeHeight
-      value: 0.1092345
+      value: 0.14562781
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551014577142218206, guid: 8d5aa713980cc5141b4763c930085f2b,
+        type: 3}
+      propertyPath: m_FadeMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551014577142218206, guid: 8d5aa713980cc5141b4763c930085f2b,
+        type: 3}
+      propertyPath: m_AnimateCrossFading
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551014577142218206, guid: 8d5aa713980cc5141b4763c930085f2b,
+        type: 3}
+      propertyPath: m_LODs.Array.data[1].fadeTransitionWidth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551014577142218206, guid: 8d5aa713980cc5141b4763c930085f2b,
+        type: 3}
+      propertyPath: m_LODs.Array.data[0].fadeTransitionWidth
+      value: 0.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551014577142218206, guid: 8d5aa713980cc5141b4763c930085f2b,
+        type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0.066056736
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551014577142218206, guid: 8d5aa713980cc5141b4763c930085f2b,
+        type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0.032057855
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551014577142218206, guid: 8d5aa713980cc5141b4763c930085f2b,
+        type: 3}
+      propertyPath: m_LODs.Array.data[4].screenRelativeHeight
+      value: 0.0030146018
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551014577142218206, guid: 8d5aa713980cc5141b4763c930085f2b,
+        type: 3}
+      propertyPath: m_LODs.Array.data[2].fadeTransitionWidth
+      value: 0.175
       objectReference: {fileID: 0}
     - target: {fileID: 6414986731976238495, guid: 8d5aa713980cc5141b4763c930085f2b,
         type: 3}
