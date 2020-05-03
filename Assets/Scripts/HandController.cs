@@ -57,7 +57,7 @@ public class HandController : MonoBehaviour
                         }
                         else
                         {
-                            print("The current Object: \"" + colliderObject.name + "\" was not spawned by a spawnController");
+                            //print("The current Object: \"" + colliderObject.name + "\" was not spawned by a spawnController");
 
                         }
 

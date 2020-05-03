@@ -44,7 +44,7 @@ public class GameState : MonoBehaviour
                 int curInt = Mathf.FloorToInt(timer / 5f);
                 if (curInt != lastInt && curMod == 0)
                 {
-                    print("Spawn in STATE START");
+                    //print("Spawn in STATE START");
                     trashSpawner.spawnOnTimer();
                     lastInt = curInt;
                 }
@@ -55,7 +55,7 @@ public class GameState : MonoBehaviour
                 int curInt = Mathf.FloorToInt(timer / 2f);
                 if (curInt != lastInt && curMod == 0)
                 {
-                    print("Spawn in STATE MIDDLE");
+                    //print("Spawn in STATE MIDDLE");
                     trashSpawner.spawnOnTimer();
                     lastInt = curInt;
                 }

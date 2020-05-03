@@ -298,6 +298,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
 --- !u!1 &42535571 stripped
@@ -422,6 +427,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
 --- !u!1001 &128143680
@@ -505,6 +515,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
@@ -674,6 +689,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: prefab_tree_01_LOD(Polybrush Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308718269104418845, guid: 0992eb614319d124eb48f25639128d3c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0992eb614319d124eb48f25639128d3c, type: 3}
@@ -954,6 +974,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: prefab_tree_01_LOD(Polybrush Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308718269104418845, guid: 0992eb614319d124eb48f25639128d3c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0992eb614319d124eb48f25639128d3c, type: 3}
@@ -11687,6 +11712,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_tree_01_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 6308718269104418845, guid: 0992eb614319d124eb48f25639128d3c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0992eb614319d124eb48f25639128d3c, type: 3}
 --- !u!43 &201820600
@@ -11695,7 +11725,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh14982
+  m_Name: pb_Mesh15008
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11934,6 +11964,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
 --- !u!1001 &218922550
@@ -12017,6 +12052,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
@@ -12221,6 +12261,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
 --- !u!1001 &314204957
@@ -12304,6 +12349,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
@@ -12409,6 +12459,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
 --- !u!1001 &346953909
@@ -12493,6 +12548,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_tree_01_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 6308718269104418845, guid: 0992eb614319d124eb48f25639128d3c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0992eb614319d124eb48f25639128d3c, type: 3}
 --- !u!1 &384034619
@@ -12509,7 +12569,7 @@ GameObject:
   - component: {fileID: 384034621}
   - component: {fileID: 384034620}
   m_Layer: 0
-  m_Name: Stage1_Part3
+  m_Name: Area1_Part3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13286,6 +13346,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
 --- !u!1 &388697688 stripped
@@ -13389,7 +13454,7 @@ GameObject:
   - component: {fileID: 447795177}
   - component: {fileID: 447795176}
   m_Layer: 0
-  m_Name: Stage1_Part2
+  m_Name: Area1_Part2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14009,6 +14074,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_tree_01_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 6308718269104418845, guid: 0992eb614319d124eb48f25639128d3c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0992eb614319d124eb48f25639128d3c, type: 3}
 --- !u!1001 &497473472
@@ -14093,6 +14163,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
 --- !u!1 &503007283
@@ -14171,7 +14246,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1918732495}
-  - {fileID: 1969891341}
   - {fileID: 2009107065749098754}
   - {fileID: 3301845802408020486}
   m_Father: {fileID: 0}
@@ -14264,7 +14338,7 @@ GameObject:
   - component: {fileID: 535006906}
   - component: {fileID: 535006905}
   m_Layer: 0
-  m_Name: Stage1_Part4
+  m_Name: Area1_Part4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14716,6 +14790,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
 --- !u!1001 &581476590
@@ -14868,6 +14947,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
@@ -15041,6 +15125,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
 --- !u!1 &651531105 stripped
@@ -15145,6 +15234,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
 --- !u!1001 &706079482
@@ -15228,6 +15322,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
@@ -15413,6 +15512,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
 --- !u!1 &807723183 stripped
@@ -15585,6 +15689,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_tree_01_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 6308718269104418845, guid: 0992eb614319d124eb48f25639128d3c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0992eb614319d124eb48f25639128d3c, type: 3}
 --- !u!1 &1000816305
@@ -15679,6 +15788,75 @@ Transform:
   m_Father: {fileID: 1198082503}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 90}
+--- !u!1001 &1009667451
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1918732495}
+    m_Modifications:
+    - target: {fileID: 6087604758572976242, guid: 2533cfed9d3e9044baf762f550a47f81,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.5712116
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087604758572976242, guid: 2533cfed9d3e9044baf762f550a47f81,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.589884
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087604758572976242, guid: 2533cfed9d3e9044baf762f550a47f81,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.094099425
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087604758572976242, guid: 2533cfed9d3e9044baf762f550a47f81,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087604758572976242, guid: 2533cfed9d3e9044baf762f550a47f81,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087604758572976242, guid: 2533cfed9d3e9044baf762f550a47f81,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087604758572976242, guid: 2533cfed9d3e9044baf762f550a47f81,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087604758572976242, guid: 2533cfed9d3e9044baf762f550a47f81,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087604758572976242, guid: 2533cfed9d3e9044baf762f550a47f81,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087604758572976242, guid: 2533cfed9d3e9044baf762f550a47f81,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087604758572976242, guid: 2533cfed9d3e9044baf762f550a47f81,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7163999493804663395, guid: 2533cfed9d3e9044baf762f550a47f81,
+        type: 3}
+      propertyPath: m_Name
+      value: Staged_Tree_03
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2533cfed9d3e9044baf762f550a47f81, type: 3}
 --- !u!1 &1052864534 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100062, guid: 9df4ecab20cf8184aa03d23dfe96271b,
@@ -15780,6 +15958,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
@@ -16009,7 +16192,7 @@ GameObject:
   - component: {fileID: 1291355085}
   - component: {fileID: 1291355084}
   m_Layer: 0
-  m_Name: Stage1_Part1
+  m_Name: Area1_Part1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16893,6 +17076,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
 --- !u!1001 &1326062422
@@ -16977,6 +17165,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
 --- !u!43 &1359689456
@@ -16985,7 +17178,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15134
+  m_Name: pb_Mesh15154
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17447,6 +17640,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
 --- !u!1001 &1458389203
@@ -17530,6 +17728,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
@@ -17615,6 +17818,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
 --- !u!1001 &1504401228
@@ -17698,6 +17906,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
@@ -17783,6 +17996,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
 --- !u!1001 &1521369427
@@ -17866,6 +18084,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
@@ -18048,6 +18271,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
 --- !u!1001 &1582058625
@@ -18131,6 +18359,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
@@ -18216,6 +18449,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
 --- !u!1001 &1611995574
@@ -18299,6 +18537,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
@@ -18384,6 +18627,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
 --- !u!1001 &1680578977
@@ -18468,6 +18716,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_tree_01_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 6308718269104418845, guid: 0992eb614319d124eb48f25639128d3c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0992eb614319d124eb48f25639128d3c, type: 3}
 --- !u!1001 &1687196626
@@ -18551,6 +18804,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
@@ -18739,6 +18997,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
@@ -18987,6 +19250,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
 --- !u!1 &1866835317 stripped
@@ -19090,6 +19358,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: prefab_tree_01_LOD(Polybrush Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308718269104418845, guid: 0992eb614319d124eb48f25639128d3c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0992eb614319d124eb48f25639128d3c, type: 3}
@@ -19330,6 +19603,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_tree_01_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 6308718269104418845, guid: 0992eb614319d124eb48f25639128d3c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0992eb614319d124eb48f25639128d3c, type: 3}
 --- !u!1001 &1891164582
@@ -19414,6 +19692,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
 --- !u!43 &1916512515
@@ -19422,7 +19705,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15026
+  m_Name: pb_Mesh15046
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20328,51 +20611,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 166692442}
---- !u!64 &1951455617
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1969891340}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
---- !u!1 &1969891340
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1969891341}
-  - component: {fileID: 1951455617}
-  m_Layer: 0
-  m_Name: Trees
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1969891341
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1969891340}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -165.72118, y: 34.87661, z: 374.2783}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 519816177}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1978989001 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100046, guid: 9df4ecab20cf8184aa03d23dfe96271b,
@@ -20523,6 +20761,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_tree_01_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 6308718269104418845, guid: 0992eb614319d124eb48f25639128d3c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0992eb614319d124eb48f25639128d3c, type: 3}
 --- !u!1 &2063685509 stripped
@@ -20639,6 +20882,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
 --- !u!1 &2094004102 stripped
@@ -20742,6 +20990,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
@@ -20896,6 +21149,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
 --- !u!43 &2123041606
@@ -20904,7 +21162,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh14954
+  m_Name: pb_Mesh14978
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21163,6 +21421,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pine_tree_03_LOD(Polybrush Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31112147e5d66a64181becb1e3d347ba, type: 3}
 --- !u!1001 &2009107065749098753
@@ -21215,7 +21478,7 @@ PrefabInstance:
     - target: {fileID: 4927770856034927635, guid: 023902a91bb1c44488efa968d633019f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4927770856034927635, guid: 023902a91bb1c44488efa968d633019f,
         type: 3}
@@ -21285,7 +21548,7 @@ PrefabInstance:
     - target: {fileID: 1157619620404325766, guid: f952863c98b165447a5043ed783927bf,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1157619620404325766, guid: f952863c98b165447a5043ed783927bf,
         type: 3}
