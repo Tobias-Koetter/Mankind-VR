@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 41d9f05c16bd58f49a9f908f7700496c
+guid: e3b7611d1e3ce8b44bf7779e05200791
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
@@ -7,18 +7,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: braun
+      name: LODSchachtel
+    second: {fileID: 2100000, guid: b014bbf886dd051479ec3049527bd554, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Schachtel
     second: {fileID: 2100000, guid: ab62f1fb904df0f49b1197bef37a82b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: papier
+    second: {fileID: 2100000, guid: ae9ca28da148ff4488ca200c08e825c4, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: plastic
     second: {fileID: 2100000, guid: 64fc29a2be8816243b08a2319b1c447a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: "wei\xDF"
-    second: {fileID: 2100000, guid: ae9ca28da148ff4488ca200c08e825c4, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
