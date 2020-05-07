@@ -8,6 +8,7 @@ TagManager:
   - PointOfInterest
   - Small Trash
   - Tree
+  - TreeLogic
   layers:
   - Default
   - TransparentFX
