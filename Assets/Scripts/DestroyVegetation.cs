@@ -29,21 +29,44 @@ public class DestroyVegetation : MonoBehaviour
     {
         tC = new TreeComparer();
 
-        Trees[] temp = treeParent.GetComponentsInChildren<Trees>();
         int counter = 0;
-        foreach(Trees t in temp)
+
+        if (treeParent == null)
         {
-            t.TreeNumber = counter++;
-            t.Controller = this;
-            aliveTrees.Add(t);
+            Debug.LogError("treeParent is not selected in Editor.");
+        }
+        else
+        {
+            Trees[] temp = treeParent.GetComponentsInChildren<Trees>();
+            foreach (Trees t in temp)
+            {
+                t.TreeNumber = counter++;
+                t.Controller = this;
+                aliveTrees.Add(t);
+            }
         }
 
         counter = 0;
-        PoI[] temp2 = PoIParent.GetComponentsInChildren<PoI>();
-        foreach(PoI p in temp2)
+
+        if (PoIParent == null)
         {
-            p.Setup(this, counter++);
-            PoIList.Add(p);
+            Debug.LogError("POIParent is not selected in Editor.");
+        }
+        else
+        {
+            PoI[] temp2 = PoIParent.GetComponentsInChildren<PoI>();
+            if (temp2 == null)
+            {
+                Debug.LogError($"No POI selected");
+            }
+            else
+            {
+                foreach (PoI p in temp2)
+                {
+                    p.Setup(this, counter++);
+                    PoIList.Add(p);
+                }
+            }
         }
         
     }

@@ -38,7 +38,7 @@ public class HandController : MonoBehaviour
                     GameObject colliderObject = hitColliders[i].gameObject;
                     if (colliderObject.activeSelf) {
                         Interactable current = colliderObject.GetComponent<Interactable>();
-                        Interactable parent = GlobalMethods.FindParentWithTag(colliderObject, "Tree")?.GetComponent<Interactable>();
+                        Interactable parent = GlobalMethods.FindParentWithTag(colliderObject, "TreeLogic")?.GetComponent<Interactable>();
                         if (current is Spawned spawn)
                         {
                             int curID = spawn.PoolNumber;
