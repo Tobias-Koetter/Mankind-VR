@@ -98,7 +98,8 @@ public class DestroyVegetation : MonoBehaviour
         Debug.Log($"Found {t} at position {treeIndex}.");
         if(treeIndex >= 0)
         {
-            t.Interact();
+            if(!t.lDis.isDissolving)
+                t.Interact();
             if (t.status == TREE_STAGE.DEAD)
             {
                 aliveTrees.RemoveAt(treeIndex);

@@ -29,12 +29,13 @@ public class HandController : MonoBehaviour
             Collider[] hitColliders = Physics.OverlapSphere(objectCenter.position, checkDistance, collisionMask);
 
             isCollision = hitColliders.Length > 0;
-
+            
             //if left mouse button is clicked and there is a colliding object
             if (isCollision) {
 
                 for (int i = 0; i < hitColliders.Length; i++)
                 {
+                    Debug.Log("We are here");
                     GameObject colliderObject = hitColliders[i].gameObject;
                     if (colliderObject.activeSelf) {
                         Interactable current = colliderObject.GetComponent<Interactable>();

@@ -76,7 +76,6 @@ public class KickObjects : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("i got triggered by "+ LayerMask.LayerToName(other.gameObject.layer));
-        Debug.Log(kickableLayers.value);
         if (LayerMask.LayerToName(other.gameObject.layer).Equals("Trash"))
         {
             Rigidbody body = other.attachedRigidbody;

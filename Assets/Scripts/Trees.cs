@@ -18,13 +18,15 @@ public class Trees : Interactable
     private GameObject stage2_2;
     private GameObject stage3;
 
-    public List<Transform> models1;
-    public List<Transform> models1_2;
-    public List<Transform> models2;
-    public List<Transform> models2_2;
-    public List<Transform> models3;
+    public List<TreeInformation> models1;
+    public List<TreeInformation> models1_2;
+    public List<TreeInformation> models2;
+    public List<TreeInformation> models2_2;
+    public List<TreeInformation> models3;
 
-    private Transform currentModel;
+    public LeafDissolver lDis;
+
+    private TreeInformation currentModel;
     private DestroyVegetation controller;
     private int treeNumber;
 
@@ -34,9 +36,10 @@ public class Trees : Interactable
     private void Start()
     {
         InitFillLists();
-        List<Transform> curList = FindCurrentList();
+        List<TreeInformation> curList = FindCurrentList();
         currentModel = GetModel(curList);
         currentModel.gameObject.SetActive(true);
+        setupLeafDissolver();
 
 
         /*foreach (GameObject g in destroyed)
@@ -48,10 +51,19 @@ public class Trees : Interactable
     {
         status += 1;
         isDestroyed = true;
-
-        currentModel.gameObject.SetActive(false);
-        currentModel = GetModel(FindCurrentList());
-        currentModel.gameObject.SetActive(true);
+        if (status <= TREE_STAGE.BETWEEN2)
+        {
+            TreeInformation nextModel = GetModel(FindCurrentList());
+            nextModel.gameObject.SetActive(true);
+            lDis.startDissovle();
+            StartCoroutine(WaitForDissolve(nextModel));
+        }
+        else
+        {
+            currentModel.gameObject.SetActive(false);
+            currentModel = GetModel(FindCurrentList());
+            currentModel.gameObject.SetActive(true);
+        }
     }
 
     public override string ToString()
@@ -104,7 +116,7 @@ public class Trees : Interactable
         {
             if (rg.IsMatch(t.name))
             {
-                models1.Add(t);
+                models1.Add(t.GetComponent<TreeInformation>());
                 t.gameObject.SetActive(false);
             }
         }
@@ -112,7 +124,7 @@ public class Trees : Interactable
         {
             if (rg.IsMatch(t.name))
             {
-                models1_2.Add(t);
+                models1_2.Add(t.GetComponent<TreeInformation>());
                 t.gameObject.SetActive(false);
             }
         }
@@ -120,7 +132,7 @@ public class Trees : Interactable
         {
             if (rg.IsMatch(t.name))
             {
-                models2.Add(t);
+                models2.Add(t.GetComponent<TreeInformation>());
                 t.gameObject.SetActive(false);
             }
         }
@@ -128,7 +140,7 @@ public class Trees : Interactable
         {
             if (rg.IsMatch(t.name))
             {
-                models2_2.Add(t);
+                models2_2.Add(t.GetComponent<TreeInformation>());
                 t.gameObject.SetActive(false);
             }
         }
@@ -136,13 +148,13 @@ public class Trees : Interactable
         {
             if (rg.IsMatch(t.name))
             { 
-                models3.Add(t);
+                models3.Add(t.GetComponent<TreeInformation>());
                 t.gameObject.SetActive(false);
             }
         }
     }
 
-    private List<Transform> FindCurrentList()
+    private List<TreeInformation> FindCurrentList()
     {
         switch(status)
         {
@@ -160,7 +172,7 @@ public class Trees : Interactable
         return null;
     }
 
-    private Transform GetModel(List<Transform> tList)
+    private TreeInformation GetModel(List<TreeInformation> tList)
     {
         int l = tList.Count;
         if(l == 0)
@@ -178,5 +190,22 @@ public class Trees : Interactable
 
             return tList[index];
         }
+    }
+
+    private void setupLeafDissolver()
+    {
+        lDis.leaves = currentModel.dissolveMats[0];
+    }
+
+    IEnumerator WaitForDissolve(TreeInformation next)
+    {
+        Debug.Log(lDis.isDissolving);
+        yield return new WaitWhile(() => lDis.isDissolving);
+        currentModel.gameObject.SetActive(false);
+        currentModel = next;
+        currentModel.gameObject.SetActive(true);
+        setupLeafDissolver();
+        yield return null;
+
     }
 }
