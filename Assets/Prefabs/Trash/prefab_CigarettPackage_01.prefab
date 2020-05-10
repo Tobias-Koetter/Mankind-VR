@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3836377978765489797}
   - component: {fileID: 3093283622599049480}
   m_Layer: 10
-  m_Name: prefab_cigarettPackage_01_LOD
+  m_Name: prefab_CigarettPackage_01
   m_TagString: Small Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

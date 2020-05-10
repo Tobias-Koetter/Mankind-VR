@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7572959833248099075}
   - component: {fileID: 920228440}
   m_Layer: 10
-  m_Name: prefab_Dose_02_LOD
+  m_Name: prefab_Dose_02
   m_TagString: Small Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
