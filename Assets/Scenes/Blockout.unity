@@ -27276,6 +27276,31 @@ PrefabInstance:
       propertyPath: m_LODs.Array.data[1].renderers.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5309532937517469919, guid: 4ab297f9a141e1a42ba6db12145935af,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309532937517469919, guid: 4ab297f9a141e1a42ba6db12145935af,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309532937517469919, guid: 4ab297f9a141e1a42ba6db12145935af,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309532937517469919, guid: 4ab297f9a141e1a42ba6db12145935af,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5309532937517469919, guid: 4ab297f9a141e1a42ba6db12145935af,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6087604758572976242, guid: 4ab297f9a141e1a42ba6db12145935af,
         type: 3}
       propertyPath: m_LocalPosition.x
