@@ -1,5 +1,33 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!64 &7554759542451076386
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016696583093744752}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8507480076194893631, guid: 88db7eb9131aa8445bbf0007eadd8a27, type: 3}
+--- !u!64 &2087561461125024123
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046870667658109207}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3359865928121891002, guid: 88db7eb9131aa8445bbf0007eadd8a27, type: 3}
 --- !u!1 &3482720653558973824
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,34 +74,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lodGroup: {fileID: 1928285964731885890}
   dissolveMats: []
---- !u!64 &4348160048378732402
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6942813933670928161}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2191954771009315458, guid: 88db7eb9131aa8445bbf0007eadd8a27, type: 3}
---- !u!64 &3323312155527832831
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7378785406802953050}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -58574665578187530, guid: 88db7eb9131aa8445bbf0007eadd8a27, type: 3}
 --- !u!1001 &6326307910425285788
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -136,6 +136,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2788655238516755061, guid: 88db7eb9131aa8445bbf0007eadd8a27,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 88db7eb9131aa8445bbf0007eadd8a27,
         type: 3}
       propertyPath: m_Name
@@ -146,12 +151,27 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 2105669804103131995, guid: 88db7eb9131aa8445bbf0007eadd8a27,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 200c77ec6df973f4583a836144548465, type: 2}
     - target: {fileID: 3579580763193415622, guid: 88db7eb9131aa8445bbf0007eadd8a27,
         type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4004364149306039229, guid: 88db7eb9131aa8445bbf0007eadd8a27,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4265585436761579511, guid: 88db7eb9131aa8445bbf0007eadd8a27,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 200c77ec6df973f4583a836144548465, type: 2}
+    - target: {fileID: 6473792116723245292, guid: 88db7eb9131aa8445bbf0007eadd8a27,
         type: 3}
       propertyPath: m_Layer
       value: 9
@@ -180,15 +200,15 @@ LODGroup:
     type: 3}
   m_PrefabInstance: {fileID: 6326307910425285788}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6942813933670928161 stripped
+--- !u!1 &1046870667658109207 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 4004364149306039229, guid: 88db7eb9131aa8445bbf0007eadd8a27,
+  m_CorrespondingSourceObject: {fileID: -2788655238516755061, guid: 88db7eb9131aa8445bbf0007eadd8a27,
     type: 3}
   m_PrefabInstance: {fileID: 6326307910425285788}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7378785406802953050 stripped
+--- !u!1 &1016696583093744752 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 3579580763193415622, guid: 88db7eb9131aa8445bbf0007eadd8a27,
+  m_CorrespondingSourceObject: {fileID: 6473792116723245292, guid: 88db7eb9131aa8445bbf0007eadd8a27,
     type: 3}
   m_PrefabInstance: {fileID: 6326307910425285788}
   m_PrefabAsset: {fileID: 0}
