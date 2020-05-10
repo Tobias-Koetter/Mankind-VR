@@ -64,3 +64,20 @@ MonoBehaviour:
       m_YScaleBool: 1
       m_ZScaleBool: 1
     name: prefab_tree_05_LOD
+  - gameObject: {fileID: 5088293447917681555, guid: 5d936d6848a09324084aa0b93181d005,
+      type: 3}
+    settings:
+      m_Strength: 50
+      m_RotationRangeMin: {x: 0, y: 0, z: 0}
+      m_RotationRangeMax: {x: 0, y: 349.85916, z: 0}
+      m_ScaleRangeMin: {x: 0.4366197, y: 0.22535214, z: 0.4366197}
+      m_ScaleRangeMax: {x: 1, y: 1.3521127, z: 1}
+      m_UniformScale: {x: 1, y: 1}
+      m_UniformBool: 0
+      m_XRotationBool: 0
+      m_YRotationBool: 1
+      m_ZRotationBool: 0
+      m_XScaleBool: 1
+      m_YScaleBool: 1
+      m_ZScaleBool: 1
+    name: prefab_Weeds01_STAGE1
