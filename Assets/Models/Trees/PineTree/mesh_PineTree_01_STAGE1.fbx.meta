@@ -7,13 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.002
-    second: {fileID: 2100000, guid: ac62cfe7944a95f4ebb3b8604d146feb, type: 2}
+      name: PineTree_Bark
+    second: {fileID: 2100000, guid: 2aef418c7dac55146acbde4f0f04c95d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: wood bark
-    second: {fileID: 2100000, guid: 2aef418c7dac55146acbde4f0f04c95d, type: 2}
+      name: PineTree_Leaves
+    second: {fileID: 2100000, guid: ac62cfe7944a95f4ebb3b8604d146feb, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
