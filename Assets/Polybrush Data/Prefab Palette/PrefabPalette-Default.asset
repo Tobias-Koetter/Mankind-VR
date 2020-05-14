@@ -81,3 +81,20 @@ MonoBehaviour:
       m_YScaleBool: 1
       m_ZScaleBool: 1
     name: prefab_Weeds01_STAGE1
+  - gameObject: {fileID: 8673429794748089514, guid: f53f675a6dc131849be09b2b957a2583,
+      type: 3}
+    settings:
+      m_Strength: 100
+      m_RotationRangeMin: {x: 0, y: 0, z: 0}
+      m_RotationRangeMax: {x: 0, y: 119.15491, z: 0}
+      m_ScaleRangeMin: {x: 0.85915494, y: 0.85915494, z: 0.85915494}
+      m_ScaleRangeMax: {x: 1, y: 1.3521127, z: 1}
+      m_UniformScale: {x: 1, y: 1}
+      m_UniformBool: 0
+      m_XRotationBool: 0
+      m_YRotationBool: 1
+      m_ZRotationBool: 0
+      m_XScaleBool: 1
+      m_YScaleBool: 1
+      m_ZScaleBool: 1
+    name: prefab_grass01

@@ -3,7 +3,22 @@ guid: 17f3d5d5590464640b3025d62d7669ef
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GesteinBoden
+    second: {fileID: 2100000, guid: 0de5f9c1517cbcf43aaaf69d9c872d3b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GrasBoden
+    second: {fileID: 2100000, guid: 0de5f9c1517cbcf43aaaf69d9c872d3b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SandBoden
+    second: {fileID: 2100000, guid: 0de5f9c1517cbcf43aaaf69d9c872d3b, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
