@@ -13,12 +13,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: TrashPlaneDosen
-    second: {fileID: 2100000, guid: 63ee5a9dd25651e4c9ca40128db45500, type: 2}
+    second: {fileID: 2100000, guid: 19dbc5d419b59424f97de3ae24a0cc9f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: ground
-    second: {fileID: 2100000, guid: 19dbc5d419b59424f97de3ae24a0cc9f, type: 2}
+    second: {fileID: 2100000, guid: a385a0ebb3f9d5444b1916751a83f480, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
