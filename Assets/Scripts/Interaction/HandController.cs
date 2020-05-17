@@ -35,7 +35,6 @@ public class HandController : MonoBehaviour
 
                 for (int i = 0; i < hitColliders.Length; i++)
                 {
-                    Debug.Log("We are here");
                     GameObject colliderObject = hitColliders[i].gameObject;
                     if (colliderObject.activeSelf) {
                         Interactable current = colliderObject.GetComponent<Interactable>();
@@ -79,7 +78,6 @@ public class HandController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print(ownRender.material);
         //Debug Interaction stuff
         if (other.tag == "PointOfInterest")
         {

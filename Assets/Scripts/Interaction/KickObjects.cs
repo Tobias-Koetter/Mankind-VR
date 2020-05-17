@@ -75,7 +75,6 @@ public class KickObjects : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("i got triggered by "+ LayerMask.LayerToName(other.gameObject.layer));
         if (LayerMask.LayerToName(other.gameObject.layer).Equals("Trash"))
         {
             Rigidbody body = other.attachedRigidbody;
@@ -83,7 +82,6 @@ public class KickObjects : MonoBehaviour
             Vector3 dir = triggerPoint - kickcheck.position;
             dir.y = 0;
             dir = dir.normalized;
-            Debug.Log(dir);
             body.velocity = dir * kickPower;
 
         }

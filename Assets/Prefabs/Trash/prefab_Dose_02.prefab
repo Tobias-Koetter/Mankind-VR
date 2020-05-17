@@ -77,6 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d9b741371b383a4aa00fe90fec8cc2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mesh: {fileID: 6720903533518239988}
   poolNumber: 0
 --- !u!114 &920228440
 MonoBehaviour:
@@ -289,6 +290,12 @@ PrefabInstance:
 --- !u!4 &2791572796137480814 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 8d5aa713980cc5141b4763c930085f2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 7189746547820759412}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6720903533518239988 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4504283814770979200, guid: 8d5aa713980cc5141b4763c930085f2b,
     type: 3}
   m_PrefabInstance: {fileID: 7189746547820759412}
   m_PrefabAsset: {fileID: 0}

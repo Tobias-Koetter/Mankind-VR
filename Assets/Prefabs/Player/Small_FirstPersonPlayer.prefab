@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1501842317}
+  - component: {fileID: 7263190858811612725}
+  - component: {fileID: 8649461579852536057}
   m_Layer: 30
   m_Name: KickCheck
   m_TagString: Untagged
@@ -30,13 +32,26 @@ Transform:
   m_Father: {fileID: 308899466783144864}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1985846112
+--- !u!65 &7263190858811612725
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501842316}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8649461579852536057
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 308899466783144894}
+  m_GameObject: {fileID: 1501842316}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40921cdaa3bf0204981497c581be317d, type: 3}
@@ -47,9 +62,9 @@ MonoBehaviour:
   kickableLayers:
     serializedVersion: 2
     m_Bits: 1024
-  tagList:
+  targetTags:
   - Small Trash
-  kickPower: 1.25
+  kickPower: 10
 --- !u!1001 &4367977582768085544
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -130,7 +145,7 @@ PrefabInstance:
     - target: {fileID: 4095815046815834518, guid: 6e7bd8d718556c74292f034e8f86cc39,
         type: 3}
       propertyPath: m_Name
-      value: FirstPersonPlayer
+      value: Small_FirstPersonPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 4095815047467177933, guid: 6e7bd8d718556c74292f034e8f86cc39,
         type: 3}
@@ -200,12 +215,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e7bd8d718556c74292f034e8f86cc39, type: 3}
---- !u!1 &308899466783144894 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4095815046815834518, guid: 6e7bd8d718556c74292f034e8f86cc39,
-    type: 3}
-  m_PrefabInstance: {fileID: 4367977582768085544}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &308899466783144864 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4095815046815834504, guid: 6e7bd8d718556c74292f034e8f86cc39,
