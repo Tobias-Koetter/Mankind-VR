@@ -44,6 +44,12 @@ public class DestroyVegetation : MonoBehaviour
                 t.Controller = this;
                 aliveTrees.Add(t);
             }
+
+            float pNatVal= LevelBalancing.BalancingValue / counter;
+            foreach (Trees t in aliveTrees)
+            {
+                t.personalNatureValue = pNatVal;
+            }
         }
 
         counter = 0;
@@ -105,6 +111,7 @@ public class DestroyVegetation : MonoBehaviour
                 aliveTrees.RemoveAt(treeIndex);
                 deadTrees.Add(t);
                 deadTrees.Sort(tC);
+                LevelBalancing.SetNatureValue(t.personalNatureValue);
             }
         }
     }

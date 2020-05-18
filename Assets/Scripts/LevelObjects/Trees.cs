@@ -11,6 +11,7 @@ public class Trees : Interactable
 
     public TREE_STAGE status = TREE_STAGE.ALIVE1;
     public bool isDestroyed = false;
+    public float personalNatureValue = 0;
 
     private GameObject stage1;
     private GameObject stage1_2;
