@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c7c0031d89c48574c8d2614f1723e2df
+guid: 20052144ddc2a424e88d3049ec49e5b2
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
@@ -12,13 +12,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: TrashPlaneDosen
-    second: {fileID: 2100000, guid: 19dbc5d419b59424f97de3ae24a0cc9f, type: 2}
+      name: Black
+    second: {fileID: 2100000, guid: d0bf0dc07a474d244be2ad914982c2f8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: ground
-    second: {fileID: 2100000, guid: a385a0ebb3f9d5444b1916751a83f480, type: 2}
+      name: Metall Scrap Plane
+    second: {fileID: 2100000, guid: 15cf0eb13ef9db64eb2034fec962a680, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RubberLOD
+    second: {fileID: 2100000, guid: 6d6055463942bc94a88f8731a28bb40b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TrashSTAGE2
+    second: {fileID: 2100000, guid: 19dbc5d419b59424f97de3ae24a0cc9f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
