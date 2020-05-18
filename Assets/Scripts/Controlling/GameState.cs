@@ -17,6 +17,7 @@ public class GameState : MonoBehaviour
 
     public SpawnController trashSpawner;
     public DestroyVegetation plantDestroyer;
+    private LevelBalancing balancer;
     private int lastInt = -1;
 
     private float timer;
@@ -32,6 +33,8 @@ public class GameState : MonoBehaviour
         timeInState = totalTime / numberOfStates; 
         timer = totalTime;
         plantDestroyer.Setup(this);
+
+        balancer = new LevelBalancing();
     }
 
     private void Update()
@@ -122,7 +125,8 @@ public class GameState : MonoBehaviour
             seconds = 0;
             minutes += 1;
         }
-        debugInfo.text = $"Time: {minutes.ToString("00")}:{seconds.ToString("00")} \nSTATE: {currentState.ToString()}";
+        debugInfo.text = $"Time: {minutes.ToString("00")}:{seconds.ToString("00")} \nSTATE: {currentState.ToString()} " +
+            $"\nNature: {LevelBalancing.GetCurrentNatureValue()}\nTrash: {LevelBalancing.GetCurrentTrashValue()}";
         
     }
 
