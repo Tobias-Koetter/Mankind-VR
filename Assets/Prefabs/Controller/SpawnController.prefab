@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 376700265939358440}
   - component: {fileID: 4350478253968895058}
   - component: {fileID: 7902048671191015980}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpawnController
-  m_TagString: Untagged
+  m_TagString: Small Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,6 +55,8 @@ MonoBehaviour:
   - {fileID: 2916568504340137559, guid: 367d57a877381824295681d79c0cb55e, type: 3}
   - {fileID: 4732682004629960372, guid: a476ee1bc77001b4ca4801ab09af0728, type: 3}
   - {fileID: 6582783042647933900, guid: fb18d8e5a1557044cb5f4487151c79d2, type: 3}
+  - {fileID: 40944900690695754, guid: 8246fc8fc72b0aa4297ea079d0fe6eda, type: 3}
+  - {fileID: 4025080652223132066, guid: 12a3144eef411364696d8ffadf69f501, type: 3}
   spawnable: []
   spawned: []
 --- !u!114 &7902048671191015980

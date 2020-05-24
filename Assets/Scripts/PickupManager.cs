@@ -68,7 +68,7 @@ public class PickupManager : MonoBehaviour
             {
                 if (hitInfo.collider.CompareTag("Small Trash"))
                 {
-                    lastPickup = hitInfo.collider.gameObject.GetComponent<Spawned>();
+                    lastPickup = hitInfo.collider.attachedRigidbody.gameObject.GetComponent<Spawned>();
                     Debug.Log("Pickup Triggered with " + lastPickup);
                     //Debug.Log(lastPickup);
                     /*
