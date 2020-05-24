@@ -29,7 +29,7 @@ public class LightChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(state.currentState == STATE.MIDDLE && !inLerp)
+        if(state.currentState == STATE.DECAY_MAIN && !inLerp)
         {
             if(current == 1)
             {

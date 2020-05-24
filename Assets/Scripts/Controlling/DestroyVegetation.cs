@@ -80,7 +80,7 @@ public class DestroyVegetation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!isInvokingMiddle && state.currentState >= STATE.MIDDLE)
+        if(!isInvokingMiddle && state.currentState >= STATE.DECAY_MAIN)
         {
             InvokeRepeating("destroyRandomTreeInMiddleState",0f,10f);
             isInvokingMiddle = true;

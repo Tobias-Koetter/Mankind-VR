@@ -3,20 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
-public enum STATE { START = 1, MIDDLE = 2, FINAL = 3 };
+public enum STATE { NATURE = 1, DECAY_START = 2 , DECAY_MAIN = 3, TRASH_RISING = 4, FINAL = 5 };
 
 
 
 public class GameState : MonoBehaviour
 {
-    public STATE currentState = STATE.START;
+    public STATE currentState = STATE.NATURE;
     public Text debugInfo;
     public float totalTime = 360f; // 6 minutes
     public bool DebugMode;
 
     public SpawnController trashSpawner;
     public DestroyVegetation plantDestroyer;
+    public StageChanging changer;
     private LevelBalancing balancer;
     private int lastInt = -1;
 
@@ -41,7 +43,9 @@ public class GameState : MonoBehaviour
     {
         if (timer > 0f)
         {
-            if(currentState.Equals(STATE.START))
+            if (currentState != changer.curState) { ActivateChanger(); }
+
+            if(currentState.Equals(STATE.NATURE))
             {
                 int curMod = Mathf.FloorToInt(timer % 5f);
                 int curInt = Mathf.FloorToInt(timer / 5f);
@@ -52,7 +56,7 @@ public class GameState : MonoBehaviour
                     lastInt = curInt;
                 }
             }
-            if (currentState.Equals(STATE.MIDDLE))
+            if (currentState.Equals(STATE.DECAY_MAIN))
             {
                 int curMod = Mathf.FloorToInt(timer % 2f);
                 int curInt = Mathf.FloorToInt(timer / 2f);
@@ -77,7 +81,7 @@ public class GameState : MonoBehaviour
             // Use the enum value of currentState to create a specific time border for the next state change
             // OR: If amount of trees are dead [ 30 ]
             if (timer < totalTime - (timeInState * (float)currentState) 
-                || (currentState.Equals(STATE.START) && plantDestroyer.deadTrees.Count == 5))
+                || (currentState.Equals(STATE.NATURE) && plantDestroyer.deadTrees.Count == 5))
             {
                 currentState += 1;
             }
@@ -113,6 +117,29 @@ public class GameState : MonoBehaviour
 
     }
 
+
+    private void ActivateChanger()
+    {
+        Debug.Log("We activate the Changer."+ currentState+"|"+changer.curState);
+        if (currentState != changer.curState)
+        {
+            switch (currentState)
+            {
+                case STATE.DECAY_START:
+                    StartCoroutine(changer.ChangeToStage1_5());
+                    break;
+                case STATE.DECAY_MAIN:
+                    StartCoroutine(changer.ChangeToStage2());
+                    break;
+                case STATE.TRASH_RISING:
+                    StartCoroutine(changer.ChangeToStage2_5());
+                    break;
+                case STATE.FINAL:
+                    StartCoroutine(changer.ChangeToStage3());
+                    break;
+            }
+        }
+    }
 
     #region Debug Functions: Only active if bool debugMode is set TRUE in Editor
     private void UpdateLevelTimer(float totalSeconds)

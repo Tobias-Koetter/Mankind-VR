@@ -22,8 +22,8 @@ public class PickupManager : MonoBehaviour
     public LayerMask hitLayers;
     public Material highlight;
     public float maxDist;
-    [Range(0f,10f)]
-    public float interpolationSpeed = 0f;
+    [Range(1f,10f)]
+    public float interpolationSpeed = 1f;
 
     private Material[] oldMat;
     private Spawned lastPickup;
