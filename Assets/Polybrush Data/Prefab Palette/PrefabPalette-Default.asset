@@ -13,27 +13,10 @@ MonoBehaviour:
   m_Name: PrefabPalette-Default
   m_EditorClassIdentifier: 
   prefabs:
-  - gameObject: {fileID: 4011575691751684566, guid: 31112147e5d66a64181becb1e3d347ba,
-      type: 3}
-    settings:
-      m_Strength: 65
-      m_RotationRangeMin: {x: 0, y: 0, z: 0}
-      m_RotationRangeMax: {x: 0, y: 314.36618, z: 0}
-      m_ScaleRangeMin: {x: 0.7, y: 0.42957786, z: 0.7}
-      m_ScaleRangeMax: {x: 1.2112677, y: 1.690141, z: 1.2112676}
-      m_UniformScale: {x: 1, y: 1}
-      m_UniformBool: 0
-      m_XRotationBool: 0
-      m_YRotationBool: 1
-      m_ZRotationBool: 0
-      m_XScaleBool: 1
-      m_YScaleBool: 1
-      m_ZScaleBool: 1
-    name: prefab_pine_tree_03_LOD
   - gameObject: {fileID: 6308718269104418845, guid: 0992eb614319d124eb48f25639128d3c,
       type: 3}
     settings:
-      m_Strength: 15
+      m_Strength: 10.917525
       m_RotationRangeMin: {x: 0, y: 0, z: 0}
       m_RotationRangeMax: {x: 0, y: 339.71832, z: 0}
       m_ScaleRangeMin: {x: 0.7, y: 0.6971829, z: 0.7}
@@ -47,29 +30,12 @@ MonoBehaviour:
       m_YScaleBool: 1
       m_ZScaleBool: 1
     name: prefab_tree_01_LOD
-  - gameObject: {fileID: 520884922814555157, guid: 33c05a09fd51b934e977c39580a99150,
-      type: 3}
-    settings:
-      m_Strength: 6
-      m_RotationRangeMin: {x: 0, y: 0, z: 0}
-      m_RotationRangeMax: {x: 0, y: 327.04227, z: 0}
-      m_ScaleRangeMin: {x: 0.7, y: 0.5, z: 0.7}
-      m_ScaleRangeMax: {x: 1.2, y: 1.5211272, z: 1.2}
-      m_UniformScale: {x: 1, y: 1}
-      m_UniformBool: 0
-      m_XRotationBool: 0
-      m_YRotationBool: 1
-      m_ZRotationBool: 0
-      m_XScaleBool: 1
-      m_YScaleBool: 1
-      m_ZScaleBool: 1
-    name: prefab_tree_05_LOD
   - gameObject: {fileID: 5088293447917681555, guid: 5d936d6848a09324084aa0b93181d005,
       type: 3}
     settings:
-      m_Strength: 100
+      m_Strength: 81.62887
       m_RotationRangeMin: {x: 0, y: 0, z: 0}
-      m_RotationRangeMax: {x: 0, y: 0, z: 0}
+      m_RotationRangeMax: {x: 0, y: 159.7183, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
       m_ScaleRangeMax: {x: 1, y: 1, z: 1}
       m_UniformScale: {x: 1, y: 1}
@@ -84,7 +50,7 @@ MonoBehaviour:
   - gameObject: {fileID: 8673429794748089514, guid: f53f675a6dc131849be09b2b957a2583,
       type: 3}
     settings:
-      m_Strength: 46.927834
+      m_Strength: 32.63917
       m_RotationRangeMin: {x: 0, y: 0, z: 0}
       m_RotationRangeMax: {x: 0, y: 119.15491, z: 0}
       m_ScaleRangeMin: {x: 0.85915494, y: 0.85915494, z: 0.85915494}
@@ -101,7 +67,7 @@ MonoBehaviour:
   - gameObject: {fileID: 4611709635408305134, guid: df4193cc347ccfe4591812406850e9b4,
       type: 3}
     settings:
-      m_Strength: 100
+      m_Strength: 31.108244
       m_RotationRangeMin: {x: 0, y: 0, z: 0}
       m_RotationRangeMax: {x: 0, y: 167.32394, z: 0}
       m_ScaleRangeMin: {x: 0.7183099, y: 1, z: 0.7887324}
@@ -132,3 +98,20 @@ MonoBehaviour:
       m_YScaleBool: 1
       m_ZScaleBool: 1
     name: prefab_grass03
+  - gameObject: {fileID: 6831098158856125484, guid: bb1769eb91bc17049be638a171ed21d6,
+      type: 3}
+    settings:
+      m_Strength: 50
+      m_RotationRangeMin: {x: 0, y: 0, z: 0}
+      m_RotationRangeMax: {x: 0, y: 0, z: 0}
+      m_ScaleRangeMin: {x: 1, y: 1, z: 1}
+      m_ScaleRangeMax: {x: 1, y: 1, z: 1}
+      m_UniformScale: {x: 1, y: 1}
+      m_UniformBool: 0
+      m_XRotationBool: 0
+      m_YRotationBool: 1
+      m_ZRotationBool: 0
+      m_XScaleBool: 1
+      m_YScaleBool: 1
+      m_ZScaleBool: 1
+    name: prefab_PineTree_01_STAGE1
