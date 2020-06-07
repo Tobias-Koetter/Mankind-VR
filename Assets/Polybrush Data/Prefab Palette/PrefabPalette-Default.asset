@@ -115,3 +115,20 @@ MonoBehaviour:
       m_YScaleBool: 1
       m_ZScaleBool: 1
     name: prefab_PineTree_01_STAGE1
+  - gameObject: {fileID: 6546184051152012057, guid: 5e5af30ad2e5d4c44b3f77d5ad119eac,
+      type: 3}
+    settings:
+      m_Strength: 76.53608
+      m_RotationRangeMin: {x: 0, y: 0, z: 0}
+      m_RotationRangeMax: {x: 0, y: 0, z: 0}
+      m_ScaleRangeMin: {x: 0.5070423, y: 0.36619717, z: 1}
+      m_ScaleRangeMax: {x: 1.7746476, y: 1.985915, z: 1}
+      m_UniformScale: {x: 1, y: 1}
+      m_UniformBool: 0
+      m_XRotationBool: 0
+      m_YRotationBool: 1
+      m_ZRotationBool: 0
+      m_XScaleBool: 1
+      m_YScaleBool: 1
+      m_ZScaleBool: 0
+    name: prefab_Moss_01
