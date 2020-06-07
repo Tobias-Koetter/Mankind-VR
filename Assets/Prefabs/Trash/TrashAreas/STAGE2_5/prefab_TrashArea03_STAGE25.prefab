@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7387308725917102711}
   m_Layer: 0
-  m_Name: prefab_TrashArea02_STAGE25
+  m_Name: prefab_TrashArea03_STAGE25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,17 +55,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 20052144ddc2a424e88d3049ec49e5b2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.34
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 20052144ddc2a424e88d3049ec49e5b2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.44
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 20052144ddc2a424e88d3049ec49e5b2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.39
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 20052144ddc2a424e88d3049ec49e5b2,
         type: 3}
