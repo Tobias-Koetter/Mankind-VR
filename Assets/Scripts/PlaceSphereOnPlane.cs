@@ -17,9 +17,9 @@ public class PlaceSphereOnPlane : MonoBehaviour
     // end of debug components
 
     private RaycastHit info;
+    private MeshFilter sphereMesh;
 
 
-    private MeshFilter cubeMesh;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,12 +32,12 @@ public class PlaceSphereOnPlane : MonoBehaviour
 
         try
         {
-            cubeMesh = sphere.GetComponent<MeshFilter>();
+            sphereMesh = sphere.GetComponent<MeshFilter>();
         }
         catch (System.Exception e)
         {
             Debug.LogError("The Structure of the cylinder object has changed! |->|" + e);
-            cubeMesh = sphere.GetComponentInChildren<MeshFilter>();
+            sphereMesh = sphere.GetComponentInChildren<MeshFilter>();
         }
 
     }
@@ -77,7 +77,7 @@ public class PlaceSphereOnPlane : MonoBehaviour
         sphere.transform.rotation = Quaternion.FromToRotation(sphere.transform.up, normalOfPlane);
 
         PushSphereDown();
-        RotateSpehereAtFinalPlace();
+        RotateSphereAtFinalPlace();
 
         if (inDebug)
         {
@@ -93,7 +93,7 @@ public class PlaceSphereOnPlane : MonoBehaviour
     private void PushSphereDown()
     {
         Transform t = sphere.transform;
-        Bounds b = cubeMesh.sharedMesh.bounds;
+        Bounds b = sphereMesh.sharedMesh.bounds;
         Vector3 extents = b.extents;
 
         Vector3 up = t.up;
@@ -106,7 +106,7 @@ public class PlaceSphereOnPlane : MonoBehaviour
     /// <summary>
     /// After the Sphere Object is at its final postion on the plane, add some random rotation to its visible part
     /// </summary>
-    private void RotateSpehereAtFinalPlace()
+    private void RotateSphereAtFinalPlace()
     {
         // set local rotation to a randomly generated rotation
         sphere.transform.localRotation = Random.rotationUniform;

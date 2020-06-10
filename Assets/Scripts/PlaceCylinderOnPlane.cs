@@ -1,23 +1,42 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.ProBuilder;
 using Random = UnityEngine.Random;
 
 public class PlaceCylinderOnPlane : MonoBehaviour
 {
-    public GameObject cylinder;
+    [Header("will be moved to the calling Script")]
     public MeshFilter spawnArea;
-    public GameObject ground;
-    public GameObject marker;
-    public LineRenderer lR;
-    public int rotationNumber;
-    private RaycastHit info;
-    private KeyCode[] keyCodes;
+
+    [Header("needed Information")]
+    public GameObject cylinder;
     public LayerMask mask;
 
+    // only for debug
+    [Header("Debug Options")]
+    public bool inDebug = false;
+    public GameObject marker;
+    public LineRenderer lR;
+    // end of debug components
+
     private MeshFilter CylinderMesh;
+    private RaycastHit info;
+    private Vector3 curNormal;
+    private KeyCode[] keyCodes;
+    public int rotationNumber;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
+        if (inDebug)
+        {
+            marker.SetActive(true);
+            lR.enabled = true;
+        }
+
+
         try
         {
             CylinderMesh = cylinder.GetComponent<MeshFilter>();
@@ -56,22 +75,35 @@ public class PlaceCylinderOnPlane : MonoBehaviour
             RandomPos = spawnArea.transform.TransformPoint(RandomPos);
             if(Physics.Raycast(RandomPos,Vector3.down,out info,Mathf.Infinity,mask))
             {
-                marker.transform.position = RandomPos;
-                cylinder.transform.position = info.point;
+                if (inDebug) { marker.transform.position = RandomPos; }
 
-                cylinder.transform.rotation = Quaternion.FromToRotation(cylinder.transform.up, info.normal);
-                RotateCylinderToSide(rotationNumber);
-                PushCylinderDown();
-                RotateCylinderAtFinalPlace();
 
-                lR.SetPosition(0, info.point + cylinder.transform.up * 10f);
-                lR.SetPosition(1, info.point);
-                lR.SetPosition(2, info.point + cylinder.transform.forward * 10f);
+                SpawnCylinder(info.point, info.normal);
+
             }
         }
     }
 
-    public void RotateCylinderToSide(int sideNumber)
+    public void SpawnCylinder(Vector3 pointOnPlane, Vector3 normalOfPlane)
+    {
+        cylinder.transform.position = pointOnPlane;
+        cylinder.transform.rotation = Quaternion.FromToRotation(cylinder.transform.up, normalOfPlane);
+
+        curNormal = normalOfPlane;
+
+        RotateCylinderToSide(rotationNumber);
+        PushCylinderDown();
+        RotateCylinderAtFinalPlace();
+
+        if (inDebug)
+        {
+            lR.SetPosition(0, pointOnPlane + cylinder.transform.up * 10f);
+            lR.SetPosition(1, pointOnPlane);
+            lR.SetPosition(2, pointOnPlane + cylinder.transform.forward * 10f);
+        }
+    }
+
+    private void RotateCylinderToSide(int sideNumber)
     {
         Vector3 forward = cylinder.transform.forward;
         forward = cylinder.transform.InverseTransformDirection(forward);
@@ -93,7 +125,8 @@ public class PlaceCylinderOnPlane : MonoBehaviour
         
 
     }
-    public void PushCylinderDown()
+
+    private void PushCylinderDown()
     {
         Transform t = cylinder.transform;
         Bounds b = CylinderMesh.sharedMesh.bounds;
@@ -101,11 +134,7 @@ public class PlaceCylinderOnPlane : MonoBehaviour
 
         Vector3 up = t.up;
         up = t.InverseTransformDirection(up);
-        Vector3 forward = t.forward;
-        forward = t.InverseTransformDirection(forward);
-        Vector3 right = t.right;
-        right = t.InverseTransformDirection(right);
-        Vector3 normal = info.normal;
+        Vector3 normal = curNormal;
         normal = t.InverseTransformDirection(normal);
 
         if (rotationNumber == 1)
@@ -115,7 +144,7 @@ public class PlaceCylinderOnPlane : MonoBehaviour
         }
         if (rotationNumber == 2)
         {
-            //Push object down the negative normal direction of placement point on plane (info.normal)
+            //Push object down the negative normal direction of placement point on plane
             t.Translate(-normal * (extents.x-0.1f), Space.Self);
         }
         if (rotationNumber == 3)
@@ -125,16 +154,12 @@ public class PlaceCylinderOnPlane : MonoBehaviour
         }
     }
 
-    public void RotateCylinderAtFinalPlace()
+    private void RotateCylinderAtFinalPlace()
     {
         Vector3 up = cylinder.transform.up;
         up = cylinder.transform.InverseTransformDirection(up);
         Vector3 forward = cylinder.transform.forward;
         forward = cylinder.transform.InverseTransformDirection(forward);
-        Vector3 right = cylinder.transform.right;
-        right = cylinder.transform.InverseTransformDirection(right);
-        Vector3 normal = info.normal;
-        normal = cylinder.transform.InverseTransformDirection(normal);
 
         if (rotationNumber == 2)
         {

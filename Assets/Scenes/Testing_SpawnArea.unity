@@ -151,15 +151,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe08d617f7be034290152e08ac07c02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cylinder: {fileID: 710450377}
   spawnArea: {fileID: 1162855200}
-  ground: {fileID: 2102624484}
-  marker: {fileID: 955258537}
-  lR: {fileID: 54352843}
-  rotationNumber: 1
+  cylinder: {fileID: 710450377}
   mask:
     serializedVersion: 2
     m_Bits: 2147483648
+  inDebug: 0
+  marker: {fileID: 955258537}
+  lR: {fileID: 54352843}
+  rotationNumber: 1
 --- !u!4 &54352842
 Transform:
   m_ObjectHideFlags: 0
@@ -523,7 +523,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &505040035
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -803,7 +803,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &973325166
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -895,7 +895,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!120 &1094679672
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1357,7 +1357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1208447835
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1541,7 +1541,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1458957890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1554,15 +1554,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c0763dd117173642b145a8be2176968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube: {fileID: 1208447833}
   spawnArea: {fileID: 1162855200}
-  ground: {fileID: 2102624484}
-  marker: {fileID: 505040034}
-  lR: {fileID: 1458957892}
-  rotationNumber: 6
+  cube: {fileID: 1208447833}
   mask:
     serializedVersion: 2
     m_Bits: 2147483648
+  inDebug: 1
+  marker: {fileID: 505040034}
+  lR: {fileID: 1458957892}
+  rotationNumber: 6
 --- !u!4 &1458957891
 Transform:
   m_ObjectHideFlags: 0
@@ -1585,7 +1585,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1458957889}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

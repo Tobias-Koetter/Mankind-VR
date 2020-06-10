@@ -2,20 +2,36 @@
 
 public class PlaceCubeOnPlane : MonoBehaviour
 {
-    public GameObject cube;
+    [Header("will be moved to the calling Script")]
     public MeshFilter spawnArea;
-    public GameObject ground;
-    public GameObject marker;
-    public LineRenderer lR;
-    public int rotationNumber;
-    private RaycastHit info;
-    private KeyCode[] keyCodes;
+
+    [Header("needed Information")]
+    public GameObject cube;
     public LayerMask mask;
 
+    // only for debug
+    [Header("Debug Options")]
+    public bool inDebug = false;
+    public GameObject marker;
+    public LineRenderer lR;
+    // end of debug components
+
     private MeshFilter cubeMesh;
+    private RaycastHit info;
+    private KeyCode[] keyCodes;
+    
+    public int rotationNumber;
+
     // Start is called before the first frame update
     void Start()
     {
+        if (inDebug)
+        {
+            marker.SetActive(true);
+            lR.enabled = true;
+        }
+
+
         try
         {
             cubeMesh = cube.GetComponent<MeshFilter>();
@@ -58,22 +74,33 @@ public class PlaceCubeOnPlane : MonoBehaviour
             RandomPos = spawnArea.transform.TransformPoint(RandomPos);
             if(Physics.Raycast(RandomPos,Vector3.down,out info,Mathf.Infinity,mask))
             {
-                marker.transform.position = RandomPos;
-                cube.transform.position = info.point;
+                if (inDebug) { marker.transform.position = RandomPos; }
 
-                cube.transform.rotation = Quaternion.FromToRotation(cube.transform.up, info.normal);
-                RotateCubeToSide(rotationNumber);
-                PushCubeDown();
-                RotateCubeAtFinalPlace();
+                PlaceCube(info.point, info.normal);
 
-                lR.SetPosition(0, info.point + cube.transform.up * 10f);
-                lR.SetPosition(1, info.point);
-                lR.SetPosition(2, info.point + cube.transform.forward * 10f);
             }
         }
     }
 
-    public void RotateCubeToSide(int sideNumber)
+    public void PlaceCube(Vector3 pointOnPlane, Vector3 normalOfPlane)
+    {
+        cube.transform.position = pointOnPlane;
+        cube.transform.rotation = Quaternion.FromToRotation(cube.transform.up, normalOfPlane);
+
+        RotateCubeToSide(rotationNumber);
+        PushCubeDown();
+        RotateCubeAtFinalPlace();
+
+        if (inDebug)
+        {
+            lR.SetPosition(0, pointOnPlane + cube.transform.up * 10f);
+            lR.SetPosition(1, pointOnPlane);
+            lR.SetPosition(2, pointOnPlane + cube.transform.forward * 10f);
+        }
+    }
+
+
+    private void RotateCubeToSide(int sideNumber)
     {
         Vector3 forward = cube.transform.forward;
         forward = cube.transform.InverseTransformDirection(forward);
@@ -107,7 +134,7 @@ public class PlaceCubeOnPlane : MonoBehaviour
         lR.SetPosition(1, cube.transform.position + cube.transform.up*10f);
     }
 
-    public void PushCubeDown()
+    private void PushCubeDown()
     {
         Transform t = cube.transform;
         Bounds b = cubeMesh.sharedMesh.bounds;
@@ -119,8 +146,6 @@ public class PlaceCubeOnPlane : MonoBehaviour
         forward = t.InverseTransformDirection(forward);
         Vector3 right = t.right;
         right = t.InverseTransformDirection(right);
-        Vector3 normal = info.normal;
-        normal = t.InverseTransformDirection(normal);
 
         if (rotationNumber == 1)
         {
@@ -154,7 +179,7 @@ public class PlaceCubeOnPlane : MonoBehaviour
         }
     }
 
-    public void RotateCubeAtFinalPlace()
+    private void RotateCubeAtFinalPlace()
     {
         Transform t = cube.transform;
 
@@ -164,8 +189,6 @@ public class PlaceCubeOnPlane : MonoBehaviour
         forward = t.InverseTransformDirection(forward);
         Vector3 right = t.right;
         right = t.InverseTransformDirection(right);
-        Vector3 normal = info.normal;
-        normal = t.InverseTransformDirection(normal);
 
         if (rotationNumber == 1 || rotationNumber == 6)
         {

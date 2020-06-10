@@ -6,6 +6,7 @@ public class LightChange : MonoBehaviour
 {
     public GameState state;
     public Transform Sunlight;
+    public bool turnOn;
 
     private Vector3 daytime;
     private Vector3 middletime;
@@ -29,44 +30,47 @@ public class LightChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(state.currentState == STATE.DECAY_MAIN && !inLerp)
+        if (turnOn)
         {
-            if(current == 1)
+            if (state.currentState == STATE.DECAY_MAIN && !inLerp)
             {
-                current = 2;
-                inLerp = true;
+                if (current == 1)
+                {
+                    current = 2;
+                    inLerp = true;
+                }
             }
-        }
-        else if(state.currentState == STATE.FINAL && !inLerp)
-        {
-            if(current == 2)
+            else if (state.currentState == STATE.FINAL && !inLerp)
             {
-                current = 3;
-                inLerp = true;
+                if (current == 2)
+                {
+                    current = 3;
+                    inLerp = true;
+                }
             }
-        }
-        if(current != last)
-        {
-            t += 0.05f * Time.deltaTime;
-            if (t > 1.0f)
+            if (current != last)
             {
-                t = 1.0f;
-            }
-            Vector3 cur = Vector3.zero;
-            if (current == 2)
-            {
-                cur = Vector3.Lerp(daytime, middletime, t);
-            }
-            if (current == 3)
-            {
-                cur = Vector3.Lerp(middletime, latetime, t);
-            }
-            Sunlight.rotation = Quaternion.Euler(cur);
-            if (t == 1.0f)
-            {
-                t = 0f;
-                last = current;
-                inLerp = false;
+                t += 0.05f * Time.deltaTime;
+                if (t > 1.0f)
+                {
+                    t = 1.0f;
+                }
+                Vector3 cur = Vector3.zero;
+                if (current == 2)
+                {
+                    cur = Vector3.Lerp(daytime, middletime, t);
+                }
+                if (current == 3)
+                {
+                    cur = Vector3.Lerp(middletime, latetime, t);
+                }
+                Sunlight.rotation = Quaternion.Euler(cur);
+                if (t == 1.0f)
+                {
+                    t = 0f;
+                    last = current;
+                    inLerp = false;
+                }
             }
         }
     }
