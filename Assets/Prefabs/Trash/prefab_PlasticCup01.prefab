@@ -110,7 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d9b741371b383a4aa00fe90fec8cc2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh: {fileID: 1925259390493114068}
+  meshRndr: {fileID: 1925259390493114068}
+  meshFltr: {fileID: 6356344205749534022}
   poolNumber: 0
 --- !u!136 &1064100400165504211
 CapsuleCollider:
@@ -336,6 +337,12 @@ PrefabInstance:
 --- !u!4 &773460489063401216 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 22bfe4baa62bd7d4dbf43031c3f43d60,
+    type: 3}
+  m_PrefabInstance: {fileID: 5746970227014708250}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &6356344205749534022 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: -7496501503828094628, guid: 22bfe4baa62bd7d4dbf43031c3f43d60,
     type: 3}
   m_PrefabInstance: {fileID: 5746970227014708250}
   m_PrefabAsset: {fileID: 0}

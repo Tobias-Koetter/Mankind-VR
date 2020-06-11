@@ -10,7 +10,10 @@ public class PlaceGeometryOnPlane : MonoBehaviour
     public GameObject sphere;
     public GameObject cube;
     public GameObject cylinder;
+    public GameObject plane;
     public LayerMask mask;
+    [Range(5f,50f)]
+    public float visiblePercentage = 10f;
 
     // only for debug
     [Header("Debug Options")]
@@ -22,33 +25,28 @@ public class PlaceGeometryOnPlane : MonoBehaviour
     private MeshFilter sphereMesh;
     private MeshFilter cubeMesh;
     private MeshFilter cylinderMesh;
+    private MeshFilter planeMesh;
     private Vector3 curNormal;
     public int rotationNumber;
 
-    public PlaceGeometryOnPlane(GameObject sphere, GameObject cube, GameObject cylinder)
+    public PlaceGeometryOnPlane(LayerMask mask)
     {
-        this.sphere = sphere;
-        this.cube = cube;
-        this.cylinder = cylinder;
-
-        sphereMesh = sphere.GetComponent<MeshFilter>();
-        cubeMesh = cube.GetComponent<MeshFilter>();
-        cylinderMesh = cylinder.GetComponent<MeshFilter>();
+        SetUp(mask);
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void SetUp(LayerMask mask)
     {
-        
-    }
+        this.mask = mask;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (inDebug)
+        {
+            marker.SetActive(true);
+            lR.enabled = true;
+        }
     }
 
     #region PlaceSphere
+
     /// <summary>
     /// Place a Sphere at a specific Point and add a random rotation to it.
     /// </summary>
@@ -60,20 +58,25 @@ public class PlaceGeometryOnPlane : MonoBehaviour
     /// It is needed to initialize the rotation of the Sphere 
     /// at the beginning of the placement process (the Y-Axis gets alligned to the normal vector)
     /// </param>
-    public void PlaceSphere(Vector3 pointOnPlane, Vector3 normalOfPlane)
+    public void PlaceSphere(Vector3 pointOnPlane, Vector3 normalOfPlane, Spawned sphereToPlace)
     {
+        this.sphere = sphereToPlace.gameObject;
+        this.sphereMesh = sphereToPlace.meshFltr;
         sphere.transform.position = pointOnPlane;
         sphere.transform.rotation = Quaternion.FromToRotation(sphere.transform.up, normalOfPlane);
-
+        
         PushSphereDown();
         RotateSphereAtFinalPlace();
-
+        
         if (inDebug)
         {
             lR.SetPosition(0, pointOnPlane + sphere.transform.up * 10f);
             lR.SetPosition(1, pointOnPlane);
             lR.SetPosition(2, pointOnPlane + sphere.transform.forward * 10f);
         }
+
+        sphere = null;
+        sphereMesh = null;
     }
 
     /// <summary>
@@ -84,12 +87,13 @@ public class PlaceGeometryOnPlane : MonoBehaviour
         Transform t = sphere.transform;
         Bounds b = sphereMesh.sharedMesh.bounds;
         Vector3 extents = b.extents;
+        extents = Vector3.Scale(extents, sphereMesh.transform.localScale);
 
         Vector3 up = t.up;
         up = t.InverseTransformDirection(up);
 
         // Push down the negative Y-Axis
-        t.Translate(-up * (extents.y - 0.2f), Space.Self);
+        t.Translate(-up * (extents.y - (extents.y/100f)*visiblePercentage), Space.Self);
     }
 
     /// <summary>
@@ -106,8 +110,11 @@ public class PlaceGeometryOnPlane : MonoBehaviour
     #endregion
 
     #region PlaceCube
-    public void PlaceCube(Vector3 pointOnPlane, Vector3 normalOfPlane)
+
+    public void PlaceCube(Vector3 pointOnPlane, Vector3 normalOfPlane, Spawned cubeToPlace)
     {
+        this.cube = cubeToPlace.gameObject;
+        this.cubeMesh = cubeToPlace.meshFltr;
         cube.transform.position = pointOnPlane;
         cube.transform.rotation = Quaternion.FromToRotation(cube.transform.up, normalOfPlane);
         rotationNumber = Random.Range(1, 7);
@@ -122,8 +129,10 @@ public class PlaceGeometryOnPlane : MonoBehaviour
             lR.SetPosition(1, pointOnPlane);
             lR.SetPosition(2, pointOnPlane + cube.transform.forward * 10f);
         }
-    }
 
+        cube = null;
+        cubeMesh = null;
+    }
 
     private void RotateCubeToSide()
     {
@@ -165,6 +174,7 @@ public class PlaceGeometryOnPlane : MonoBehaviour
         Transform t = cube.transform;
         Bounds b = cubeMesh.sharedMesh.bounds;
         Vector3 extents = b.extents;
+        extents = Vector3.Scale(extents, cubeMesh.transform.localScale);
 
         Vector3 up = t.up;
         up = t.InverseTransformDirection(up);
@@ -176,32 +186,32 @@ public class PlaceGeometryOnPlane : MonoBehaviour
         if (rotationNumber == 1)
         {
             // Push down the neg y Axis
-            t.Translate(-up * (extents.y - 0.1f), Space.Self);
+            t.Translate(-up * (extents.y - (extents.y / 100f) * visiblePercentage), Space.Self);
         }
         else if (rotationNumber == 2)
         {
             // Push down the neg z Axis
-            t.Translate(-forward * (extents.z - 0.1f), Space.Self);
+            t.Translate(-forward * (extents.z - (extents.z / 100f) * visiblePercentage), Space.Self);
         }
         else if (rotationNumber == 3)
         {
             // Push down the neg x Axis
-            t.Translate(-right * (extents.x - 0.1f), Space.Self);
+            t.Translate(-right * (extents.x - (extents.x / 100f) * visiblePercentage), Space.Self);
         }
         else if (rotationNumber == 4)
         {
             // Push down the pos z Axis
-            t.Translate(forward * (extents.z - 0.1f), Space.Self);
+            t.Translate(forward * (extents.z - (extents.z / 100f) * visiblePercentage), Space.Self);
         }
         else if (rotationNumber == 5)
         {
             // Push down the pos x Axiz
-            t.Translate(right * (extents.x - 0.1f), Space.Self);
+            t.Translate(right * (extents.x - (extents.x / 100f) * visiblePercentage), Space.Self);
         }
         else if (rotationNumber == 6)
         {
             // Push down the pos y Axiz
-            t.Translate(up * (extents.y - 0.1f), Space.Self);
+            t.Translate(up * (extents.y - (extents.y / 100f) * visiblePercentage), Space.Self);
         }
     }
 
@@ -241,8 +251,10 @@ public class PlaceGeometryOnPlane : MonoBehaviour
 
     #region PlaceCylinder
 
-    public void PlaceCylinder(Vector3 pointOnPlane, Vector3 normalOfPlane)
+    public void PlaceCylinder(Vector3 pointOnPlane, Vector3 normalOfPlane, Spawned cylinderToPlace)
     {
+        this.cylinder = cylinderToPlace.gameObject;
+        this.cylinderMesh = cylinderToPlace.meshFltr;
         cylinder.transform.position = pointOnPlane;
         cylinder.transform.rotation = Quaternion.FromToRotation(cylinder.transform.up, normalOfPlane);
 
@@ -259,6 +271,9 @@ public class PlaceGeometryOnPlane : MonoBehaviour
             lR.SetPosition(1, pointOnPlane);
             lR.SetPosition(2, pointOnPlane + cylinder.transform.forward * 10f);
         }
+
+        cylinder = null;
+        cylinderMesh = null;
     }
 
     private void RotateCylinderToSide()
@@ -289,6 +304,7 @@ public class PlaceGeometryOnPlane : MonoBehaviour
         Transform t = cylinder.transform;
         Bounds b = cylinderMesh.sharedMesh.bounds;
         Vector3 extents = b.extents;
+        extents = Vector3.Scale(extents, cylinderMesh.transform.localScale);
 
         Vector3 up = t.up;
         up = t.InverseTransformDirection(up);
@@ -298,17 +314,17 @@ public class PlaceGeometryOnPlane : MonoBehaviour
         if (rotationNumber == 1)
         {
             //Push object down the negative y Axis
-            t.Translate(-up * (extents.y - 0.1f), Space.Self);
+            t.Translate(-up * (extents.y - (extents.y / 100f) * visiblePercentage), Space.Self);
         }
         if (rotationNumber == 2)
         {
             //Push object down the negative normal direction of placement point on plane
-            t.Translate(-normal * (extents.x - 0.1f), Space.Self);
+            t.Translate(-normal * (extents.x - (extents.x / 100f) * visiblePercentage), Space.Self);
         }
         if (rotationNumber == 3)
         {
             //Push object down the positive y axis;
-            t.Translate(up * (extents.y - 0.1f), Space.Self);
+            t.Translate(up * (extents.y - (extents.y / 100f) * visiblePercentage), Space.Self);
         }
     }
 
@@ -329,6 +345,38 @@ public class PlaceGeometryOnPlane : MonoBehaviour
         cylinder.transform.Rotate(up, Random.Range(0, 360));
     }
 
+    #endregion
+
+    #region PlacePlane
+
+    public void PlacePlane(Vector3 pointOnPlane, Vector3 normalOfPlane, Spawned planeToPlace)
+    {
+        this.plane = planeToPlace.gameObject;
+        this.planeMesh = planeToPlace.meshFltr;
+        plane.transform.position = pointOnPlane;
+        plane.transform.rotation = Quaternion.FromToRotation(plane.transform.up, normalOfPlane);
+
+        RotatePlaneAtFinalPlace();
+
+        if (inDebug)
+        {
+            lR.SetPosition(0, pointOnPlane + plane.transform.up * 10f);
+            lR.SetPosition(1, pointOnPlane);
+            lR.SetPosition(2, pointOnPlane + plane.transform.forward * 10f);
+        }
+
+        plane = null;
+        planeMesh = null;
+    }
+
+    private void RotatePlaneAtFinalPlace()
+    {
+        Vector3 up = plane.transform.up;
+        up = plane.transform.InverseTransformDirection(up);
+
+        //Rotate around the local y Axis with a random degree;
+        plane.transform.Rotate(up, Random.Range(0, 360));
+    }
 
     #endregion
 

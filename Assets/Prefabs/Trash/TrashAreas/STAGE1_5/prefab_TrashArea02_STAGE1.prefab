@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1534866515841925728}
+  - component: {fileID: 1792327113023193306}
   m_Layer: 0
   m_Name: prefab_TrashArea02_STAGE1
   m_TagString: Untagged
@@ -31,6 +32,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1792327113023193306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 690207235711010626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d9b741371b383a4aa00fe90fec8cc2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRndr: {fileID: 7917749414467456059}
+  meshFltr: {fileID: 4530047620326371522}
+  poolNumber: 0
 --- !u!1001 &503352294364848622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103,6 +119,18 @@ PrefabInstance:
 --- !u!4 &4865841361806887668 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: c7c0031d89c48574c8d2614f1723e2df,
+    type: 3}
+  m_PrefabInstance: {fileID: 503352294364848622}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &4530047620326371522 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: -5178661895559278292, guid: c7c0031d89c48574c8d2614f1723e2df,
+    type: 3}
+  m_PrefabInstance: {fileID: 503352294364848622}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7917749414467456059 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: c7c0031d89c48574c8d2614f1723e2df,
     type: 3}
   m_PrefabInstance: {fileID: 503352294364848622}
   m_PrefabAsset: {fileID: 0}

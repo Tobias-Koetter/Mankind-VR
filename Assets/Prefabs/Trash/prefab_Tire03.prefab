@@ -110,7 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d9b741371b383a4aa00fe90fec8cc2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh: {fileID: 616145979445249373}
+  meshRndr: {fileID: 616145979445249373}
+  meshFltr: {fileID: 8650867318873308708}
   poolNumber: 0
 --- !u!1 &4417447915881284897
 GameObject:
@@ -339,6 +340,12 @@ PrefabInstance:
 --- !u!4 &6299973384926011292 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 42a4ba7ba7e19ed47915f13ae5c7e321,
+    type: 3}
+  m_PrefabInstance: {fileID: 1302864811762627718}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &8650867318873308708 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: -1577744920237765982, guid: 42a4ba7ba7e19ed47915f13ae5c7e321,
     type: 3}
   m_PrefabInstance: {fileID: 1302864811762627718}
   m_PrefabAsset: {fileID: 0}

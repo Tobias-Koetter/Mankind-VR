@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class Spawned : Interactable
 {
-    public MeshRenderer mesh;
+    public MeshRenderer meshRndr;
+    public MeshFilter meshFltr;
 
     private LODGroup lodG;
     private SpawnController spawnMaster;
@@ -18,7 +19,8 @@ public class Spawned : Interactable
     new void Start()
     {
         base.Start();
-        ownRenderer = mesh;
+        ownRenderer = meshRndr;
+        ownFilter = meshFltr;
     }
     public override void Interact()
     {
