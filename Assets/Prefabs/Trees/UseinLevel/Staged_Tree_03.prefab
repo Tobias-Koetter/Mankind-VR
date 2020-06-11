@@ -227,6 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6087604758572976242}
   - component: {fileID: 103920460535317612}
+  - component: {fileID: -5263081654236227838}
   m_Layer: 9
   m_Name: Staged_Tree_03
   m_TagString: Tree
@@ -273,7 +274,21 @@ MonoBehaviour:
   models2: []
   models2_2: []
   models3: []
-  lDis: {fileID: 0}
+  lDis: {fileID: -5263081654236227838}
+--- !u!114 &-5263081654236227838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7163999493804663395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dbffc4b24381214bb943d68f3629969, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leaves: {fileID: 0}
+  isDissolving: 0
 --- !u!1001 &1255355046686697202
 PrefabInstance:
   m_ObjectHideFlags: 0
