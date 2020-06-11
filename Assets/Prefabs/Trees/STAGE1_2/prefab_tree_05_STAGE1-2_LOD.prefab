@@ -23,6 +23,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2999485401134120158}
+  - component: {fileID: 1726468633293617125}
   m_Layer: 9
   m_Name: prefab_tree_05_STAGE1-2_LOD
   m_TagString: Untagged
@@ -45,6 +46,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1726468633293617125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829819580727124571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e250b9e2fdce34092d22ead57a1fbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lodGroup: {fileID: 5827550151944257063}
+  dissolveMats: []
 --- !u!64 &1363692354359738439
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -83,7 +98,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 1db1eae3a2ad78445b66490b462d3fba,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.04
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 1db1eae3a2ad78445b66490b462d3fba,
         type: 3}
@@ -180,6 +195,12 @@ PrefabInstance:
 --- !u!4 &6389485727840938211 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 1db1eae3a2ad78445b66490b462d3fba,
+    type: 3}
+  m_PrefabInstance: {fileID: 2150107787671798777}
+  m_PrefabAsset: {fileID: 0}
+--- !u!205 &5827550151944257063 stripped
+LODGroup:
+  m_CorrespondingSourceObject: {fileID: 5551014577142218206, guid: 1db1eae3a2ad78445b66490b462d3fba,
     type: 3}
   m_PrefabInstance: {fileID: 2150107787671798777}
   m_PrefabAsset: {fileID: 0}
