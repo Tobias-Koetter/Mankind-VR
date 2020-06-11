@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: -5263081654236227838}
   m_Layer: 9
   m_Name: Staged_Tree_03
-  m_TagString: Tree
+  m_TagString: TreeLogic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
