@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6f9bc8b5aa1f0fa4cbb7d9f5de77b91d
+guid: 218812702a0a2974abd1cf75f68d1950
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
@@ -7,13 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.002
-    second: {fileID: 2100000, guid: f5a28b53caf0c0142857553d644a3cc0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: wood bark
-    second: {fileID: 2100000, guid: 63ee5a9dd25651e4c9ca40128db45500, type: 2}
+    second: {fileID: 2100000, guid: 2aef418c7dac55146acbde4f0f04c95d, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -43,13 +38,10 @@ ModelImporter:
     clipAnimations: []
     isReadable: 0
   meshes:
-    lODScreenPercentages:
-    - 0.25
-    - 0.125
-    - 0.01
+    lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importVisibility: 1
