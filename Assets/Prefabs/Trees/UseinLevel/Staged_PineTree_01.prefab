@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 103920460535317612}
   - component: {fileID: 5493183206440765249}
   m_Layer: 9
-  m_Name: Staged_Tree_01
+  m_Name: Staged_PineTree_01
   m_TagString: TreeLogic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -182,7 +182,7 @@ Transform:
   m_GameObject: {fileID: 7163999493804663395}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1.0574, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5344789277545891210}
   - {fileID: 9029780230234925033}
@@ -206,6 +206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   status: 0
   isDestroyed: 0
+  personalNatureValue: 0
   models1: []
   models1_2: []
   models2: []
