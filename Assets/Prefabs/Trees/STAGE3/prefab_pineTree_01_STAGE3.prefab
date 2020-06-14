@@ -1,33 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!64 &314813786160734076
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 305250705878241169}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1689959103011941335, guid: 3dae4abfa4774bd47b6bf863dec16322, type: 3}
---- !u!64 &3294174998993020220
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1556866690540313309}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6221921832394380832, guid: 3dae4abfa4774bd47b6bf863dec16322, type: 3}
 --- !u!1 &6569114133391377609
 GameObject:
   m_ObjectHideFlags: 0
@@ -39,7 +11,7 @@ GameObject:
   - component: {fileID: 5670177754841409396}
   - component: {fileID: 7791393347312511398}
   m_Layer: 0
-  m_Name: prefab_PineTree_01_STAGE3
+  m_Name: prefab_pineTree_01_STAGE3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,18 +129,6 @@ Transform:
 --- !u!205 &2909659816698252585 stripped
 LODGroup:
   m_CorrespondingSourceObject: {fileID: 5551014577142218206, guid: 3dae4abfa4774bd47b6bf863dec16322,
-    type: 3}
-  m_PrefabInstance: {fileID: 7307119493846970615}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1556866690540313309 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -1084522575668729302, guid: 3dae4abfa4774bd47b6bf863dec16322,
-    type: 3}
-  m_PrefabInstance: {fileID: 7307119493846970615}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &305250705878241169 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -2210021046229401754, guid: 3dae4abfa4774bd47b6bf863dec16322,
     type: 3}
   m_PrefabInstance: {fileID: 7307119493846970615}
   m_PrefabAsset: {fileID: 0}

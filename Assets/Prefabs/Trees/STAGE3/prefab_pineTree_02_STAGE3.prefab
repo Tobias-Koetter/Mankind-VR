@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1274194286525329055}
   - component: {fileID: 5841789273446270398}
   m_Layer: 0
-  m_Name: prefab_PineTree_02_STAGE3 1
+  m_Name: prefab_PineTree_02_STAGE3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,6 +53,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1274194286525329055}
     m_Modifications:
+    - target: {fileID: -8278559642860506510, guid: 614fa5e8cdd92a0468d32a768b32acfb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8278559642860506510, guid: 614fa5e8cdd92a0468d32a768b32acfb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8278559642860506510, guid: 614fa5e8cdd92a0468d32a768b32acfb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 614fa5e8cdd92a0468d32a768b32acfb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -61,7 +76,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 614fa5e8cdd92a0468d32a768b32acfb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 614fa5e8cdd92a0468d32a768b32acfb,
         type: 3}
@@ -112,6 +127,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: mesh_PineTree_02_STAGE3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4829106388114522374, guid: 614fa5e8cdd92a0468d32a768b32acfb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4829106388114522374, guid: 614fa5e8cdd92a0468d32a768b32acfb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4829106388114522374, guid: 614fa5e8cdd92a0468d32a768b32acfb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 614fa5e8cdd92a0468d32a768b32acfb, type: 3}

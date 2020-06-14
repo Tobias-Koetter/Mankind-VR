@@ -1,19 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!64 &5746815144503842461
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2879972561009619441}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2618532054100070224, guid: a3fa50706123acf4999c73903d715b54, type: 3}
 --- !u!1 &7153827018254552693
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,7 +11,7 @@ GameObject:
   - component: {fileID: 4528682335206588234}
   - component: {fileID: 6558466686879771386}
   m_Layer: 9
-  m_Name: prefab_PineTree_01_STAGE25
+  m_Name: prefab_PineTree_01_STAGE2-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 7153827018254552693}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
+  m_LocalScale: {x: 1.4, y: 1.46, z: 1.4}
   m_Children:
   - {fileID: 750662029381000258}
   m_Father: {fileID: 0}
@@ -60,20 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lodGroup: {fileID: 151290279300352646}
   dissolveMats: []
---- !u!64 &3141108646963203185
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7328576799082658196}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2700213596541217134, guid: a3fa50706123acf4999c73903d715b54, type: 3}
 --- !u!1001 &5697150208173504344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -167,18 +139,6 @@ Transform:
 --- !u!205 &151290279300352646 stripped
 LODGroup:
   m_CorrespondingSourceObject: {fileID: 5551014577142218206, guid: a3fa50706123acf4999c73903d715b54,
-    type: 3}
-  m_PrefabInstance: {fileID: 5697150208173504344}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2879972561009619441 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -1664115088243505495, guid: a3fa50706123acf4999c73903d715b54,
-    type: 3}
-  m_PrefabInstance: {fileID: 5697150208173504344}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7328576799082658196 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3072583219888312012, guid: a3fa50706123acf4999c73903d715b54,
     type: 3}
   m_PrefabInstance: {fileID: 5697150208173504344}
   m_PrefabAsset: {fileID: 0}

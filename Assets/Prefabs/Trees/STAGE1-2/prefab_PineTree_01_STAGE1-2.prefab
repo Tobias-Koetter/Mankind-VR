@@ -1,33 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!64 &7554759542451076386
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1016696583093744752}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8507480076194893631, guid: 88db7eb9131aa8445bbf0007eadd8a27, type: 3}
---- !u!64 &2087561461125024123
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1046870667658109207}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3359865928121891002, guid: 88db7eb9131aa8445bbf0007eadd8a27, type: 3}
 --- !u!1 &3482720653558973824
 GameObject:
   m_ObjectHideFlags: 0
@@ -39,7 +11,7 @@ GameObject:
   - component: {fileID: 7994841416878638197}
   - component: {fileID: 6692777534994100297}
   m_Layer: 9
-  m_Name: prefab_PineTree_01_STAGE15
+  m_Name: prefab_PineTree_01_STAGE1-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 3482720653558973824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
+  m_LocalScale: {x: 1.4, y: 1.46, z: 1.4}
   m_Children:
   - {fileID: 1346922945011597190}
   m_Father: {fileID: 0}
@@ -197,18 +169,6 @@ Transform:
 --- !u!205 &1928285964731885890 stripped
 LODGroup:
   m_CorrespondingSourceObject: {fileID: 5551014577142218206, guid: 88db7eb9131aa8445bbf0007eadd8a27,
-    type: 3}
-  m_PrefabInstance: {fileID: 6326307910425285788}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1046870667658109207 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -2788655238516755061, guid: 88db7eb9131aa8445bbf0007eadd8a27,
-    type: 3}
-  m_PrefabInstance: {fileID: 6326307910425285788}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1016696583093744752 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6473792116723245292, guid: 88db7eb9131aa8445bbf0007eadd8a27,
     type: 3}
   m_PrefabInstance: {fileID: 6326307910425285788}
   m_PrefabAsset: {fileID: 0}
