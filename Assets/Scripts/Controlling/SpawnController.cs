@@ -8,9 +8,16 @@ public class SpawnController : MonoBehaviour
     public int totalNrCopies = 100;
     public float maxSpawnRadius = 20f;
     public float minSpawnRadius = 20f;
-    public Spawned[] spawnPrefabs;
-    public List<Spawned> spawnable;
-    public List<Spawned> spawned;
+    public Spawned[] Prefabs_SmallTrash;
+    public List<Spawned> spawnable_SmallTrash;
+    public List<Spawned> spawned_SmallTrash;
+
+    public Spawned[] Prefabs_TrashAreas;
+    public List<Spawned>[] spawnable_TrashAreas;
+    public List<Spawned>[] spawned_TrashAreas;
+
+    private SpawnTrashArea trashAreaHandler;
+    private KeyCode[] codes;
 
 
 
@@ -33,38 +40,91 @@ public class SpawnController : MonoBehaviour
         }
 
 
-        spawnable = new List<Spawned>();
+        spawnable_SmallTrash = new List<Spawned>();
 
         // serves as a unique number for every trash element
         int counter = 0;
-        foreach (Spawned sp in spawnPrefabs)
+        foreach (Spawned sp in Prefabs_SmallTrash)
         {
             for (int i = 0; i < totalNrCopies; i++)
             {
                 Spawned curObject = Instantiate<Spawned>(sp);
-                spawnable.Add(curObject);
+                spawnable_SmallTrash.Add(curObject);
                 curObject.SpawnMaster = this;
                 curObject.PoolNumber = counter++;
                 curObject.gameObject.SetActive(false);
             }
         }
 
-        spawned = new List<Spawned>();
+        spawned_SmallTrash = new List<Spawned>();
+
+        codes = new KeyCode[] { KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5};
+        trashAreaHandler = new SpawnTrashArea();
+
+        // Create jagged Arrays for TrashArea Pooling
+        spawnable_TrashAreas = new List<Spawned>[Prefabs_TrashAreas.Length];
+        spawned_TrashAreas = new List<Spawned>[Prefabs_TrashAreas.Length];
+        for (int i = 0; i< Prefabs_TrashAreas.Length; i++)
+        {
+            List<Spawned> spawnable_temp = new List<Spawned>();
+            for(int j= 0; j < totalNrCopies; j++)
+            {
+                Spawned newAreaObject = Instantiate<Spawned>(Prefabs_TrashAreas[i]);
+                spawnable_temp.Add(newAreaObject);
+                newAreaObject.SpawnMaster = this;
+                newAreaObject.PoolNumber = counter++;
+                newAreaObject.gameObject.SetActive(false);
+            }
+            spawnable_TrashAreas[i] = spawnable_temp;
+
+            List<Spawned> spawned_temp = new List<Spawned>();
+            spawned_TrashAreas[i] = spawned_temp;
+        }
+
+        
+
+
+
     }
 
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.anyKeyDown)
         {
-            spawnOnTimer();
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                spawnOnTimer();
+            }
+            else
+            {
+                TA_SHAPES current = TA_SHAPES.Plane_Small;
+                for (int i = 0; i < codes.Length; i++)
+                {
+
+                    if (Input.GetKeyDown(codes[i]))
+                    {
+                        Debug.LogError("We spawn TrashArea------------------------");
+                        List<Spawned> spawnable_curList = spawnable_TrashAreas[i];
+                        List<Spawned> spawned_curList = spawned_TrashAreas[i];
+                        int lastPos = spawnable_TrashAreas[i].Count - 1;
+                        Spawned curPopped = spawnable_curList[lastPos];
+                        spawnable_curList.RemoveAt(lastPos);
+                        spawned_curList.Add(curPopped);
+                        Debug.Log(curPopped);
+                        curPopped.gameObject.SetActive(true);
+                        trashAreaHandler.Spawn(current + i, spawnArea[/*Random.Range(0, spawnArea.Length)*/4], curPopped);
+                        Debug.Log(curPopped+" is of shape "+(current+i));
+                    }
+                }
+            }
         }
+
     }
 
 
     public void spawnOnTimer()
     {
-        if (spawnable.Count > 0)
+        if (spawnable_SmallTrash.Count > 0)
         {
             //spawnObject();
             for (int i= 0; i < spawnArea.Length;i++)
@@ -75,9 +135,9 @@ public class SpawnController : MonoBehaviour
         }
         else
         {
-            Spawned current = spawned[0];
-            spawned.RemoveAt(0);
-            spawnable.Add(current);
+            Spawned current = spawned_SmallTrash[0];
+            spawned_SmallTrash.RemoveAt(0);
+            spawnable_SmallTrash.Add(current);
             //spawnObject();
             for (int i = 0; i < spawnArea.Length; i++)
             {
@@ -112,34 +172,34 @@ public class SpawnController : MonoBehaviour
 
 
         // Object gets picked out of the SpawnPool and its components get reset for scene interaction
-        Spawned current = spawnable[Random.Range(0, spawnable.Count)];
+        Spawned current = spawnable_SmallTrash[Random.Range(0, spawnable_SmallTrash.Count)];
         current.gameObject.transform.position = tempPoint;
         current.gameObject.transform.rotation = tempRotation;
         current.gameObject.SetActive(true);
 
-        spawnable.Remove(current);
-        spawned.Add(current);
+        spawnable_SmallTrash.Remove(current);
+        spawned_SmallTrash.Add(current);
     }
 
     private void spawnObjectInMesh(int index)
     {
         Mesh m = spawnArea[index].mesh;
         Transform t = center[index];
-        Spawned current = spawnable[Random.Range(0, spawnable.Count)];
+        Spawned current = spawnable_SmallTrash[Random.Range(0, spawnable_SmallTrash.Count)];
 
         Vector3 vec = m.GetRandomPointInsideConvex();
         vec = t.TransformPoint(vec);
         current.gameObject.transform.position = vec;
         current.gameObject.transform.rotation = Random.rotation;
         current.gameObject.SetActive(true);
-        spawnable.Remove(current);
-        spawned.Add(current);
+        spawnable_SmallTrash.Remove(current);
+        spawned_SmallTrash.Add(current);
     }
 
     public void despawnObjectWithID(int PoolNumber)
     {
         Spawned current = null;
-        foreach (Spawned i in spawned)
+        foreach (Spawned i in spawned_SmallTrash)
         {
             if (i.PoolNumber == PoolNumber)
             {
@@ -151,7 +211,7 @@ public class SpawnController : MonoBehaviour
         current.Interact();
         current.gameObject.SetActive(false);
 
-        spawnable.Add(current);
-        spawned.Remove(current);
+        spawnable_SmallTrash.Add(current);
+        spawned_SmallTrash.Remove(current);
     }
 }

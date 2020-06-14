@@ -3,6 +3,7 @@
 public class HandController : MonoBehaviour
 {
     public Transform objectCenter;
+    public Transform cam;
     public float checkDistance = 0.4f;
     public LayerMask collisionMask;
 
@@ -25,17 +26,26 @@ public class HandController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) { 
-            Collider[] hitColliders = Physics.OverlapSphere(objectCenter.position, checkDistance, collisionMask);
+        if (Input.GetMouseButtonDown(0)) {
+            RaycastHit hitInfo;
+            Vector3 lookDir = (cam.position + objectCenter.position).normalized;
+            float distance = Vector3.Distance(cam.position, objectCenter.position);
+            if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, distance, collisionMask))
+            {
+                GameObject colliderObject = hitInfo.collider.gameObject;
+                Debug.Log(colliderObject);
 
-            isCollision = hitColliders.Length > 0;
+            //Collider[] hitColliders = Physics.OverlapSphere(objectCenter.position, checkDistance, collisionMask);
+
+
+            //isCollision = hitColliders.Length > 0;
             
             //if left mouse button is clicked and there is a colliding object
-            if (isCollision) {
+            //if (isCollision) {
 
-                for (int i = 0; i < hitColliders.Length; i++)
-                {
-                    GameObject colliderObject = hitColliders[i].gameObject;
+                //for (int i = 0; i < hitColliders.Length; i++)
+                //{
+                    //GameObject colliderObject = hitColliders[i].gameObject;
                     if (colliderObject.activeSelf) {
                         Interactable current = colliderObject.GetComponent<Interactable>();
                         Interactable parent = GlobalMethods.FindParentWithTag(colliderObject, "TreeLogic")?.GetComponent<Interactable>();
@@ -45,9 +55,9 @@ public class HandController : MonoBehaviour
 
                             spawn.SpawnMaster.despawnObjectWithID(curID);
                         }
-                        else if (parent is Trees tree && colliderObject.name.EndsWith("0"))
+                        else if (parent is Trees tree /*&& colliderObject.name.EndsWith("0")*/)
                         {
-                            Debug.Log($"Got called because of {colliderObject}");
+                            //Debug.Log($"Got called because of {colliderObject}");
                             tree.Controller.handleTreeDestroy(tree);
                         }
                         else if(colliderObject.tag.Equals("PointOfInterest"))
@@ -61,7 +71,7 @@ public class HandController : MonoBehaviour
 
                         }
 
-                    }
+                    //}
 
                 }
 

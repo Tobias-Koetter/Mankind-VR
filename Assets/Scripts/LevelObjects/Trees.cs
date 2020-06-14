@@ -56,11 +56,13 @@ public class Trees : Interactable
         {
             TreeInformation nextModel = GetModel(FindCurrentList());
             nextModel.gameObject.SetActive(true);
+            currentModel.EnableColliders(false);
             lDis.startDissovle();
             StartCoroutine(WaitForDissolve(nextModel));
         }
         else
         {
+            currentModel.EnableColliders(true);
             currentModel.gameObject.SetActive(false);
             currentModel = GetModel(FindCurrentList());
             currentModel.gameObject.SetActive(true);
@@ -200,7 +202,7 @@ public class Trees : Interactable
 
     IEnumerator WaitForDissolve(TreeInformation next)
     {
-        Debug.Log(lDis.isDissolving);
+        //Debug.Log(lDis.isDissolving);
         yield return new WaitWhile(() => lDis.isDissolving);
         currentModel.gameObject.SetActive(false);
         currentModel = next;

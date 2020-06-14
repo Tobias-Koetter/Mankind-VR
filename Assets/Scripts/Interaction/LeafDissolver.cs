@@ -9,6 +9,7 @@ public class LeafDissolver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if(Input.GetKeyDown(KeyCode.Alpha1) && !isDissolving)
         {
             isDissolving = true;
@@ -19,6 +20,7 @@ public class LeafDissolver : MonoBehaviour
             isDissolving = true;
             StartCoroutine(HandleDissolve(false));
         }
+        
         
     }
 
@@ -36,7 +38,7 @@ public class LeafDissolver : MonoBehaviour
             {
                 if (val > 1f || val+0.01f >= 1f)
                     val = 1f;
-                Debug.Log(val);
+                //Debug.Log(val);
                 leaves.SetFloat("Vector1_2E022231", val);
                 yield return new WaitForSeconds(0.01f);
             }
@@ -47,7 +49,7 @@ public class LeafDissolver : MonoBehaviour
             {
                 if(val < 0f || val - 0.01f <= 0f)
                     val = 0f;
-                Debug.Log(val);
+                //Debug.Log(val);
                 leaves.SetFloat("Vector1_2E022231", val);
                 yield return new WaitForSeconds(0.01f);
             }

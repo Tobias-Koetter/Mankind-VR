@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-public class PlaceGeometryOnPlane : MonoBehaviour
+public class PlaceGeometryOnPlane
 {
     [Header("will be moved to the calling Script")]
     public MeshFilter spawnArea;
@@ -13,7 +13,7 @@ public class PlaceGeometryOnPlane : MonoBehaviour
     public GameObject plane;
     public LayerMask mask;
     [Range(5f,50f)]
-    public float visiblePercentage = 10f;
+    public float visiblePercentage = 30f;
 
     // only for debug
     [Header("Debug Options")]
@@ -165,8 +165,6 @@ public class PlaceGeometryOnPlane : MonoBehaviour
         {
             cube.transform.Rotate(forward, 180f);
         }
-        lR.SetPosition(0, cube.transform.position);
-        lR.SetPosition(1, cube.transform.position + cube.transform.up * 10f);
     }
 
     private void PushCubeDown()
