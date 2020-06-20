@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1154864685}
   - component: {fileID: 1154864686}
   - component: {fileID: 1154864684}
-  - component: {fileID: 6616074858731474961}
   m_Layer: 10
   m_Name: prefab_Dose_01
   m_TagString: Small Trash
@@ -80,20 +79,6 @@ MonoBehaviour:
   meshRndr: {fileID: 2459986647662271492}
   meshFltr: {fileID: 2775643738300306258}
   poolNumber: 0
---- !u!114 &6616074858731474961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6083576454054225429}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cbf3d4563353734d8ba24c8d984ebe3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  biggerTrash: {fileID: 4646200443083913221, guid: 4c9b37eaad016d6429fe94969d82c3d4,
-    type: 3}
 --- !u!1001 &8442559041337242384
 PrefabInstance:
   m_ObjectHideFlags: 0

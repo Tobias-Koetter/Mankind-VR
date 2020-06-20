@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
-
-public enum STATE { NATURE = 1, DECAY_START = 2 , DECAY_MAIN = 3, TRASH_RISING = 4, FINAL = 5 };
 
 
-
+[RequireComponent(typeof(FiniteStateMachine))]
 public class GameState : MonoBehaviour
 {
     public STATE currentState = STATE.NATURE;
@@ -20,11 +15,14 @@ public class GameState : MonoBehaviour
     public DestroyVegetation plantDestroyer;
     public StageChanging changer;
     private LevelBalancing balancer;
+    private FiniteStateMachine fsm;
     private int lastInt = -1;
 
     private float timer;
     private float timeInState;
     private int numberOfStates;
+
+    public float spentSecondsIngame => totalTime - timer;
 
     private void Start() 
     {
@@ -37,18 +35,20 @@ public class GameState : MonoBehaviour
         plantDestroyer.Setup(this);
 
         balancer = new LevelBalancing();
+        fsm = this.GetComponent<FiniteStateMachine>();
     }
 
     private void Update()
     {
         if (timer > 0f)
         {
-            if (currentState != changer.curState) { ActivateChanger(); }
+            AbstractState current = fsm.currentState;
+            float spTimer = current.secondsToSpawnTrash;
 
-            if(currentState.Equals(STATE.NATURE))
+            if (current.name.Equals(STATE.NATURE))
             {
-                int curMod = Mathf.FloorToInt(timer % 5f);
-                int curInt = Mathf.FloorToInt(timer / 5f);
+                int curMod = Mathf.FloorToInt(timer % spTimer);
+                int curInt = Mathf.FloorToInt(timer / spTimer);
                 if (curInt != lastInt && curMod == 0)
                 {
                     //print("Spawn in STATE START");
@@ -78,6 +78,8 @@ public class GameState : MonoBehaviour
                     lastInt = curInt;
                 }
             }
+            /*
+             
             // Use the enum value of currentState to create a specific time border for the next state change
             // OR: If amount of trees are dead [ 30 ]
             if (timer < totalTime - (timeInState * (float)currentState) 
@@ -85,6 +87,7 @@ public class GameState : MonoBehaviour
             {
                 currentState += 1;
             }
+            */
 
             timer -= Time.deltaTime;
 
@@ -115,30 +118,6 @@ public class GameState : MonoBehaviour
 
 
 
-    }
-
-
-    private void ActivateChanger()
-    {
-        Debug.Log("We activate the Changer."+ currentState+"|"+changer.curState);
-        if (currentState != changer.curState)
-        {
-            switch (currentState)
-            {
-                case STATE.DECAY_START:
-                    StartCoroutine(changer.ChangeToStage1_5());
-                    break;
-                case STATE.DECAY_MAIN:
-                    StartCoroutine(changer.ChangeToStage2());
-                    break;
-                case STATE.TRASH_RISING:
-                    StartCoroutine(changer.ChangeToStage2_5());
-                    break;
-                case STATE.FINAL:
-                    StartCoroutine(changer.ChangeToStage3());
-                    break;
-            }
-        }
     }
 
     #region Debug Functions: Only active if bool debugMode is set TRUE in Editor
