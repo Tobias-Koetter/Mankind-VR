@@ -1,23 +1,51 @@
 ﻿
+using System.Transactions;
+using UnityEngine;
+
 public class State_Alive : AbstractState
 {
-    float SecondsToStateChange = 120f;
+    
+    
+    private readonly float[] spawnTimings;
+    private int TimingPointer;
 
-    public State_Alive() : base()
+    public State_Alive(GameInfo info) : base(info)
     {
-        nextState = new State_StartDecay();
-        name = STATE.NATURE;
-        secondsToSpawnTrash = 5f;
+        NextState = new State_StartDecay(info);
+        Name = STATE.NATURE;
+        SecondsToStateChange = 120f;
+        spawnTimings = new float[] { 8f, 5f };
+        TimingPointer = 0;
+        SecondsToSpawnTrash = spawnTimings[TimingPointer];
     }
 
-    public override AbstractState UpdateState(GameState info)
+    public override AbstractState UpdateState()
     {
-        if (info.spentSecondsIngame >= SecondsToStateChange)
+        // anchor: ran out of Time in this state 
+        if (GameInfo.spentSecondsIngame >= SecondsToStateChange)
         {
-            return nextState;
+            return NextState;
+        }
+        // else spawn small Trash every time spawnTiming is hit;
+        else
+        {
+            SpawnTrashOverTime();
         }
 
         return this;
 
+    }
+
+    public void UpdateTreeDestroyStatus(bool newValue)
+    {
+        if(newValue)
+        {
+            TimingPointer = 1;
+        }
+        else
+        {
+            TimingPointer = 0;
+        }
+        SecondsToSpawnTrash = spawnTimings[TimingPointer];
     }
 }

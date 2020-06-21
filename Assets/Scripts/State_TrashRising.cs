@@ -1,13 +1,13 @@
 ﻿
 public class State_TrashRising : AbstractState
 {
-    public State_TrashRising() : base()
+    public State_TrashRising(GameInfo info) : base(info)
     {
-        nextState = new State_DeadNature();
-        name = STATE.TRASH_RISING;
+        NextState = new State_DeadNature(info);
+        Name = STATE.TRASH_RISING;
     }
 
-    public override AbstractState UpdateState(GameState info)
+    public override AbstractState UpdateState()
     {
         throw new System.NotImplementedException();
     }

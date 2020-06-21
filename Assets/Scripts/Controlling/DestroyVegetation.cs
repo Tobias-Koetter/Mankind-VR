@@ -20,7 +20,7 @@ public class DestroyVegetation : MonoBehaviour
     public List<PoI> PoIList;
 
     private TreeComparer tC;
-    private GameState state;
+    private GameInfo state;
     private bool isInvokingMiddle = false;
     private bool isInvokingEnd = false;
 
@@ -95,7 +95,7 @@ public class DestroyVegetation : MonoBehaviour
             isInvokingEnd = true;
         }
     }
-    public void Setup(GameState state) => this.state = state;
+    public void Setup(GameInfo state) => this.state = state;
 
     public void handleTreeDestroy(Trees t)
     {

@@ -4,22 +4,22 @@ using UnityEngine;
 
 public enum STATE { NONE = 0, NATURE = 1, DECAY_START = 2, DECAY_MAIN = 3, TRASH_RISING = 4, FINAL = 5 };
 
-[RequireComponent(typeof(GameState))]
+[RequireComponent(typeof(GameInfo))]
 public class FiniteStateMachine : MonoBehaviour
 {
     public AbstractState currentState { get; protected set; }
     AbstractState next;
     AbstractState last;
 
-    GameState gameInfo;
+    GameInfo gameInfo;
 
     void Awake()
     {
-        currentState = new State_Alive();
+        currentState = new State_Alive(gameInfo);
         next = null;
         last = null;
 
-        gameInfo = this.GetComponent<GameState>();
+        gameInfo = this.GetComponent<GameInfo>();
     }
     // Start is called before the first frame update
     void Start()
@@ -41,7 +41,7 @@ public class FiniteStateMachine : MonoBehaviour
             }
             else
             {
-                next = currentState.UpdateState(gameInfo);
+                next = currentState.UpdateState();
                 if(next != currentState)
                 {
                     last = currentState;

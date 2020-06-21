@@ -4,25 +4,27 @@ using UnityEngine.UI;
 
 
 [RequireComponent(typeof(FiniteStateMachine))]
-public class GameState : MonoBehaviour
+public class GameInfo : MonoBehaviour
 {
     public STATE currentState = STATE.NATURE;
     public Text debugInfo;
     public float totalTime = 360f; // 6 minutes
     public bool DebugMode;
 
-    public SpawnController trashSpawner;
-    public DestroyVegetation plantDestroyer;
+    public SpawnController TrashSpawner { get; private set; }
+    public DestroyVegetation PlantDestroyer { get; private set; }
     public StageChanging changer;
     private LevelBalancing balancer;
     private FiniteStateMachine fsm;
     private int lastInt = -1;
 
-    private float timer;
+    public float Timer{ get; private set; }
     private float timeInState;
     private int numberOfStates;
 
-    public float spentSecondsIngame => totalTime - timer;
+    public bool firstTreeDestroyed { get; private set; } = false;
+
+    public float spentSecondsIngame => totalTime - Timer;
 
     private void Start() 
     {
@@ -31,8 +33,8 @@ public class GameState : MonoBehaviour
 
         // Time to spend in one of the States
         timeInState = totalTime / numberOfStates; 
-        timer = totalTime;
-        plantDestroyer.Setup(this);
+        Timer = totalTime;
+        PlantDestroyer.Setup(this);
 
         balancer = new LevelBalancing();
         fsm = this.GetComponent<FiniteStateMachine>();
@@ -40,41 +42,41 @@ public class GameState : MonoBehaviour
 
     private void Update()
     {
-        if (timer > 0f)
+        if (Timer > 0f)
         {
             AbstractState current = fsm.currentState;
-            float spTimer = current.secondsToSpawnTrash;
+            float spTimer = current.SecondsToSpawnTrash;
 
-            if (current.name.Equals(STATE.NATURE))
+            if (current.Name.Equals(STATE.NATURE))
             {
-                int curMod = Mathf.FloorToInt(timer % spTimer);
-                int curInt = Mathf.FloorToInt(timer / spTimer);
+                int curMod = Mathf.FloorToInt(Timer % spTimer);
+                int curInt = Mathf.FloorToInt(Timer / spTimer);
                 if (curInt != lastInt && curMod == 0)
                 {
                     //print("Spawn in STATE START");
-                    trashSpawner.spawnOnTimer();
+                    TrashSpawner.spawnOnTimer();
                     lastInt = curInt;
                 }
             }
             if (currentState.Equals(STATE.DECAY_MAIN))
             {
-                int curMod = Mathf.FloorToInt(timer % 2f);
-                int curInt = Mathf.FloorToInt(timer / 2f);
+                int curMod = Mathf.FloorToInt(Timer % 2f);
+                int curInt = Mathf.FloorToInt(Timer / 2f);
                 if (curInt != lastInt && curMod == 0)
                 {
                     //print("Spawn in STATE MIDDLE");
-                    trashSpawner.spawnOnTimer();
+                    TrashSpawner.spawnOnTimer();
                     lastInt = curInt;
                 }
             }
             if (currentState.Equals(STATE.FINAL))
             {
-                int curMod = Mathf.FloorToInt(timer % 1f);
-                int curInt = Mathf.FloorToInt(timer / 1f);
+                int curMod = Mathf.FloorToInt(Timer % 1f);
+                int curInt = Mathf.FloorToInt(Timer / 1f);
                 if (curInt != lastInt && curMod == 0)
                 {
                     print("Spawn in STATE FINAL");
-                    trashSpawner.spawnOnTimer();
+                    TrashSpawner.spawnOnTimer();
                     lastInt = curInt;
                 }
             }
@@ -89,7 +91,7 @@ public class GameState : MonoBehaviour
             }
             */
 
-            timer -= Time.deltaTime;
+            Timer -= Time.deltaTime;
 
             // Prints timer and STATE to the screen
             // allows to jump to the next state by pressing the "T" key
@@ -100,18 +102,18 @@ public class GameState : MonoBehaviour
                 {
                     jumpTimer();
                 }
-                UpdateLevelTimer(timer);
+                UpdateLevelTimer(Timer);
             }
         }
-        else if(timer < 0f)
+        else if(Timer < 0f)
         {
-            timer = 0f;
-            int curMod = Mathf.FloorToInt(timer % 1f);
-            int curInt = Mathf.FloorToInt(timer / 1f);
+            Timer = 0f;
+            int curMod = Mathf.FloorToInt(Timer % 1f);
+            int curInt = Mathf.FloorToInt(Timer / 1f);
             if (curInt != lastInt && curMod == 0)
             {
                 print("Spawn after STATE FINAL");
-                trashSpawner.spawnOnTimer();
+                TrashSpawner.spawnOnTimer();
                 lastInt = curInt;
             }
         }
@@ -120,7 +122,18 @@ public class GameState : MonoBehaviour
 
     }
 
+    public void switchFirstTreeDestroyed()
+    {
+        firstTreeDestroyed = true;
+        if(fsm.currentState is State_Alive cur)
+        {
+            cur.UpdateTreeDestroyStatus(firstTreeDestroyed);
+        }
+        
+    }
+
     #region Debug Functions: Only active if bool debugMode is set TRUE in Editor
+
     private void UpdateLevelTimer(float totalSeconds)
     {
         int minutes = Mathf.FloorToInt(totalSeconds / 60f);
@@ -138,7 +151,7 @@ public class GameState : MonoBehaviour
 
     private void jumpTimer()
     {
-        timer = totalTime - (timeInState * (float)currentState);
+        Timer = totalTime - (timeInState * (float)currentState);
     }
     #endregion 
 }

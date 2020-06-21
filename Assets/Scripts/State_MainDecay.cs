@@ -1,13 +1,13 @@
 ﻿
 public class State_MainDecay : AbstractState
 {
-    public State_MainDecay() : base()
+    public State_MainDecay(GameInfo info) : base(info)
     {
-        nextState = new State_TrashRising();
-        name = STATE.DECAY_MAIN;
+        NextState = new State_TrashRising(info);
+        Name = STATE.DECAY_MAIN;
     }
 
-    public override AbstractState UpdateState(GameState info)
+    public override AbstractState UpdateState()
     {
         throw new System.NotImplementedException();
     }
