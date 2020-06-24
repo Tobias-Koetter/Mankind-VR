@@ -1,23 +1,29 @@
-﻿using System.Runtime.CompilerServices;
+﻿
+using System.Diagnostics.Tracing;
+using System.Runtime.CompilerServices;
 using UnityEditor;
+using UnityEngine;
 using UnityEngine.ProBuilder;
 
 public class LevelBalancing
 {
-    public static readonly float BalancingValue = 1000f;
+    public static float BalancingValue = 1000f;
 
     private static float NatureValue;
     private static float TrashValue;
+    private static int count = 1;
 
 
     public LevelBalancing()
     {
-        ResetBalanceValue();
+        ResetBalanceValue(0f);
     }
 
-    public static void ResetBalanceValue()
+    public static void ResetBalanceValue(float newBalance)
     {
-        NatureValue = BalancingValue;
+        Debug.LogWarning("ResetBalanceValue called:"+ count++);
+        BalancingValue = newBalance;
+        NatureValue = newBalance;
         TrashValue = 0f;
     }
 
@@ -27,7 +33,7 @@ public class LevelBalancing
      * >0 => game is unbalanced ||>> more Trash needs to be spawned
      * <0 => game is unbalanced ||>> Nature must be destroyed
     **/
-    public static float GetBalanceVariance() => BalancingValue - (NatureValue + TrashValue);
+    public static float GetBalanceVariance() => (NatureValue + TrashValue) - BalancingValue;
     public static float GetCurrentNatureValue() => NatureValue;
     public static float GetCurrentTrashValue() => TrashValue;
 

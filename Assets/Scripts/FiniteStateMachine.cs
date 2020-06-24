@@ -15,11 +15,13 @@ public class FiniteStateMachine : MonoBehaviour
 
     void Awake()
     {
+        gameInfo = this.GetComponent<GameInfo>();
+        gameInfo.fsm = this;
         currentState = new State_Alive(gameInfo);
         next = null;
         last = null;
 
-        gameInfo = this.GetComponent<GameInfo>();
+        
     }
     // Start is called before the first frame update
     void Start()
@@ -48,6 +50,9 @@ public class FiniteStateMachine : MonoBehaviour
                     last.ExitState();
                     currentState = next;
                     currentState.EnterState();
+
+                    Debug.Log("Switching state from " + last.Name + " to " + currentState.Name);
+                    gameInfo.UpdateAbstractState(currentState);
                     
                 }
 

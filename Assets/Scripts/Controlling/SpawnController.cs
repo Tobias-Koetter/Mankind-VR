@@ -194,6 +194,8 @@ public class SpawnController : MonoBehaviour
         current.gameObject.SetActive(true);
         spawnable_SmallTrash.Remove(current);
         spawned_SmallTrash.Add(current);
+
+        LevelBalancing.SetTrashValue(current.personalTrashValue);
     }
 
     public void despawnObjectWithID(int PoolNumber)

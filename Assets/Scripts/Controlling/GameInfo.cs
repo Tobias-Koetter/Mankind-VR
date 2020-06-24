@@ -11,11 +11,11 @@ public class GameInfo : MonoBehaviour
     public float totalTime = 360f; // 6 minutes
     public bool DebugMode;
 
-    public SpawnController TrashSpawner { get; private set; }
-    public DestroyVegetation PlantDestroyer { get; private set; }
+    public SpawnController TrashSpawner;
+    public DestroyVegetation PlantDestroyer;
     public StageChanging changer;
     private LevelBalancing balancer;
-    private FiniteStateMachine fsm;
+    public FiniteStateMachine fsm;
     private int lastInt = -1;
 
     public float Timer{ get; private set; }
@@ -32,12 +32,17 @@ public class GameInfo : MonoBehaviour
         numberOfStates = Enum.GetValues(typeof(STATE)).GetUpperBound(0) + 1;
 
         // Time to spend in one of the States
-        timeInState = totalTime / numberOfStates; 
+        timeInState = 120f;
         Timer = totalTime;
         PlantDestroyer.Setup(this);
 
         balancer = new LevelBalancing();
-        fsm = this.GetComponent<FiniteStateMachine>();
+        //fsm = this.GetComponent<FiniteStateMachine>();
+
+        if(!DebugMode)
+        {
+            debugInfo.gameObject.SetActive(false);
+        }
     }
 
     private void Update()
@@ -45,8 +50,9 @@ public class GameInfo : MonoBehaviour
         if (Timer > 0f)
         {
             AbstractState current = fsm.currentState;
-            float spTimer = current.SecondsToSpawnTrash;
 
+            //float spTimer = current.SecondsToSpawnTrash;
+            /*
             if (current.Name.Equals(STATE.NATURE))
             {
                 int curMod = Mathf.FloorToInt(Timer % spTimer);
@@ -79,7 +85,7 @@ public class GameInfo : MonoBehaviour
                     TrashSpawner.spawnOnTimer();
                     lastInt = curInt;
                 }
-            }
+            }*/
             /*
              
             // Use the enum value of currentState to create a specific time border for the next state change
@@ -105,6 +111,7 @@ public class GameInfo : MonoBehaviour
                 UpdateLevelTimer(Timer);
             }
         }
+        /*
         else if(Timer < 0f)
         {
             Timer = 0f;
@@ -117,12 +124,13 @@ public class GameInfo : MonoBehaviour
                 lastInt = curInt;
             }
         }
+        */
 
 
 
     }
 
-    public void switchFirstTreeDestroyed()
+    public void SwitchFirstTreeDestroyed()
     {
         firstTreeDestroyed = true;
         if(fsm.currentState is State_Alive cur)
@@ -130,6 +138,12 @@ public class GameInfo : MonoBehaviour
             cur.UpdateTreeDestroyStatus(firstTreeDestroyed);
         }
         
+    }
+
+    public void UpdateAbstractState(AbstractState newState)
+    {
+        // Do Something special for statechange
+        currentState = newState.Name;
     }
 
     #region Debug Functions: Only active if bool debugMode is set TRUE in Editor
@@ -145,7 +159,7 @@ public class GameInfo : MonoBehaviour
             minutes += 1;
         }
         debugInfo.text = $"Time: {minutes.ToString("00")}:{seconds.ToString("00")} \nSTATE: {currentState.ToString()} " +
-            $"\nNature: {LevelBalancing.GetCurrentNatureValue()}\nTrash: {LevelBalancing.GetCurrentTrashValue()}";
+            $"\nNature: {LevelBalancing.GetCurrentNatureValue()}\nTrash: {LevelBalancing.GetCurrentTrashValue()}\nBalanceValue: {LevelBalancing.GetBalanceVariance()}";
         
     }
 

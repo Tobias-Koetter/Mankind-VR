@@ -9,7 +9,7 @@ public enum ExecutionState
     TERMINATED,
 };
 
-public abstract class AbstractState : ScriptableObject
+public abstract class AbstractState
 {
     public GameInfo GameInfo { get; protected set; }
     public AbstractState NextState { get; protected set; }
@@ -43,26 +43,15 @@ public abstract class AbstractState : ScriptableObject
 
     protected bool SpawnTrashOverTime()
     {
-        int curMod = Mathf.FloorToInt(GameInfo.Timer % SecondsToSpawnTrash);
-        int curInt = Mathf.FloorToInt(GameInfo.Timer / SecondsToSpawnTrash);
+        int curMod = Mathf.FloorToInt(GameInfo.spentSecondsIngame % SecondsToSpawnTrash);
+        int curInt = Mathf.FloorToInt(GameInfo.spentSecondsIngame / SecondsToSpawnTrash);
         if (curInt != LastTimeForSpawn && curMod == 0)
         {
-            //print("Spawn in STATE START");
+            Debug.Log("Spawn in "+this.Name + " at time:"+ GameInfo.spentSecondsIngame);
             GameInfo.TrashSpawner.spawnOnTimer();
             LastTimeForSpawn = curInt;
             return true;
         }
         return false;
-    }
-
-    protected IEnumerator SpawnTrashforBalance()
-    {
-        if (!SpawnTrashOverTime() && LevelBalancing.GetBalanceVariance() > 0)
-        {
-            GameInfo.TrashSpawner.spawnOnTimer();
-            yield return new WaitForSeconds(0.2f);
-        }
-        yield return null;
-
     }
 }

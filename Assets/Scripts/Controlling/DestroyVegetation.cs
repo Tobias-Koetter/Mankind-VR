@@ -45,11 +45,14 @@ public class DestroyVegetation : MonoBehaviour
                 aliveTrees.Add(t);
             }
 
-            float pNatVal= LevelBalancing.BalancingValue / counter;
+            float pNatVal= Trees.startingNatureValue;
+
             foreach (Trees t in aliveTrees)
             {
                 t.personalNatureValue = pNatVal;
             }
+            Debug.LogWarning(pNatVal + "||" + counter);
+            LevelBalancing.ResetBalanceValue(pNatVal * counter);
         }
 
         counter = 0;
@@ -80,6 +83,7 @@ public class DestroyVegetation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if(!isInvokingMiddle && state.currentState >= STATE.DECAY_MAIN)
         {
             InvokeRepeating("destroyRandomTreeInMiddleState",0f,10f);
@@ -93,7 +97,7 @@ public class DestroyVegetation : MonoBehaviour
             InvokeRepeating("destroyRandomTreeInMiddleState", 0.5f, 3f);
             isInvokingMiddle = false;
             isInvokingEnd = true;
-        }
+        }*/
     }
     public void Setup(GameInfo state) => this.state = state;
 
@@ -106,12 +110,29 @@ public class DestroyVegetation : MonoBehaviour
         {
             if(!t.lDis.isDissolving)
                 t.Interact();
-            if (t.status == TREE_STAGE.DEAD)
+            if(t.status == TREE_STAGE.ALIVE2)
+            {
+                float substractionValue = Trees.startingNatureValue/100f*20f;      // gets reduced by 20% from original value 
+                t.personalNatureValue -= substractionValue;
+                LevelBalancing.SetNatureValue(substractionValue); 
+            }
+            if (t.status == TREE_STAGE.BETWEEN1 || t.status == TREE_STAGE.BETWEEN2)
+            {
+                float substractionValue = Trees.startingNatureValue / 100f * 15f; // gets reduced by 15% from original value
+                t.personalNatureValue -= substractionValue;
+                LevelBalancing.SetNatureValue(substractionValue);
+            }
+            else if (t.status == TREE_STAGE.DEAD)
             {
                 aliveTrees.RemoveAt(treeIndex);
                 deadTrees.Add(t);
                 deadTrees.Sort(tC);
-                LevelBalancing.SetNatureValue(t.personalNatureValue);
+                LevelBalancing.SetNatureValue(t.personalNatureValue);            // gets reduced by remaining 50% from original value
+
+                if(deadTrees.Count == 1)
+                {
+                    state.SwitchFirstTreeDestroyed();
+                }
             }
         }
     }
@@ -129,7 +150,7 @@ public class DestroyVegetation : MonoBehaviour
         return false;
     }
 
-    void destroyRandomTreeInMiddleState()
+    public void DestroyRandomTreeInMiddleState()
     {
         int index = Random.Range(0, aliveTrees.Count);
         Trees t = aliveTrees.ElementAt<Trees>(index);
