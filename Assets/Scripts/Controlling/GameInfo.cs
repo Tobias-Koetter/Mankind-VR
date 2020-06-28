@@ -9,7 +9,7 @@ public class GameInfo : MonoBehaviour
     public STATE currentState = STATE.NATURE;
     public Text debugInfo;
     public float totalTime = 360f; // 6 minutes
-    public bool DebugMode;
+    private bool DebugMode;
 
     public SpawnController TrashSpawner;
     public DestroyVegetation PlantDestroyer;
@@ -38,7 +38,7 @@ public class GameInfo : MonoBehaviour
 
         balancer = new LevelBalancing();
         //fsm = this.GetComponent<FiniteStateMachine>();
-
+        DebugMode = GlobalSettingsManager.debugActive;
         if(!DebugMode)
         {
             debugInfo.gameObject.SetActive(false);

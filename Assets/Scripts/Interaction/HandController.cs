@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class HandController : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class HandController : MonoBehaviour
     public Transform cam;
     public float checkDistance = 0.4f;
     public LayerMask collisionMask;
+    public Image clickCursor;
 
     //Temporarily used to give feedback for the player. Exchange for proper Feedback 
     public Material interactMat;
@@ -22,31 +24,40 @@ public class HandController : MonoBehaviour
         ownRender = objectCenter.GetComponent<Renderer>();
         normalMat = ownRender.material;
 
+        if (!GlobalSettingsManager.clickActionActive)
+        {
+            clickCursor.gameObject.SetActive(false);
+        }
+
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) {
-            RaycastHit hitInfo;
-            Vector3 lookDir = (cam.position + objectCenter.position).normalized;
-            float distance = Vector3.Distance(cam.position, objectCenter.position);
-            if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, distance, collisionMask))
+        if (GlobalSettingsManager.clickActionActive)
+        {
+            if (Input.GetMouseButtonDown(0))
             {
-                GameObject colliderObject = hitInfo.collider.gameObject;
-                Debug.Log(colliderObject);
+                RaycastHit hitInfo;
+                Vector3 lookDir = (cam.position + objectCenter.position).normalized;
+                float distance = Vector3.Distance(cam.position, objectCenter.position);
+                if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, distance, collisionMask))
+                {
+                    GameObject colliderObject = hitInfo.collider.gameObject;
+                    Debug.Log(colliderObject);
 
-            //Collider[] hitColliders = Physics.OverlapSphere(objectCenter.position, checkDistance, collisionMask);
+                    //Collider[] hitColliders = Physics.OverlapSphere(objectCenter.position, checkDistance, collisionMask);
 
 
-            //isCollision = hitColliders.Length > 0;
-            
-            //if left mouse button is clicked and there is a colliding object
-            //if (isCollision) {
+                    //isCollision = hitColliders.Length > 0;
 
-                //for (int i = 0; i < hitColliders.Length; i++)
-                //{
+                    //if left mouse button is clicked and there is a colliding object
+                    //if (isCollision) {
+
+                    //for (int i = 0; i < hitColliders.Length; i++)
+                    //{
                     //GameObject colliderObject = hitColliders[i].gameObject;
-                    if (colliderObject.activeSelf) {
+                    if (colliderObject.activeSelf)
+                    {
                         Interactable current = colliderObject.GetComponent<Interactable>();
                         Interactable parent = GlobalMethods.FindParentWithTag(colliderObject, "TreeLogic")?.GetComponent<Interactable>();
                         if (current is Spawned spawn)
@@ -60,7 +71,7 @@ public class HandController : MonoBehaviour
                             //Debug.Log($"Got called because of {colliderObject}");
                             tree.Controller.handleTreeDestroy(tree);
                         }
-                        else if(colliderObject.tag.Equals("PointOfInterest"))
+                        else if (colliderObject.tag.Equals("PointOfInterest"))
                         {
                             PoI p = colliderObject.GetComponent<PoI>();
                             p.Controller.handlePoIDestroy(p);
@@ -71,18 +82,19 @@ public class HandController : MonoBehaviour
 
                         }
 
-                    //}
+                        //}
+
+                    }
+
 
                 }
-
-
+                else
+                {
+                    print("Nothing there to interact with!");
+                }
+                isCollision = false;
+                ownRender.material = normalMat;
             }
-            else
-            {
-                print("Nothing there to interact with!");
-            }
-            isCollision = false;
-            ownRender.material = normalMat;
         }
     }
 

@@ -38,7 +38,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1241631811720014785}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 704b942c71390a14f8ab7c27002cd413, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.17
@@ -83,7 +83,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3709739875359433249}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 704b942c71390a14f8ab7c27002cd413, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.17
@@ -151,7 +151,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5810168716805217355}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 2
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -197,7 +197,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6962232990628349615}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 704b942c71390a14f8ab7c27002cd413, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.17
@@ -242,7 +242,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8602221411264721136}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 704b942c71390a14f8ab7c27002cd413, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.17

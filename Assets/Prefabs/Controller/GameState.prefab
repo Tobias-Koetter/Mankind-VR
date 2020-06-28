@@ -57,6 +57,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7622962290139848455}
+  - component: {fileID: 8636822475140647899}
   - component: {fileID: 8538129781727677782}
   - component: {fileID: 4286252248047214611}
   - component: {fileID: 7622962290139848454}
@@ -83,6 +84,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8636822475140647899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7622962290139848449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e67f477ba01174f9f57e3af1a73693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8538129781727677782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,7 +124,10 @@ MonoBehaviour:
   debugInfo: {fileID: 0}
   totalTime: 360
   DebugMode: 1
+  TrashSpawner: {fileID: 0}
+  PlantDestroyer: {fileID: 0}
   changer: {fileID: 51492185}
+  fsm: {fileID: 0}
 --- !u!114 &7622962290139848454
 MonoBehaviour:
   m_ObjectHideFlags: 0
