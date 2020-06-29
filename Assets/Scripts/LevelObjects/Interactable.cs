@@ -8,6 +8,7 @@ public class Interactable: MonoBehaviour
     protected MeshRenderer ownRenderer;
     protected Rigidbody ownRigidBody;
     protected MeshFilter ownFilter;
+    
     public void Start()
     {
         ownCollider = this.GetComponent<Collider>();

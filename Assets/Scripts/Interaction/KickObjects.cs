@@ -11,6 +11,7 @@ public class KickObjects : MonoBehaviour
     public float kickPower = 10f;
 
     private Collider lastCol = null;
+    private int counter = 0;
 
     private void Start()
     {
@@ -73,6 +74,29 @@ public class KickObjects : MonoBehaviour
         }
         
     }
+
+    /*
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (LayerMask.LayerToName(hit.collider.gameObject.layer).Equals("Trash"))
+        {
+            Rigidbody body = hit.rigidbody;
+            Vector3 triggerPoint = hit.point;
+            Vector3 dir = triggerPoint - kickcheck.position;
+            if (dir.y >= -0.3f && !(body.mass >= 2))
+            {
+                dir.y = 0;
+                dir = dir.normalized;
+                Vector3 oldPos = body.transform.position;
+                body.transform.position = (oldPos + dir) + Vector3.up * 0.5f;
+                body.velocity = dir * kickPower*body.mass;
+                body.AddTorque(Random.onUnitSphere* kickPower, ForceMode.Force);
+            }
+        }
+    }
+    */
+
+    
     private void OnTriggerEnter(Collider other)
     {
         if (LayerMask.LayerToName(other.gameObject.layer).Equals("Trash"))
@@ -80,11 +104,19 @@ public class KickObjects : MonoBehaviour
             Rigidbody body = other.attachedRigidbody;
             Vector3 triggerPoint = other.ClosestPointOnBounds(kickcheck.position);
             Vector3 dir = triggerPoint - kickcheck.position;
-            dir.y = 0;
-            dir = dir.normalized;
-            body.velocity = dir * kickPower;
+            if (dir.y >= -0.3f && !(body.mass >= 2))
+            {
+               
+                dir.y = 0;
+                dir = dir.normalized;
+                Vector3 oldPos = body.transform.position;
+                //body.transform.position =( oldPos+dir*0.2f) + Vector3.up * 0.5f;
+                body.velocity = (dir+Vector3.up * 0.3f) * kickPower*body.mass;
+                body.AddTorque(Random.onUnitSphere * kickPower, ForceMode.Force);
+            }
 
         }
 
     }
+    
 }

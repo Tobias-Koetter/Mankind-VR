@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Spawned : Interactable
 {
+    public float personalTrashValue;
     public MeshRenderer meshRndr;
     public MeshFilter meshFltr;
 

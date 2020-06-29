@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LightChange : MonoBehaviour
 {
-    public GameState state;
+    public GameInfo state;
     public Transform Sunlight;
     public bool turnOn;
 
