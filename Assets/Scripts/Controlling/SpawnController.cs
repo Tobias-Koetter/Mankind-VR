@@ -39,7 +39,7 @@ public class SpawnController : MonoBehaviour
             throw new System.Exception("SpawnController: maxRadius is smaller then the planed min Distance to the player.");
         }
 
-
+        
         spawnable_SmallTrash = new List<Spawned>();
 
         // serves as a unique number for every trash element
@@ -55,10 +55,15 @@ public class SpawnController : MonoBehaviour
                 curObject.gameObject.SetActive(false);
             }
         }
-
         spawned_SmallTrash = new List<Spawned>();
 
+
         codes = new KeyCode[] { KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5};
+
+
+        /*
+         * Prepare 
+         */
         trashAreaHandler = new SpawnTrashArea();
 
         // Create jagged Arrays for TrashArea Pooling
@@ -103,17 +108,28 @@ public class SpawnController : MonoBehaviour
 
                     if (Input.GetKeyDown(codes[i]))
                     {
-                        Debug.LogError("We spawn TrashArea------------------------");
                         List<Spawned> spawnable_curList = spawnable_TrashAreas[i];
                         List<Spawned> spawned_curList = spawned_TrashAreas[i];
+
                         int lastPos = spawnable_TrashAreas[i].Count - 1;
                         Spawned curPopped = spawnable_curList[lastPos];
-                        spawnable_curList.RemoveAt(lastPos);
-                        spawned_curList.Add(curPopped);
-                        Debug.Log(curPopped);
+
+                        
+
                         curPopped.gameObject.SetActive(true);
-                        trashAreaHandler.Spawn(current + i, spawnArea[/*Random.Range(0, spawnArea.Length)*/4], curPopped);
-                        Debug.Log(curPopped+" is of shape "+(current+i));
+                        //trashAreaHandler.Spawn(current + i, spawnArea[/*Random.Range(0, spawnArea.Length)*/4], curPopped);
+                        bool spawnedCorrectly = false;
+                        spawnedCorrectly = trashAreaHandler.Spawn(current + i, spawnArea[Random.Range(0, spawnArea.Length)], curPopped);
+
+                        if(spawnedCorrectly)
+                        {
+                            spawnable_curList.RemoveAt(lastPos);
+                            spawned_curList.Add(curPopped);
+                        }
+                        else if(!spawnedCorrectly)
+                        {
+                            curPopped.gameObject.SetActive(false);
+                        }
                     }
                 }
             }
@@ -189,11 +205,19 @@ public class SpawnController : MonoBehaviour
 
         Vector3 vec = m.GetRandomPointInsideConvex();
         vec = t.TransformPoint(vec);
-        current.gameObject.transform.position = vec;
-        current.gameObject.transform.rotation = Random.rotation;
-        current.gameObject.SetActive(true);
-        spawnable_SmallTrash.Remove(current);
-        spawned_SmallTrash.Add(current);
+
+        RaycastHit info;
+        LayerMask mask = LayerMask.GetMask("Ground");
+
+        if (Physics.Raycast(vec, Vector3.down, out info, Mathf.Infinity, mask))
+        {
+            current.gameObject.transform.position = info.point + Vector3.up * 0.2f;
+            current.gameObject.transform.rotation = Random.rotation;
+            current.gameObject.SetActive(true);
+            spawnable_SmallTrash.Remove(current);
+            spawned_SmallTrash.Add(current);
+        }
+
 
         LevelBalancing.SetTrashValue(current.personalTrashValue);
     }
