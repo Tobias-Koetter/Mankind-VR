@@ -21,19 +21,35 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: m_weeds
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 219c3e36077e52d4abecc789b2d48da1,
+    type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 3050
-  stringTagMap:
-    RenderType: Transparent
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses:
   - SHADOWCASTER
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_14A1CE40:
+        m_Texture: {fileID: 2800000, guid: 0c02b491e0c9c094aa9b65be24887418, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_912FB8A5:
+        m_Texture: {fileID: 2800000, guid: 231dca8cf882d3145bbb3e97c2922593, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_BDB01C1A:
+        m_Texture: {fileID: 2800000, guid: 145425aa5a0cd754a9eb0ed57abf1c7d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_F2D7553:
+        m_Texture: {fileID: 2800000, guid: cecb516c4f1f6b44995a5086f6315523, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: cecb516c4f1f6b44995a5086f6315523, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -63,6 +79,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_16D03BEC: 0.4
+    - Vector1_83F9CB13: 0.3
+    - Vector1_C20AD458: 0.2
+    - Vector1_FA409682: 0
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -85,6 +105,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 0
     m_Colors:
+    - Vector2_13188961: {r: 5, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 0.8018868, g: 0.8018868, b: 0.8018868, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
