@@ -58,7 +58,7 @@ public class Grass : MonoBehaviour
         {
             
             CurrentStage = Mathf.Lerp(lerp_start, lerp_end, interpolator);
-            interpolator += 0.1f * Time.deltaTime;
+            interpolator += 0.5f * Time.deltaTime;
 
             if (interpolator > 1.0f)
             {
