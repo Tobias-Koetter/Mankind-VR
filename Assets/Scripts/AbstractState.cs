@@ -49,7 +49,7 @@ public abstract class AbstractState
         int curInt = Mathf.FloorToInt(GameInfo.spentSecondsIngame / SecondsToSpawnTrash);
         if (curInt != LastTimeForSpawn && curMod == 0)
         {
-            Debug.Log("Spawn in "+this.Name + " at time:"+ GameInfo.spentSecondsIngame);
+            //Debug.Log("Spawn in "+this.Name + " at time:"+ GameInfo.spentSecondsIngame);
             GameInfo.TrashSpawner.SpawnOnTimer();
             LastTimeForSpawn = curInt;
             return true;

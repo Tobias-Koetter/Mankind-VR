@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4965028881630673978}
+  - component: {fileID: 6308840946897177158}
   m_Layer: 0
   m_Name: prefab_Weeds01_STAGE1
   m_TagString: Untagged
@@ -31,6 +32,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6308840946897177158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5088293447917681555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9725a5d5c74603e4c840e1b0e5b17d96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderer: {fileID: 901092636798748728}
+  pointer: 2
 --- !u!1001 &7465958694233138669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103,6 +118,12 @@ PrefabInstance:
 --- !u!4 &2514940634861194999 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 01bf24c2014841d4e8be9e614eeb3677,
+    type: 3}
+  m_PrefabInstance: {fileID: 7465958694233138669}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &901092636798748728 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: 01bf24c2014841d4e8be9e614eeb3677,
     type: 3}
   m_PrefabInstance: {fileID: 7465958694233138669}
   m_PrefabAsset: {fileID: 0}

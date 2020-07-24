@@ -103,9 +103,9 @@ public class DestroyVegetation : MonoBehaviour
 
     public void handleTreeDestroy(Trees t)
     {
-        Debug.Log($"In DestroyVegetation because of {t}.");
+        //Debug.Log($"In DestroyVegetation because of {t}.");
         int treeIndex = aliveTrees.BinarySearch(t,tC);
-        Debug.Log($"Found {t} at position {treeIndex}.");
+        //Debug.Log($"Found {t} at position {treeIndex}.");
         if(treeIndex >= 0)
         {
             if(!t.lDis.isDissolving)
