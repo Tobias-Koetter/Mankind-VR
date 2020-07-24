@@ -35,13 +35,14 @@ public class Trees : Interactable
     public DestroyVegetation Controller { get => controller; set => controller = value; }
     public int TreeNumber { get => treeNumber; set => treeNumber = value; }
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         InitFillLists();
         List<TreeInformation> curList = FindCurrentList();
         currentModel = GetModel(curList);
         currentModel.gameObject.SetActive(true);
-        setupLeafDissolver();
+        SetupLeafDissolver();
 
 
         /*foreach (GameObject g in destroyed)
@@ -196,7 +197,7 @@ public class Trees : Interactable
         }
     }
 
-    private void setupLeafDissolver()
+    private void SetupLeafDissolver()
     {
         lDis.leaves = currentModel.dissolveMats[0];
     }
@@ -208,7 +209,7 @@ public class Trees : Interactable
         currentModel.gameObject.SetActive(false);
         currentModel = next;
         currentModel.gameObject.SetActive(true);
-        setupLeafDissolver();
+        SetupLeafDissolver();
         yield return null;
 
     }

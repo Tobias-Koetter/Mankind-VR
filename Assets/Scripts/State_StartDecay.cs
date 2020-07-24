@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class State_StartDecay : AbstractState
 {
-    private float startTime;
     private float lastbaBalanceUpdate;
     private float timeBetweenBalancing;
 
@@ -21,7 +20,6 @@ public class State_StartDecay : AbstractState
     public override bool EnterState()
     {
         base.EnterState();
-        startTime = GameInfo.spentSecondsIngame;
         lastbaBalanceUpdate = -1f;
         timeBetweenBalancing = 2f;
         return true;
@@ -30,7 +28,7 @@ public class State_StartDecay : AbstractState
     public override AbstractState UpdateState()
     {
         // anchor: ran out of Time in this state
-        if ((GameInfo.spentSecondsIngame-startTime) >= SecondsToStateChange)
+        if (RemainingTimeInState >= SecondsToStateChange)
         {
             // return next AbstractState -> State_MainDecay
             return NextState;
@@ -46,7 +44,7 @@ public class State_StartDecay : AbstractState
                
                 {
                     
-                    GameInfo.TrashSpawner.spawnOnTimer();
+                    GameInfo.TrashSpawner.SpawnOnTimer();
                 }
                 else if(LevelBalancing.GetBalanceVariance() > Trees.startingNatureValue /2f)
                 {

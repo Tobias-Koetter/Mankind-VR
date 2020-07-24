@@ -2,7 +2,6 @@
 
 public class State_MainDecay : AbstractState
 {
-    private float startTime;
     private float lastbaBalanceUpdate;
     private float timeBetweenBalancing;
 
@@ -17,7 +16,6 @@ public class State_MainDecay : AbstractState
     public override bool EnterState()
     {
         base.EnterState();
-        startTime = GameInfo.spentSecondsIngame;
         lastbaBalanceUpdate = -1f;
         timeBetweenBalancing = 2f;
         return true;
@@ -26,10 +24,10 @@ public class State_MainDecay : AbstractState
     public override AbstractState UpdateState()
     {
         // anchor: ran out of Time in this state
-        if ((GameInfo.spentSecondsIngame - startTime) >= SecondsToStateChange)
+        if (RemainingTimeInState >= SecondsToStateChange)
         {
-            Debug.LogError("<||State_StartDecay||>: Next State is not implemented yet.");
             // return next AbstractState -> State_TrashRising
+            return NextState;
         }
 
         //Debug.Log("LevelBalancing: " + LevelBalancing.GetBalanceVariance()+"\nLastBalanceInState: "+ LastBalanceInState());
@@ -41,7 +39,7 @@ public class State_MainDecay : AbstractState
 
             {
 
-                GameInfo.TrashSpawner.spawnOnTimer();
+                GameInfo.TrashSpawner.SpawnOnTimer();
             }
             else if (LevelBalancing.GetBalanceVariance() > Trees.startingNatureValue / 2f)
             {

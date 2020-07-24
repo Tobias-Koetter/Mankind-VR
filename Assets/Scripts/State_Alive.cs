@@ -18,11 +18,14 @@ public class State_Alive : AbstractState
         TimingPointer = 0;
         SecondsToSpawnTrash = spawnTimings[TimingPointer];
     }
-
+    public override bool EnterState()
+    {
+        return base.EnterState();
+    }
     public override AbstractState UpdateState()
     {
         // anchor: ran out of Time in this state 
-        if (GameInfo.spentSecondsIngame >= SecondsToStateChange)
+        if (RemainingTimeInState >= SecondsToStateChange)
         {
             return NextState;
         }

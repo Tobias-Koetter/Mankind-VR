@@ -1,7 +1,6 @@
 ﻿
 public class State_TrashRising : AbstractState
 {
-    private float startTime;
 
     public State_TrashRising(GameInfo info) : base(info)
     {
@@ -14,14 +13,13 @@ public class State_TrashRising : AbstractState
     public override bool EnterState()
     {
         base.EnterState();
-        startTime = GameInfo.spentSecondsIngame;
         return true;
     }
 
     public override AbstractState UpdateState()
     {
         // anchor: ran out of Time in this state 
-        if ((GameInfo.spentSecondsIngame - startTime) >= SecondsToStateChange)
+        if (RemainingTimeInState >= SecondsToStateChange)
         {
             return NextState;
         }

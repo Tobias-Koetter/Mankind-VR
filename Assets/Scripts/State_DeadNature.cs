@@ -1,7 +1,6 @@
 ﻿
 public class State_DeadNature : AbstractState
 {
-    private float startTime;
     public State_DeadNature(GameInfo info) : base(info)
     {
         NextState = null;
@@ -10,10 +9,16 @@ public class State_DeadNature : AbstractState
         SecondsToSpawnTrash = 2f;
     }
 
+    public override bool EnterState()
+    {
+        base.EnterState();
+        return true;
+    }
+
     public override AbstractState UpdateState()
     {
         // anchor: ran out of Time in this state 
-        if ((GameInfo.spentSecondsIngame - startTime) >= SecondsToStateChange)
+        if (RemainingTimeInState >= SecondsToStateChange)
         {
             this.GameInfo.setGameOver();
         }

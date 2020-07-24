@@ -37,6 +37,7 @@ public class GlobalSettingsManager: MonoBehaviour
             float f = StateSeconds[i];
             total += f;
         }
+        Debug.Log(total);
         return total;
     }
 

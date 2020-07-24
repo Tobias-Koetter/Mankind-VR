@@ -6,10 +6,13 @@ public class LeafDissolver : MonoBehaviour
     public Material leaves;
     public bool isDissolving = false;
 
+    private float value = 0f;
+    private bool dir = true;
+
     // Update is called once per frame
     void Update()
     {
-        
+        /*
         if(Input.GetKeyDown(KeyCode.Alpha1) && !isDissolving)
         {
             isDissolving = true;
@@ -20,41 +23,76 @@ public class LeafDissolver : MonoBehaviour
             isDissolving = true;
             StartCoroutine(HandleDissolve(false));
         }
-        
-        
+        */
+        if (isDissolving)
+        {
+            HandleDissolveUpdate(dir);
+        }
     }
 
     public void startDissovle()
     {
         isDissolving = true;
-        StartCoroutine(HandleDissolve(true));
+        value = 0.05f;
+        dir = true;
+        //StartCoroutine(HandleDissolve(true));
     }
 
     IEnumerator HandleDissolve(bool dir)
     {
         if (dir)
         {
-            for (float val = 0f; val < 1.0f; val += 0.004f)
+            for (float val = 0f; val < 1.0f; val += 0.002f)
             {
                 if (val > 1f || val+0.01f >= 1f)
                     val = 1f;
                 //Debug.Log(val);
                 leaves.SetFloat("Vector1_2E022231", val);
-                yield return new WaitForSeconds(0.01f);
+                yield return new WaitForSeconds(0.0025f);
             }
         }
         else if (!dir)
         {
-            for (float val = 1f; val > 0f; val -= 0.004f)
+            for (float val = 1f; val > 0f; val -= 0.002f)
             {
                 if(val < 0f || val - 0.01f <= 0f)
                     val = 0f;
                 //Debug.Log(val);
                 leaves.SetFloat("Vector1_2E022231", val);
-                yield return new WaitForSeconds(0.01f);
+                yield return new WaitForSeconds(0.0025f);
             }
         }
         isDissolving = false;
         yield return null;
+    }
+
+    bool HandleDissolveUpdate(bool dir)
+    {
+        if (dir)
+        {
+            value += 0.2f* Time.deltaTime;
+            if (value > 1f || value + 0.01f >= 1f)
+            {
+                value = 1f;
+                isDissolving = false;
+                return true;
+            }
+
+            //Debug.Log(val);
+            leaves.SetFloat("Vector1_2E022231", value);
+        }
+        else if (!dir)
+        {
+            value -= 0.2f * Time.deltaTime;
+            if (value < 0f || value - 0.01f <= 0f)
+            {
+                value = 0f;
+                isDissolving = false;
+                return true;
+            }
+            //Debug.Log(val);
+            leaves.SetFloat("Vector1_2E022231", value);
+        }
+        return false;
     }
 }
