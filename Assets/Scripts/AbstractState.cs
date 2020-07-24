@@ -16,8 +16,9 @@ public abstract class AbstractState
     public ExecutionState ExecutionState { get; protected set; }
     public STATE Name { get; protected set; }
     public float SecondsToSpawnTrash { get; protected set; }
-    public int LastTimeForSpawn { get; protected set; } = -1;
     public float SecondsToStateChange { get; protected set; } = 1000f;
+    public int LastTimeForSpawn { get; protected set; } = -1;
+    public float StartTime { get; protected set; }
 
     protected AbstractState(GameInfo info)
     {
@@ -30,6 +31,7 @@ public abstract class AbstractState
     public virtual bool EnterState() 
     {
         ExecutionState = ExecutionState.ACTIVE;
+        StartTime = GameInfo.spentSecondsIngame;
         return true;
     }
 
@@ -48,10 +50,12 @@ public abstract class AbstractState
         if (curInt != LastTimeForSpawn && curMod == 0)
         {
             Debug.Log("Spawn in "+this.Name + " at time:"+ GameInfo.spentSecondsIngame);
-            GameInfo.TrashSpawner.spawnOnTimer();
+            GameInfo.TrashSpawner.SpawnOnTimer();
             LastTimeForSpawn = curInt;
             return true;
         }
         return false;
     }
+
+    public float RemainingTimeInState =>(GameInfo.spentSecondsIngame - StartTime) ;
 }

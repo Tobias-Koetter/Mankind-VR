@@ -6,10 +6,11 @@ using UnityEngine.UI;
 [RequireComponent(typeof(FiniteStateMachine))]
 public class GameInfo : MonoBehaviour
 {
-    public STATE currentState = STATE.NATURE;
+    public STATE currentState;
     public Text debugInfo;
-    public float totalTime = 360f; // 6 minutes
+    public float totalTime;
     private bool DebugMode;
+    private bool isjumpingTime = false;
 
     public SpawnController TrashSpawner;
     public DestroyVegetation PlantDestroyer;
@@ -19,20 +20,24 @@ public class GameInfo : MonoBehaviour
     private int lastInt = -1;
 
     public float Timer{ get; private set; }
-    private float timeInState;
     private int numberOfStates;
+    private bool gameOverFlag = false;
 
     public bool firstTreeDestroyed { get; private set; } = false;
 
     public float spentSecondsIngame => totalTime - Timer;
 
-    private void Start() 
+    public void setGameOver() { gameOverFlag = true; }
+
+    private void Awake() 
     {
+        totalTime = 0f;
+        totalTime += GlobalSettingsManager.GetTotalGameTime();
+        currentState = GlobalSettingsManager.firstState;
+
         // Takes the amount of states created in the enum STATE
         numberOfStates = Enum.GetValues(typeof(STATE)).GetUpperBound(0) + 1;
 
-        // Time to spend in one of the States
-        timeInState = 120f;
         Timer = totalTime;
         PlantDestroyer.Setup(this);
 
@@ -104,9 +109,14 @@ public class GameInfo : MonoBehaviour
             if (DebugMode)
             {
                 bool jumpTime = Input.GetKeyDown(KeyCode.T);
-                if (jumpTime)
+                if (jumpTime && !isjumpingTime)
                 {
                     jumpTimer();
+                    isjumpingTime = true;
+                }
+                if(!jumpTime && isjumpingTime)
+                {
+                    isjumpingTime = false;
                 }
                 UpdateLevelTimer(Timer);
             }
@@ -165,7 +175,9 @@ public class GameInfo : MonoBehaviour
 
     private void jumpTimer()
     {
-        Timer = totalTime - (timeInState * (float)currentState);
+        Debug.Log(Timer+ "|-|"+GlobalSettingsManager.GetStateTime(currentState)+"|-|"+ fsm.currentState.RemainingTimeInState+ "==>"+ (Timer - (GlobalSettingsManager.GetStateTime(currentState) - fsm.currentState.RemainingTimeInState)));
+        Debug.Log(fsm.currentState.StartTime + "|||" + fsm.currentState.SecondsToStateChange);
+        Timer = Timer - (GlobalSettingsManager.GetStateTime(currentState) - fsm.currentState.RemainingTimeInState);
     }
     #endregion 
 }

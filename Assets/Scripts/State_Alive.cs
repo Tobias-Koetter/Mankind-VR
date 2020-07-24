@@ -13,16 +13,19 @@ public class State_Alive : AbstractState
     {
         NextState = new State_StartDecay(info);
         Name = STATE.NATURE;
-        SecondsToStateChange = 120f;
+        SecondsToStateChange = GlobalSettingsManager.GetStateTime(this.Name);
         spawnTimings = new float[] { 8f, 5f };
         TimingPointer = 0;
         SecondsToSpawnTrash = spawnTimings[TimingPointer];
     }
-
+    public override bool EnterState()
+    {
+        return base.EnterState();
+    }
     public override AbstractState UpdateState()
     {
         // anchor: ran out of Time in this state 
-        if (GameInfo.spentSecondsIngame >= SecondsToStateChange)
+        if (RemainingTimeInState >= SecondsToStateChange)
         {
             return NextState;
         }

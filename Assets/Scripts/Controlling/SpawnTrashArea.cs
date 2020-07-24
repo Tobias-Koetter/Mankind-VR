@@ -16,7 +16,7 @@ public class SpawnTrashArea
         geometryHandler = new PlaceGeometryOnPlane(mask);
     }
 
-    public void Spawn(TA_SHAPES shape, MeshFilter spawnArea, Spawned geometry)
+    public bool Spawn(TA_SHAPES shape, MeshFilter spawnArea, Spawned geometry)
     {
 
         Vector3 RandomPos = spawnArea.mesh.GetRandomPointInsideConvex();
@@ -40,6 +40,11 @@ public class SpawnTrashArea
                     geometryHandler.PlaceSphere(info.point, info.normal, geometry);
                     break;
             }
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

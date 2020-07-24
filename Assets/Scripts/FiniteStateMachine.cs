@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,12 +18,13 @@ public class FiniteStateMachine : MonoBehaviour
     {
         gameInfo = this.GetComponent<GameInfo>();
         gameInfo.fsm = this;
-        currentState = new State_Alive(gameInfo);
+        currentState = CreateStartState();
         next = null;
         last = null;
 
         
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,5 +60,35 @@ public class FiniteStateMachine : MonoBehaviour
 
             }
         }
+    }
+
+
+
+
+    AbstractState CreateStartState()
+    {
+        AbstractState ret = new State_Alive(gameInfo);
+        switch (GlobalSettingsManager.firstState)
+        {
+            case STATE.NONE:
+                Debug.LogError(new ArgumentException("There was no start state set in the GlobalSettingsManager. Check Controller -> GameState Object in Scene", "startState"));
+                ret = null;
+                break;
+            case STATE.NATURE:
+                break;
+            case STATE.DECAY_START:
+                ret = new State_StartDecay(gameInfo);
+                break;
+            case STATE.DECAY_MAIN:
+                ret = new State_MainDecay(gameInfo);
+                break;
+            case STATE.TRASH_RISING:
+                ret = new State_TrashRising(gameInfo);
+                break;
+            case STATE.FINAL:
+                ret = new State_DeadNature(gameInfo);
+                break;
+        }
+        return ret;
     }
 }
