@@ -11,7 +11,7 @@ public class LevelBalancing
 
     private static float NatureValue;
     private static float TrashValue;
-    private static int count = 1;
+    //private static int count = 1;
 
 
     public LevelBalancing()
@@ -21,7 +21,7 @@ public class LevelBalancing
 
     public static void ResetBalanceValue(float newBalance)
     {
-        Debug.LogWarning("ResetBalanceValue called:"+ count++);
+        //Debug.LogWarning("ResetBalanceValue called:"+ count++);
         BalancingValue = newBalance;
         NatureValue = newBalance;
         TrashValue = 0f;

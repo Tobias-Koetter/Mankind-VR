@@ -6,9 +6,9 @@ using UnityEngine.UI;
 [RequireComponent(typeof(FiniteStateMachine))]
 public class GameInfo : MonoBehaviour
 {
-    public STATE currentState = STATE.NATURE;
+    public STATE currentState;
     public Text debugInfo;
-    public float totalTime = 360f; // 6 minutes
+    public float totalTime;
     private bool DebugMode;
 
     public SpawnController TrashSpawner;
@@ -21,13 +21,20 @@ public class GameInfo : MonoBehaviour
     public float Timer{ get; private set; }
     private float timeInState;
     private int numberOfStates;
+    private bool gameOverFlag = false;
 
     public bool firstTreeDestroyed { get; private set; } = false;
 
     public float spentSecondsIngame => totalTime - Timer;
 
+    public void setGameOver() { gameOverFlag = true; }
+
     private void Start() 
     {
+        totalTime = 0f;
+        totalTime += GlobalSettingsManager.GetTotalGameTime();
+        currentState = GlobalSettingsManager.firstState;
+
         // Takes the amount of states created in the enum STATE
         numberOfStates = Enum.GetValues(typeof(STATE)).GetUpperBound(0) + 1;
 

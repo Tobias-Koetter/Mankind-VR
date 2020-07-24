@@ -13,7 +13,7 @@ public class State_Alive : AbstractState
     {
         NextState = new State_StartDecay(info);
         Name = STATE.NATURE;
-        SecondsToStateChange = 120f;
+        SecondsToStateChange = GlobalSettingsManager.GetStateTime(this.Name);
         spawnTimings = new float[] { 8f, 5f };
         TimingPointer = 0;
         SecondsToSpawnTrash = spawnTimings[TimingPointer];

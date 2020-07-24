@@ -14,7 +14,7 @@ public class State_StartDecay : AbstractState
     {
         NextState = new State_MainDecay(info);
         Name = STATE.DECAY_START;
-        SecondsToStateChange = 60f;
+        SecondsToStateChange = GlobalSettingsManager.GetStateTime(this.Name);
         this.SecondsToSpawnTrash = 3f;
     }
     // override because in need for tracking the state entrance time.
@@ -32,8 +32,8 @@ public class State_StartDecay : AbstractState
         // anchor: ran out of Time in this state
         if ((GameInfo.spentSecondsIngame-startTime) >= SecondsToStateChange)
         {
-            Debug.LogError("<||State_StartDecay||>: Next State is not implemented yet.");
             // return next AbstractState -> State_MainDecay
+            return NextState;
         }
         else
         {
