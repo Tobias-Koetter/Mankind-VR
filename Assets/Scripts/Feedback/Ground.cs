@@ -1,14 +1,16 @@
-﻿using UnityEngine;
-using UnityEngine.Analytics;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class Grass : MonoBehaviour
+public class Ground : MonoBehaviour
 {
     public MeshRenderer Renderer;
     public float CurrentStage { get; protected set; } = 0f;
-    [Range(0,2)]
+    [Range(0, 2)]
     public int pointer = 0;
-    private float[] stageValues = new float[] {0f,1f,2f};
-    private Material changingGrass;
+    private float[] stageValues = new float[] { 0f, 1f, 2f };
+    private Material changingGround;
+    private Material changingSand;
     private float lerp_start = -1f;
     private float lerp_end = -1f;
     private float interpolator;
@@ -17,9 +19,11 @@ public class Grass : MonoBehaviour
 
     void Awake()
     {
-        changingGrass = Renderer.materials[0];
+        changingGround = Renderer.materials[0];
+        changingSand = Renderer.materials[3];
         CurrentStage = stageValues[pointer];
-        changingGrass.SetFloat("StageValue", CurrentStage);
+        changingGround.SetFloat("StageValue", CurrentStage);
+        changingSand.SetFloat("StageValue", CurrentStage);
         inLerp = false;
         personalSpeed = Random.Range(0.09f, 0.3f);
     }
@@ -31,7 +35,7 @@ public class Grass : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.KeypadPlus))
             {
-                if(pointer < stageValues.Length-1)
+                if (pointer < stageValues.Length - 1)
                 {
                     pointer += 1;
                     lerp_start = CurrentStage;
@@ -42,9 +46,9 @@ public class Grass : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.KeypadMinus))
             {
-                if(pointer > 0)
+                if (pointer > 0)
                 {
-                    pointer-= 1;
+                    pointer -= 1;
                     lerp_start = CurrentStage;
                     lerp_end = stageValues[pointer];
                     interpolator = 0f;
@@ -52,9 +56,9 @@ public class Grass : MonoBehaviour
                 }
             }
         }
-        else if(inLerp)
+        else if (inLerp)
         {
-            
+
             CurrentStage = Mathf.Lerp(lerp_start, lerp_end, interpolator);
             interpolator += personalSpeed * Time.deltaTime;
 
@@ -65,12 +69,8 @@ public class Grass : MonoBehaviour
                 lerp_start = -1f;
                 inLerp = false;
             }
-            changingGrass.SetFloat("StageValue", CurrentStage);
+            changingGround.SetFloat("StageValue", CurrentStage);
+            changingSand.SetFloat("StageValue", CurrentStage);
         }
     }
-
-
-
-
-
 }

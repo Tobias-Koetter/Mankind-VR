@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5560434473979634520}
+  - component: {fileID: 8195553513761243409}
   m_Layer: 0
   m_Name: prefab_grass02
   m_TagString: Untagged
@@ -31,6 +32,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8195553513761243409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4611709635408305134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9725a5d5c74603e4c840e1b0e5b17d96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderer: {fileID: 6381302885302491529}
+  pointer: 0
 --- !u!1001 &3716536429199504476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103,6 +118,12 @@ PrefabInstance:
 --- !u!4 &8568519397459992390 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 4a8c8c4c92106b649b35f5a2f8bfcb98,
+    type: 3}
+  m_PrefabInstance: {fileID: 3716536429199504476}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6381302885302491529 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: 4a8c8c4c92106b649b35f5a2f8bfcb98,
     type: 3}
   m_PrefabInstance: {fileID: 3716536429199504476}
   m_PrefabAsset: {fileID: 0}

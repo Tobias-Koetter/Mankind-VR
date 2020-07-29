@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Renderer: {fileID: 901092636798748728}
-  pointer: 2
+  pointer: 0
 --- !u!1001 &7465958694233138669
 PrefabInstance:
   m_ObjectHideFlags: 0
