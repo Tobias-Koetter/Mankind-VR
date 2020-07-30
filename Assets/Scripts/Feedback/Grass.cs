@@ -7,11 +7,10 @@ public class Grass : MonoBehaviour
     public float CurrentStage { get; protected set; } = 0f;
     [Range(0,2)]
     public int pointer = 0;
-    private float[] stageValues = new float[] {0f,1f,2f};
+    private float[] stageValues = new float[] {0f,0.5f,1f,1.5f,2f};
     private Material changingGrass;
     private float lerp_start = -1f;
     private float lerp_end = -1f;
-    private float interpolator;
     private bool inLerp;
     private float personalSpeed;
 
@@ -27,6 +26,7 @@ public class Grass : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (!inLerp)
         {
             if (Input.GetKeyDown(KeyCode.KeypadPlus))
@@ -36,7 +36,6 @@ public class Grass : MonoBehaviour
                     pointer += 1;
                     lerp_start = CurrentStage;
                     lerp_end = stageValues[pointer];
-                    interpolator = 0f;
                     inLerp = true;
                 }
             }
@@ -47,29 +46,45 @@ public class Grass : MonoBehaviour
                     pointer-= 1;
                     lerp_start = CurrentStage;
                     lerp_end = stageValues[pointer];
-                    interpolator = 0f;
                     inLerp = true;
                 }
             }
         }
-        else if(inLerp)
+        else */if(inLerp)
         {
-            
-            CurrentStage = Mathf.Lerp(lerp_start, lerp_end, interpolator);
-            interpolator += personalSpeed * Time.deltaTime;
-
-            if (interpolator > 1.0f)
+            if (!Renderer.isVisible)
             {
                 CurrentStage = lerp_end;
                 lerp_end = -1f;
                 lerp_start = -1f;
                 inLerp = false;
             }
+            else
+            {
+                CurrentStage += personalSpeed * Time.deltaTime;
+
+                if (CurrentStage >= lerp_end)
+                {
+                    CurrentStage = lerp_end;
+                    lerp_end = -1f;
+                    lerp_start = -1f;
+                    inLerp = false;
+                }
+            }
             changingGrass.SetFloat("StageValue", CurrentStage);
         }
     }
 
-
+    public void NextGrassStage()
+    {
+        if (pointer < stageValues.Length - 1)
+        {
+            pointer += 1;
+            lerp_start = CurrentStage;
+            lerp_end = stageValues[pointer];
+            inLerp = true;
+        }
+    }
 
 
 

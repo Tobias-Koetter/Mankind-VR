@@ -200,6 +200,7 @@ public class Trees : Interactable
     private void SetupLeafDissolver()
     {
         lDis.leaves = currentModel.dissolveMats[0];
+        lDis.currentActive = currentModel;
     }
 
     IEnumerator WaitForDissolve(TreeInformation next)
