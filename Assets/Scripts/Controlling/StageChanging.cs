@@ -2,6 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public class GrassParentContainer
+{
+    Grass[] children;
+
+    public GrassParentContainer(Grass[] children)
+    {
+        this.children = children;
+    }
+
+    public Grass[] getChildren()
+    {
+        return children;
+    }
+}
+
 public class StageChanging : MonoBehaviour
 {
     [Header("General Values")]
@@ -17,7 +32,15 @@ public class StageChanging : MonoBehaviour
     private Vector3 waterVector_50Percent;
     private Vector3 waterVector_66Percent;
 
+    [Header("Ground Values")]
+    public Ground ground;
+    public Ground dwarfHill;
+    public Ground mountainRange;
 
+    [Header("Grass Values")]
+    public GameObject[] grassParent;
+
+    private GrassParentContainer[] parentContainer;
     
     private float lerp_Value = 0f;
     private Vector3 lerp_Start;
@@ -36,11 +59,23 @@ public class StageChanging : MonoBehaviour
         waterVector_66Percent = new Vector3(pos.x, waterMark_66Percent, pos.z);
         pos.Set(pos.x,water_HighMark,pos.z);
         Water.position = pos;
+
+        parentContainer = new GrassParentContainer[grassParent.Length];
+        for(int i = 0; i < grassParent.Length; i++)
+        {
+            parentContainer[i] = new GrassParentContainer(grassParent[i].GetComponentsInChildren<Grass>());
+        }
     }
 
     public IEnumerator ChangeToStage1_5()
     {
         curState = STATE.DECAY_START;
+
+        ground.NextGroundStage();
+        dwarfHill.NextGroundStage();
+        mountainRange.NextGroundStage();
+        ChangeGrass();
+
         yield return null;
     }
     public IEnumerator ChangeToStage2()
@@ -48,7 +83,12 @@ public class StageChanging : MonoBehaviour
         curState = STATE.DECAY_MAIN;
         SetupLerp(Water.position, waterVector_66Percent);
 
-        while(lerp_Value < 1f)
+        ground.NextGroundStage();
+        dwarfHill.NextGroundStage();
+        mountainRange.NextGroundStage();
+        ChangeGrass();
+
+        while (lerp_Value < 1f)
         {
             lerp_Value += (animSpeed * 0.01f) * Time.deltaTime;
             lerp_Value = ((lerp_Value > 1f)? 1f : lerp_Value);
@@ -61,6 +101,11 @@ public class StageChanging : MonoBehaviour
     {
         curState = STATE.TRASH_RISING;
         SetupLerp(Water.position, waterVector_50Percent);
+
+        ground.NextGroundStage();
+        dwarfHill.NextGroundStage();
+        mountainRange.NextGroundStage();
+        ChangeGrass();
 
         while (lerp_Value < 1f)
         {
@@ -75,6 +120,11 @@ public class StageChanging : MonoBehaviour
     {
         curState = STATE.FINAL;
         SetupLerp(Water.position, new Vector3(Water.position.x, water_LowMark, Water.position.z));
+
+        ground.NextGroundStage();
+        dwarfHill.NextGroundStage();
+        mountainRange.NextGroundStage();
+        ChangeGrass();
 
         while (lerp_Value < 1f)
         {
@@ -91,6 +141,17 @@ public class StageChanging : MonoBehaviour
         lerp_Start = start;
         lerp_End = end;
         lerp_Value = 0f;
+    }
+
+    private void ChangeGrass()
+    {
+        foreach(GrassParentContainer gPC in parentContainer)
+        {
+            foreach (Grass g in gPC.getChildren())
+            {
+                g.NextGrassStage();
+            }
+        }
     }
 
 }

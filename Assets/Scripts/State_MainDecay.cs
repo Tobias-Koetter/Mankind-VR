@@ -50,6 +50,13 @@ public class State_MainDecay : AbstractState
         return this;
     }
 
+    public override bool ExitState()
+    {
+        base.ExitState();
+        StageChanging changer = GameInfo.changer;
+        changer.StartCoroutine(changer.ChangeToStage2_5());
+        return true;
+    }
 
     private float LastBalanceInState()
     {

@@ -5,7 +5,7 @@ public class LeafDissolver : MonoBehaviour
 {
     public Material leaves;
     public bool isDissolving = false;
-
+    public TreeInformation currentActive;
     private float value = 0f;
     private bool dir = true;
 
@@ -70,6 +70,12 @@ public class LeafDissolver : MonoBehaviour
     {
         if (dir)
         {
+            if(currentActive.CheckAnyRendererIsVisible(false))
+            {
+                value = 1f;
+                isDissolving = false;
+                return true;
+            }
             value += 0.2f* Time.deltaTime;
             if (value > 1f || value + 0.01f >= 1f)
             {
@@ -83,6 +89,12 @@ public class LeafDissolver : MonoBehaviour
         }
         else if (!dir)
         {
+            if (currentActive.CheckAnyRendererIsVisible(false))
+            {
+                value = 0f;
+                isDissolving = false;
+                return true;
+            }
             value -= 0.2f * Time.deltaTime;
             if (value < 0f || value - 0.01f <= 0f)
             {

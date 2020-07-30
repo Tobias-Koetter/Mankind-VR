@@ -39,6 +39,14 @@ public class State_Alive : AbstractState
 
     }
 
+    public override bool ExitState()
+    {
+        base.ExitState();
+        StageChanging changer = GameInfo.changer;
+        changer.StartCoroutine(changer.ChangeToStage1_5());
+        return true;
+    }
+
     public void UpdateTreeDestroyStatus(bool newValue)
     {
         if(newValue)

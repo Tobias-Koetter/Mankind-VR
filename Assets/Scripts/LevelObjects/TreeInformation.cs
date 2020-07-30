@@ -8,6 +8,7 @@ public class TreeInformation : MonoBehaviour
     public LODGroup lodGroup;
     public LOD[] lods;
     public Material[] dissolveMats;
+    public Renderer[] renderersInLOD;
     private List<MeshCollider> listOfColliders;
 
     public TreeInformation(LODGroup l)
@@ -26,12 +27,15 @@ public class TreeInformation : MonoBehaviour
         lodGroup = l;
         lods = l.GetLODs();
         dissolveMats = new Material[lods.Length];
+        renderersInLOD = new Renderer[lods.Length];
         for (int i = 0; i < lods.Length; i++)
         {
             try{
-                dissolveMats[i] = lods[i].renderers[0].materials[1];
+                renderersInLOD[i] = lods[i].renderers[0];
+                dissolveMats[i] = renderersInLOD[i].materials[1];
             }catch(IndexOutOfRangeException)
             {
+                renderersInLOD[i] = null;
                 dissolveMats[i] = null;
             }
         }
@@ -53,5 +57,19 @@ public class TreeInformation : MonoBehaviour
         {
             c.enabled = active;
         }
+    }
+
+    public bool CheckAnyRendererIsVisible(bool toCheck)
+    {
+        bool ret = false;
+        foreach (Renderer r in renderersInLOD)
+        {
+            if(r.isVisible)
+            {
+                ret = true;
+                break;
+            }
+        }
+        return ret == toCheck;
     }
 }
