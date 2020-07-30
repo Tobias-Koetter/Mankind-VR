@@ -46,8 +46,12 @@ MonoBehaviour:
   curState: 1
   animSpeed: 5
   Water: {fileID: 0}
-  water_HighMark: 8.7
-  water_LowMark: -8.8
+  water_HighMark: 6.95
+  water_LowMark: -10
+  ground: {fileID: 0}
+  dwarfHill: {fileID: 0}
+  mountainRange: {fileID: 0}
+  grassParent: []
 --- !u!1 &7622962290139848449
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,6 +100,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44e67f477ba01174f9f57e3af1a73693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
+  clickAction: 0
+  startState: 1
+  SecondsInState:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!114 &8538129781727677782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,7 +136,6 @@ MonoBehaviour:
   currentState: 1
   debugInfo: {fileID: 0}
   totalTime: 360
-  DebugMode: 1
   TrashSpawner: {fileID: 0}
   PlantDestroyer: {fileID: 0}
   changer: {fileID: 51492185}
