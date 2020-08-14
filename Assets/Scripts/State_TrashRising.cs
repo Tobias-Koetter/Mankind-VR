@@ -7,7 +7,7 @@ public class State_TrashRising : AbstractState
         NextState = new State_DeadNature(info);
         Name = STATE.TRASH_RISING;
         SecondsToStateChange = GlobalSettingsManager.GetStateTime(this.Name);
-        this.SecondsToSpawnTrash = 2f;
+        this.SecondsToSpawnTrash = 1f;
     }
 
     public override bool EnterState()

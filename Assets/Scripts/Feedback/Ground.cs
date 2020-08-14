@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ground : MonoBehaviour
 {
     public MeshRenderer Renderer;
+
     public float CurrentStage { get; protected set; } = 0f;
     [Range(0, 2)]
     public int pointer = 0;
@@ -18,11 +19,24 @@ public class Ground : MonoBehaviour
 
     void Awake()
     {
-        changingGround = Renderer.materials[0];
-        changingSand = Renderer.materials[3];
+        changingSand = null;
+        changingGround = null;
+        foreach(Material m in Renderer.materials)
+        {
+            //Debug.Log(m.name);
+            if(m.name.Contains("m_GroundGrass"))
+            {
+                changingGround = m;
+            }
+            else if(m.name.Contains("m_GroundSand"))
+            {
+                changingSand = m;
+            }
+        }
         CurrentStage = stageValues[pointer];
         changingGround.SetFloat("StageValue", CurrentStage);
-        changingSand.SetFloat("StageValue", CurrentStage);
+        if(changingSand)
+            changingSand.SetFloat("StageValue", CurrentStage);
         inLerp = false;
         personalSpeed = Random.Range(0.09f, 0.3f);
     }
@@ -66,7 +80,8 @@ public class Ground : MonoBehaviour
                 inLerp = false;
             }
             changingGround.SetFloat("StageValue", CurrentStage);
-            changingSand.SetFloat("StageValue", CurrentStage);
+            if(changingSand)
+                changingSand.SetFloat("StageValue", CurrentStage);
         }
     }
 

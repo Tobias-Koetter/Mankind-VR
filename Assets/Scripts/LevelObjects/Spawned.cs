@@ -1,4 +1,4 @@
-﻿using System.Dynamic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class Spawned : Interactable
@@ -27,5 +27,22 @@ public class Spawned : Interactable
     {
         
         print(">> i "+ this.name+" was forced to interact from someone else <<");
+    }
+
+    public IEnumerator SetObjectToSleepAfterSecs()
+    {
+        //Debug.Log(this.name + " will stop after 3 secs to move");
+        yield return new WaitForSeconds(5);
+        //Debug.Log(this.name + " should have stopped");
+        ownRigidBody.Sleep();
+        yield return null;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.layer == 31)
+        {
+            StartCoroutine(SetObjectToSleepAfterSecs());
+        }
     }
 }

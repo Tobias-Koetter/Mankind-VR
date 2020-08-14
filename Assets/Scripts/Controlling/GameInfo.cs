@@ -52,7 +52,7 @@ public class GameInfo : MonoBehaviour
 
     private void Update()
     {
-        if (Timer > 0f)
+        //if (Timer > 0f)
         {
             AbstractState current = fsm.currentState;
 

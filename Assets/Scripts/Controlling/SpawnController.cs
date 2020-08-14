@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
+
 
 [System.Serializable]
 public class SpawnedList
@@ -40,6 +42,10 @@ public class SpawnController : MonoBehaviour
     private KeyCode[] codes;
 
     private Spawned last;
+
+    private int maxSpawnIndexSmallTrash = 0;
+    private int maxSpawnIndexTrashAreas = 0;
+    private bool TrashAreasCanSpawn = false;
 
     
 
@@ -153,34 +159,12 @@ public class SpawnController : MonoBehaviour
             }
             else
             {
-                TA_SHAPES current = TA_SHAPES.Plane_Small;
                 for (int i = 0; i < codes.Length; i++)
                 {
 
                     if (Input.GetKeyDown(codes[i]))
                     {
-                        SpawnedList spawnable_curList = spawnable_TrashAreas[i];
-                        SpawnedList spawned_curList = spawned_TrashAreas[i];
-
-                        int lastPos = spawnable_TrashAreas[i].Count - 1;
-                        Spawned curPopped = spawnable_curList[lastPos];
-
-                        
-
-                        curPopped.gameObject.SetActive(true);
-                        //trashAreaHandler.Spawn(current + i, spawnArea[/*Random.Range(0, spawnArea.Length)*/4], curPopped);
-                        bool spawnedCorrectly = false;
-                        spawnedCorrectly = trashAreaHandler.Spawn(current + i, spawnArea[Random.Range(0, spawnArea.Length)], curPopped);
-
-                        if(spawnedCorrectly)
-                        {
-                            spawnable_curList.RemoveAt(lastPos);
-                            spawned_curList.Add(curPopped);
-                        }
-                        else if(!spawnedCorrectly)
-                        {
-                            curPopped.gameObject.SetActive(false);
-                        }
+                        SpawnSpecificTrashArea(i);
                     }
                 }
             }
@@ -188,11 +172,30 @@ public class SpawnController : MonoBehaviour
 
     }
 
-
     public Spawned SpawnOnTimer()
     {
+        Spawned ret;
+        if(TrashAreasCanSpawn)
+        {
+            int val = Random.Range(0, 100);
+            if (val <= 16 * maxSpawnIndexTrashAreas)           // maxSpawnIndexTrashAres liegt zwischen 1 und 5 -> max Wahrscheinlichkeit bei 80% in letzter Stufe
+            {
+                ret = SpawnTrashArea();
+            }
+            else
+                ret = SpawnSmallTrash();
+        }
+        else
+        {
+            ret = SpawnSmallTrash();
+        }
+        return ret;
+    }
+
+    public Spawned SpawnSmallTrash()
+    {
         Spawned ret = null;
-        int index = Random.Range(0, Prefabs_SmallTrash.Length);
+        int index = Random.Range(0, maxSpawnIndexSmallTrash);
 
         if (spawnable_SmallTrash[index].Count >= spawnArea.Length)
         {
@@ -205,15 +208,68 @@ public class SpawnController : MonoBehaviour
         }
         else
         {
-            Spawned current = spawned_SmallTrash[index][0];
-            spawned_SmallTrash[index].RemoveAt(0);
-            spawnable_SmallTrash[index].Add(current);
+            for (int i = 0; i < spawnArea.Length; i++)
+            {
+                Spawned current = spawned_SmallTrash[index][0];
+                spawned_SmallTrash[index].RemoveAt(0);
+                spawnable_SmallTrash[index].Add(current);
+            }
             //spawnObject();
             for (int i = 0; i < spawnArea.Length; i++)
             {
 
                 ret = SpawnObjectInMesh(i,index);
             }
+        }
+        return ret;
+    }
+
+    public Spawned SpawnTrashArea()
+    {
+        Spawned ret = null;
+        int index = Random.Range(0, maxSpawnIndexTrashAreas);
+        SpawnSpecificTrashArea(index);
+        return ret;
+    }
+
+    public Spawned SpawnSpecificTrashArea(int index)
+    {
+        Spawned ret = null;
+        TA_SHAPES current = TA_SHAPES.Plane_Small;
+
+        SpawnedList spawnable_curList = spawnable_TrashAreas[index];
+        SpawnedList spawned_curList = spawned_TrashAreas[index];
+
+        Spawned curPopped;
+        int lastPos;
+
+        if (spawnable_curList.Count == 0)
+        {
+            lastPos = 0;
+            curPopped = spawned_curList[0];
+            spawned_curList.RemoveAt(0);
+            spawnable_curList.Add(curPopped);
+        }
+        else
+        {
+            lastPos = spawnable_TrashAreas[index].Count - 1;
+            curPopped = spawnable_curList[lastPos];
+        }
+
+        curPopped.gameObject.SetActive(true);
+        //trashAreaHandler.Spawn(current + i, spawnArea[/*Random.Range(0, spawnArea.Length)*/4], curPopped);
+        bool spawnedCorrectly = false;
+        spawnedCorrectly = trashAreaHandler.Spawn(current + index, spawnArea[Random.Range(0, spawnArea.Length)], curPopped);
+
+        if (spawnedCorrectly)
+        {
+            spawnable_curList.RemoveAt(lastPos);
+            spawned_curList.Add(curPopped);
+            ret = curPopped;
+        }
+        else if (!spawnedCorrectly)
+        {
+            curPopped.gameObject.SetActive(false);
         }
 
         return ret;
@@ -306,5 +362,36 @@ public class SpawnController : MonoBehaviour
         spawnable_SmallTrash[row].Add(current);
         spawned_SmallTrash[row].Remove(current);
 
+    }
+
+
+    public bool MoveToNewState(STATE nextState)
+    {
+        switch(nextState)
+        {
+            case STATE.NATURE:
+                maxSpawnIndexSmallTrash = 5;
+                // Dosen, Zigarettenschachteln
+                break;
+            case STATE.DECAY_START:
+                maxSpawnIndexSmallTrash = Prefabs_SmallTrash.Length;
+                TrashAreasCanSpawn = true;
+                maxSpawnIndexTrashAreas = 1;
+                // + Reifen, Metallplatten, Trashareas 1.5
+                break;
+            case STATE.DECAY_MAIN:
+                // + TrashAreas 2.0; weniger TA 1.5; weniger kleiner Müll näher an Spieler
+                maxSpawnIndexTrashAreas = 2;
+                break;
+            case STATE.TRASH_RISING:
+                // + TA 2.5;
+                maxSpawnIndexTrashAreas = 4;
+                break;
+            case STATE.FINAL:
+                // TA 3.0; fast kein kleiner Müll Mehr nur noch nahe Spieler
+                maxSpawnIndexTrashAreas = Prefabs_TrashAreas.Length;
+                break;
+        }
+        return true;
     }
 }

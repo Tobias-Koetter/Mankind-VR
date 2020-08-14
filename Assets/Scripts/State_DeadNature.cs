@@ -6,7 +6,7 @@ public class State_DeadNature : AbstractState
         NextState = null;
         Name = STATE.FINAL;
         SecondsToStateChange = GlobalSettingsManager.GetStateTime(this.Name);
-        SecondsToSpawnTrash = 2f;
+        SecondsToSpawnTrash = 0.5f;
     }
 
     public override bool EnterState()
@@ -18,7 +18,7 @@ public class State_DeadNature : AbstractState
     public override AbstractState UpdateState()
     {
         // anchor: ran out of Time in this state 
-        if (RemainingTimeInState >= SecondsToStateChange)
+        if (false)//(RemainingTimeInState >= SecondsToStateChange)
         {
             this.GameInfo.setGameOver();
         }

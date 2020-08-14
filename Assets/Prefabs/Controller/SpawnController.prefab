@@ -53,8 +53,8 @@ MonoBehaviour:
   - {fileID: 2916568504340137559, guid: 367d57a877381824295681d79c0cb55e, type: 3}
   - {fileID: 1154864684, guid: 798bbcc5a9c8a954fb72f302aa18ebc1, type: 3}
   - {fileID: 7572959833248099075, guid: 7fa3587d535b62c468db85cad941678e, type: 3}
-  - {fileID: 40944900690695754, guid: 8246fc8fc72b0aa4297ea079d0fe6eda, type: 3}
   - {fileID: 4025080652223132066, guid: 12a3144eef411364696d8ffadf69f501, type: 3}
+  - {fileID: 40944900690695754, guid: 8246fc8fc72b0aa4297ea079d0fe6eda, type: 3}
   - {fileID: 4732682004629960372, guid: a476ee1bc77001b4ca4801ab09af0728, type: 3}
   - {fileID: 6582783042647933900, guid: fb18d8e5a1557044cb5f4487151c79d2, type: 3}
   spawnable_SmallTrash: []

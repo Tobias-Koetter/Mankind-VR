@@ -10,7 +10,7 @@ public class State_MainDecay : AbstractState
         NextState = new State_TrashRising(info);
         Name = STATE.DECAY_MAIN;
         SecondsToStateChange = GlobalSettingsManager.GetStateTime(this.Name);
-        this.SecondsToSpawnTrash = 3f;  
+        this.SecondsToSpawnTrash = 1.5f;  
     }
 
     public override bool EnterState()

@@ -14,7 +14,7 @@ public class State_StartDecay : AbstractState
         NextState = new State_MainDecay(info);
         Name = STATE.DECAY_START;
         SecondsToStateChange = GlobalSettingsManager.GetStateTime(this.Name);
-        this.SecondsToSpawnTrash = 3f;
+        this.SecondsToSpawnTrash = 2f;
     }
     // override because in need for tracking the state entrance time.
     public override bool EnterState()
