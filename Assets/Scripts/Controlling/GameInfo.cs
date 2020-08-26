@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Boo.Lang;
+using System;
+using System.Dynamic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -8,6 +11,7 @@ public class GameInfo : MonoBehaviour
 {
     public STATE currentState;
     public Text debugInfo;
+    public static bool menuOpen;
     public float totalTime;
     private bool DebugMode;
     private bool isjumpingTime = false;
@@ -17,7 +21,10 @@ public class GameInfo : MonoBehaviour
     public StageChanging changer;
     private LevelBalancing balancer;
     public FiniteStateMachine fsm;
-    private int lastInt = -1;
+    public Canvas canvas;
+    private MenuButtonController mBC;
+    private static List<IPauseListener> listener;
+    public static void AddPauseListener(IPauseListener iPL) { listener.Add(iPL); iPL.UpdateListener(menuOpen); }
 
     public float Timer{ get; private set; }
     private int numberOfStates;
@@ -27,10 +34,16 @@ public class GameInfo : MonoBehaviour
 
     public float spentSecondsIngame => totalTime - Timer;
 
-    public void setGameOver() { gameOverFlag = true; }
+    public void setGameOver() 
+    { 
+        gameOverFlag = true;
+        mBC.StartLoading(0);
+
+    }
 
     private void Awake() 
     {
+        listener = new List<IPauseListener>();
         totalTime = 0f;
         totalTime += GlobalSettingsManager.GetTotalGameTime();
         currentState = GlobalSettingsManager.firstState;
@@ -48,10 +61,22 @@ public class GameInfo : MonoBehaviour
         {
             debugInfo.gameObject.SetActive(false);
         }
+
+        mBC = canvas.GetComponent<MenuButtonController>();
+        menuOpen = mBC.inMenu;
+
     }
 
     private void Update()
     {
+        if(menuOpen != mBC.inMenu)
+        {
+            menuOpen = mBC.inMenu;
+            foreach(IPauseListener iPL in listener)
+            {
+                iPL.UpdateListener(menuOpen);
+            }
+        }
         //if (Timer > 0f)
         {
             AbstractState current = fsm.currentState;

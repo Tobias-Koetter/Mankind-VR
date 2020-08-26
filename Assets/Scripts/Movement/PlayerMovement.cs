@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour , IPauseListener
 {
     public CharacterController controller;
 
@@ -16,42 +16,61 @@ public class PlayerMovement : MonoBehaviour
     float currentSpeed = 0f;
     bool isGrounded;
     bool isSprinting;
+    bool inMenu;
+
+    void Start()
+    {
+        AddToController();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        isSprinting = Input.GetButton("Sprint");
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-
-        if(isGrounded && velocity.y < 0)
+        if (!inMenu)
         {
-            velocity.y = -2f;
+            isSprinting = Input.GetButton("Sprint");
+            isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+
+            if (isGrounded && velocity.y < 0)
+            {
+                velocity.y = -2f;
+            }
+
+            if (isSprinting)
+            {
+                currentSpeed = baseSpeed * 2;
+            }
+            else
+            {
+                currentSpeed = baseSpeed;
+            }
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
+
+
+            Vector3 move = transform.right * x + transform.forward * z;
+
+            controller.Move(move * currentSpeed * Time.deltaTime);
+
+            if (Input.GetButtonDown("Jump") && isGrounded)
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            }
+
+            velocity.y += gravity * Time.deltaTime;
+
+            controller.Move(velocity * Time.deltaTime);
         }
+    }
 
-        if(isSprinting)
-        {
-            currentSpeed = baseSpeed * 2;
-        }
-        else
-        {
-            currentSpeed = baseSpeed;
-        }
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-        
+    public void AddToController()
+    {
+        GameInfo.AddPauseListener(this);
+    }
 
-        Vector3 move = transform.right * x + transform.forward * z;
-
-        controller.Move(move * currentSpeed * Time.deltaTime);
-
-        if(Input.GetButtonDown("Jump") && isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
-
-        velocity.y += gravity * Time.deltaTime;
-
-        controller.Move(velocity * Time.deltaTime);
+    public void UpdateListener(bool newListenerValue)
+    {
+        inMenu = newListenerValue;
     }
 }

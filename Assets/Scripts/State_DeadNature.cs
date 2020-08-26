@@ -18,7 +18,7 @@ public class State_DeadNature : AbstractState
     public override AbstractState UpdateState()
     {
         // anchor: ran out of Time in this state 
-        if (false)//(RemainingTimeInState >= SecondsToStateChange)
+        if (RemainingTimeInState >= SecondsToStateChange)
         {
             this.GameInfo.setGameOver();
         }
