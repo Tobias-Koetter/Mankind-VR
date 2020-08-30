@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7902048671191015980}
   m_Layer: 9
   m_Name: SpawnController
-  m_TagString: Small Trash
+  m_TagString: Spawning
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +46,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   center:
   - {fileID: 0}
-  totalNrCopies: 100
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  totalNrCopies: 200
   maxSpawnRadius: 40
   minSpawnRadius: 0
   Prefabs_SmallTrash:

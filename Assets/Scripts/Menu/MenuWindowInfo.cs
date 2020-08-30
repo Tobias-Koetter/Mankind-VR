@@ -30,7 +30,7 @@ public class MenuWindowInfo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ownNotClickable != null)
+        if (ownNotClickable.Length > 0)
         {
             if(!isActive && ownNotClickable[0].enabled == true)
             {

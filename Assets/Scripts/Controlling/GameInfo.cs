@@ -69,7 +69,11 @@ public class GameInfo : MonoBehaviour
 
     private void Update()
     {
-        if(menuOpen != mBC.inMenu)
+        if (!TrashSpawner)
+        {
+            TrashSpawner = FindObjectOfType<SpawnController>();
+        }
+        if (menuOpen != mBC.inMenu)
         {
             menuOpen = mBC.inMenu;
             foreach(IPauseListener iPL in listener)

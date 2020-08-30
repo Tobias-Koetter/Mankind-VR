@@ -9,6 +9,7 @@ TagManager:
   - Small Trash
   - Tree
   - TreeLogic
+  - Spawning
   layers:
   - Default
   - TransparentFX
