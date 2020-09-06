@@ -26,4 +26,9 @@ public class PoI : MonoBehaviour
         }
         return base.Equals(other);
     }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
 }

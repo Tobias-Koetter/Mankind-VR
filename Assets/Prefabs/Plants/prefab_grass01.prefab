@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9725a5d5c74603e4c840e1b0e5b17d96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Renderer: {fileID: 0}
+  Renderer:
+  - {fileID: 8028077977313620066}
+  - {fileID: 1379936903535825404}
   pointer: 0
 --- !u!1001 &4688907145720249142
 PrefabInstance:
@@ -113,11 +115,28 @@ PrefabInstance:
       propertyPath: m_Name
       value: mesh_Grass01
       objectReference: {fileID: 0}
+    - target: {fileID: 3269310860309557161, guid: eb90268cae4eb6948975da631aef4e56,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb90268cae4eb6948975da631aef4e56, type: 3}
 --- !u!4 &317764333371887660 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: eb90268cae4eb6948975da631aef4e56,
+    type: 3}
+  m_PrefabInstance: {fileID: 4688907145720249142}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8028077977313620066 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -5874050341945210028, guid: eb90268cae4eb6948975da631aef4e56,
+    type: 3}
+  m_PrefabInstance: {fileID: 4688907145720249142}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1379936903535825404 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5923602924726299338, guid: eb90268cae4eb6948975da631aef4e56,
     type: 3}
   m_PrefabInstance: {fileID: 4688907145720249142}
   m_PrefabAsset: {fileID: 0}

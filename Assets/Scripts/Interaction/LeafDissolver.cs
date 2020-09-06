@@ -70,7 +70,7 @@ public class LeafDissolver : MonoBehaviour
     {
         if (dir)
         {
-            if(currentActive.CheckAnyRendererIsVisible(false))
+            if(currentActive != null && currentActive.CheckAnyRendererIsVisible(false))
             {
                 value = 1f;
                 isDissolving = false;
@@ -89,7 +89,7 @@ public class LeafDissolver : MonoBehaviour
         }
         else if (!dir)
         {
-            if (currentActive.CheckAnyRendererIsVisible(false))
+            if (currentActive != null && currentActive.CheckAnyRendererIsVisible(false))
             {
                 value = 0f;
                 isDissolving = false;

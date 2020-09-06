@@ -34,7 +34,7 @@ public class State_MainDecay : AbstractState
         if (!SpawnTrashOverTime()                                                           // If the normal SpawnOverTime logic takes place, skip this step
             && (LastBalanceInState() >= timeBetweenBalancing || lastbaBalanceUpdate < 0f))  // Check if enough time has elapsed since last Balance spawn. Or its the first Balance spawn
         {
-            Debug.Log("Balancing is triggered");
+            //Debug.Log("Balancing is triggered");
             if (LevelBalancing.GetBalanceVariance() < 0f)    // Check if there is need for Balance | Look up description in LevelBalancing Class for more info
 
             {

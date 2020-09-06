@@ -3,12 +3,12 @@ using UnityEngine.Analytics;
 
 public class Grass : MonoBehaviour
 {
-    public MeshRenderer Renderer;
+    public MeshRenderer[] Renderer;
     public float CurrentStage { get; protected set; } = 0f;
     [Range(0,2)]
     public int pointer = 0;
     private float[] stageValues = new float[] {0f,0.5f,1f,1.5f,2f};
-    private Material changingGrass;
+    private Material[] changingGrass;
     private float lerp_start = -1f;
     private float lerp_end = -1f;
     private bool inLerp;
@@ -16,9 +16,15 @@ public class Grass : MonoBehaviour
 
     void Awake()
     {
-        changingGrass = Renderer.materials[0];
         CurrentStage = stageValues[pointer];
-        changingGrass.SetFloat("StageValue", CurrentStage);
+
+        changingGrass = new Material[Renderer.Length];
+        for (int i = 0; i < Renderer.Length; i++)
+        {
+            changingGrass[i] = Renderer[i].materials[0];
+            changingGrass[i].SetFloat("StageValue", CurrentStage);
+        }
+
         inLerp = false;
         personalSpeed = Random.Range(0.09f, 0.3f);
     }
@@ -52,7 +58,16 @@ public class Grass : MonoBehaviour
         }
         else */if(inLerp)
         {
-            if (!Renderer.isVisible)
+            bool isVisible = false;
+            foreach(MeshRenderer m in Renderer)
+            {
+                if(m.isVisible)
+                {
+                    isVisible = true;
+                    break;
+                }
+            }
+            if (isVisible)
             {
                 CurrentStage = lerp_end;
                 lerp_end = -1f;
@@ -71,7 +86,10 @@ public class Grass : MonoBehaviour
                     inLerp = false;
                 }
             }
-            changingGrass.SetFloat("StageValue", CurrentStage);
+            foreach(Material m in changingGrass)
+            {
+                m.SetFloat("StageValue", CurrentStage);
+            }
         }
     }
 

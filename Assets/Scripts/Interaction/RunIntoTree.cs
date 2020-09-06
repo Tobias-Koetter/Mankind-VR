@@ -35,11 +35,28 @@ public class RunIntoTree : MonoBehaviour
                 {
                     break;
                 }
-                Interactable parent = GlobalMethods.FindParentWithTag(c.gameObject, "TreeLogic")?.GetComponent<Interactable>();
-                if(parent is Trees tree && c.name.EndsWith("0"))
+                if (c.gameObject.layer == LayerMask.NameToLayer("PoI"))
                 {
-                    tree.Controller.handleTreeDestroy(tree);
-                    lastTreeCollisions.Add(c);
+                    PoI parent = GlobalMethods.FindParentWithTag(c.gameObject, "PoI")?.GetComponent<PoI>();
+                    if(parent is FallenBigTree fallen)
+                    {
+                        BrokenTreePart brokenPart = c.gameObject.GetComponent<BrokenTreePart>();
+                        if(brokenPart.Alive)
+                        {
+                            fallen.DestroyPart(brokenPart);
+                            lastTreeCollisions.Add(c);
+                        }
+
+                    }
+                }
+                else if (c.gameObject.layer == LayerMask.NameToLayer("Interactable"))
+                {
+                    Interactable parent = GlobalMethods.FindParentWithTag(c.gameObject, "TreeLogic")?.GetComponent<Interactable>();
+                    if (parent is Trees tree && c.name.EndsWith("0"))
+                    {
+                        tree.Controller.handleTreeDestroy(tree);
+                        lastTreeCollisions.Add(c);
+                    }
                 }
             }
             Collider[] tempCopy = lastTreeCollisions.ToArray();
