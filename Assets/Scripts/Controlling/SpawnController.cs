@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using UnityEditor.Rendering;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -25,6 +25,7 @@ public class SpawnedList
 
 public class SpawnController : MonoBehaviour
 {
+    public bool VisibleDebug;
     public Transform[] center;
     private MeshFilter[] spawnArea;
     public int totalNrCopies = 100;
@@ -117,7 +118,7 @@ public class SpawnController : MonoBehaviour
         /*
          * Prepare 
          */
-        trashAreaHandler = new SpawnTrashArea();
+        trashAreaHandler = new SpawnTrashArea(VisibleDebug);
 
         // Create jagged Arrays for TrashArea Pooling
         spawnable_TrashAreas = new SpawnedList[Prefabs_TrashAreas.Length];
@@ -259,10 +260,11 @@ public class SpawnController : MonoBehaviour
         curPopped.gameObject.SetActive(true);
         //trashAreaHandler.Spawn(current + i, spawnArea[/*Random.Range(0, spawnArea.Length)*/4], curPopped);
         bool spawnedCorrectly = false;
-        spawnedCorrectly = trashAreaHandler.Spawn(current + index, spawnArea[Random.Range(0, spawnArea.Length)], curPopped);
+        spawnedCorrectly = trashAreaHandler.Spawn(current + index, spawnArea[Random.Range(0, spawnArea.Length)], curPopped,Random.Range(100,160));
 
         if (spawnedCorrectly)
         {
+            StartCoroutine(GrowToSize(curPopped));
             spawnable_curList.RemoveAt(lastPos);
             spawned_curList.Add(curPopped);
             ret = curPopped;
@@ -274,41 +276,7 @@ public class SpawnController : MonoBehaviour
 
         return ret;
     }
-    /*
-    private void spawnObject()
-    {
 
-        // Spawn Object in a Circle around the set Spawnpoint with fixed y-Axis Value
-        // Center = spawnPoint
-        // Radius = between minRadius and maxRadius (min/max Distance to the player)
-
-
-        // Find Random radius size between possible min and max
-        float curRadius = Random.Range(minSpawnRadius, maxSpawnRadius);
-
-        /* -[Create Position behind Player]
-         *   Find random vector on a unit Circle border and put it in a Vector3
-         *   Random.insideUnitCircle returns Point inside a unit Circle and when normalized its placed on the borderline of the unit circle
-         *   is facing (negative forward vector + created random direction)
-         *   The calculated spawn should be behind the player, so he doesn't see the spawn.
-         *
-        
-        Vector2 posXZ = Random.insideUnitCircle.normalized;
-        Vector3 randDir = new Vector3(posXZ.x, 0f, posXZ.y);
-        Vector3 tempPoint = center[0].position + ((-center[0].forward + randDir).normalized * curRadius);
-        tempPoint.y = center[0].position.y + offsetY;
-        Quaternion tempRotation = Random.rotation;
-
-
-        // Object gets picked out of the SpawnPool and its components get reset for scene interaction
-        Spawned current = spawnable_SmallTrash[Random.Range(0, spawnable_SmallTrash.Count)];
-        current.gameObject.transform.position = tempPoint;
-        current.gameObject.transform.rotation = tempRotation;
-        current.gameObject.SetActive(true);
-
-        spawnable_SmallTrash.Remove(current);
-        spawned_SmallTrash.Add(current);
-    }*/
 
     private Spawned SpawnObjectInMesh(int index, int trashArrayPos)
     {
@@ -393,5 +361,20 @@ public class SpawnController : MonoBehaviour
                 break;
         }
         return true;
+    }
+
+    IEnumerator GrowToSize(Spawned currentPlaced)
+    {
+        currentPlaced.transform.localScale = Vector3.zero;
+        Vector3 growing = Vector3.zero;
+        for (float i = 0.02f; i <= 1f; i += 0.05f)
+        {
+            growing = Vector3.one * i;
+            Debug.Log("growing: " + growing+"/ i: "+i);
+            currentPlaced.transform.localScale = growing;
+            yield return new WaitForFixedUpdate();
+        }
+        currentPlaced.transform.localScale = Vector3.one;
+        yield return null;
     }
 }

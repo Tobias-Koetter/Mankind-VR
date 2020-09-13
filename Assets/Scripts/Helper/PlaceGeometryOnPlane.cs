@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Dynamic;
+using UnityEngine;
 
 
 public class PlaceGeometryOnPlane
@@ -29,8 +31,11 @@ public class PlaceGeometryOnPlane
     private Vector3 curNormal;
     public int rotationNumber;
 
-    public PlaceGeometryOnPlane(LayerMask mask)
+
+    public PlaceGeometryOnPlane(LayerMask mask) : this(mask, false) { }
+    public PlaceGeometryOnPlane(LayerMask mask, bool debug)
     {
+        inDebug = debug;
         SetUp(mask);
     }
 
@@ -58,8 +63,9 @@ public class PlaceGeometryOnPlane
     /// It is needed to initialize the rotation of the Sphere 
     /// at the beginning of the placement process (the Y-Axis gets alligned to the normal vector)
     /// </param>
-    public void PlaceSphere(Vector3 pointOnPlane, Vector3 normalOfPlane, Spawned sphereToPlace)
+    public void PlaceSphere(Vector3 pointOnPlane, Vector3 normalOfPlane, Spawned sphereToPlace,int percentage)
     {
+        visiblePercentage = percentage;
         this.sphere = sphereToPlace.gameObject;
         this.sphereMesh = sphereToPlace.meshFltr;
         sphere.transform.position = pointOnPlane;
@@ -111,8 +117,9 @@ public class PlaceGeometryOnPlane
 
     #region PlaceCube
 
-    public void PlaceCube(Vector3 pointOnPlane, Vector3 normalOfPlane, Spawned cubeToPlace)
+    public void PlaceCube(Vector3 pointOnPlane, Vector3 normalOfPlane, Spawned cubeToPlace, int percentage)
     {
+        visiblePercentage = percentage;
         this.cube = cubeToPlace.gameObject;
         this.cubeMesh = cubeToPlace.meshFltr;
         cube.transform.position = pointOnPlane;
@@ -140,30 +147,30 @@ public class PlaceGeometryOnPlane
         forward = cube.transform.InverseTransformDirection(forward);
         Vector3 right = cube.transform.right;
         right = cube.transform.InverseTransformDirection(right);
-
+        float rand = Random.Range(-90f, -40f);
         if (rotationNumber == 1)
         {
             // Do Nothing
         }
         else if (rotationNumber == 2)
         {
-            cube.transform.Rotate(right, -90f);
+            cube.transform.Rotate(right, rand);
         }
         else if (rotationNumber == 3)
         {
-            cube.transform.Rotate(forward, 90f);
+            cube.transform.Rotate(forward, rand);
         }
         else if (rotationNumber == 4)
         {
-            cube.transform.Rotate(right, 90f);
+            cube.transform.Rotate(right, rand);
         }
         else if (rotationNumber == 5)
         {
-            cube.transform.Rotate(forward, -90f);
+            cube.transform.Rotate(forward, rand);
         }
         else if (rotationNumber == 6)
         {
-            cube.transform.Rotate(forward, 180f);
+            cube.transform.Rotate(forward, 90f-rand);
         }
     }
 
@@ -249,8 +256,9 @@ public class PlaceGeometryOnPlane
 
     #region PlaceCylinder
 
-    public void PlaceCylinder(Vector3 pointOnPlane, Vector3 normalOfPlane, Spawned cylinderToPlace)
+    public void PlaceCylinder(Vector3 pointOnPlane, Vector3 normalOfPlane, Spawned cylinderToPlace, int percentage)
     {
+        visiblePercentage = percentage;
         this.cylinder = cylinderToPlace.gameObject;
         this.cylinderMesh = cylinderToPlace.meshFltr;
         cylinder.transform.position = pointOnPlane;
@@ -280,6 +288,7 @@ public class PlaceGeometryOnPlane
         forward = cylinder.transform.InverseTransformDirection(forward);
         Vector3 right = cylinder.transform.right;
         right = cylinder.transform.InverseTransformDirection(right);
+        float rand = Random.Range(-90f, -40f);
 
         if (rotationNumber == 1)
         {
@@ -287,11 +296,11 @@ public class PlaceGeometryOnPlane
         }
         else if (rotationNumber == 2)
         {
-            cylinder.transform.Rotate(right, -90f);
+            cylinder.transform.Rotate(right, rand);
         }
         else if (rotationNumber == 3)
         {
-            cylinder.transform.Rotate(right, 180f);
+            cylinder.transform.Rotate(right, 90f-rand);
         }
 
 
@@ -347,8 +356,9 @@ public class PlaceGeometryOnPlane
 
     #region PlacePlane
 
-    public void PlacePlane(Vector3 pointOnPlane, Vector3 normalOfPlane, Spawned planeToPlace)
+    public void PlacePlane(Vector3 pointOnPlane, Vector3 normalOfPlane, Spawned planeToPlace, int percentage)
     {
+        visiblePercentage = percentage;
         this.plane = planeToPlace.gameObject;
         this.planeMesh = planeToPlace.meshFltr;
         plane.transform.position = pointOnPlane;
