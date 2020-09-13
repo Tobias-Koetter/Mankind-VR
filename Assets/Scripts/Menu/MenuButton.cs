@@ -27,6 +27,8 @@ public class MenuButton: MonoBehaviour
     [SerializeField] MenuWindowInfo nextMenuWindow;
     [SerializeField] int nextSceneIndex;
 
+    bool mouseClicked = false;
+
     private ButtonChilds bC;
 
     public void Awake()
@@ -60,7 +62,7 @@ public class MenuButton: MonoBehaviour
             if (menuButtonController.index == thisIndex)
             {
                 animator.SetBool("selected", true);
-                if (Input.GetAxis("Submit") == 1)
+                if (Input.GetAxis("Submit") == 1 || mouseClicked)
                 {
                     animator.SetBool("pressed", true);
                 }
@@ -86,24 +88,29 @@ public class MenuButton: MonoBehaviour
         }
     }
 
-    private void OnClick()
+    public void OnClick()
     {
-        switch(type)
+        
+        if (menuButtonController.index == thisIndex)
         {
-            case BUTTON_TYPE.START:
-                menuButtonController.StartLoading(nextSceneIndex);
-                break;
-            case BUTTON_TYPE.END:
-                Debug.Log("I Quit!");
-                Application.Quit();
-                break;
-            case BUTTON_TYPE.IN_MENU:
-                this.animatorFunctions.disableOnce = false;
-                StartCoroutine(menuButtonController.SwitchToWindow(nextMenuWindow));
-                break;
-            case BUTTON_TYPE.RESUME_GAME:
-                menuButtonController.PauseGame(false);
-                break;
+            
+            switch (type)
+            {
+                case BUTTON_TYPE.START:
+                    menuButtonController.StartLoading(nextSceneIndex);
+                    break;
+                case BUTTON_TYPE.END:
+                    Debug.Log("I Quit!");
+                    Application.Quit();
+                    break;
+                case BUTTON_TYPE.IN_MENU:
+                    this.animatorFunctions.disableOnce = false;
+                    StartCoroutine(menuButtonController.SwitchToWindow(nextMenuWindow));
+                    break;
+                case BUTTON_TYPE.RESUME_GAME:
+                    menuButtonController.PauseGame(false);
+                    break;
+            }
         }
     }
 
@@ -112,5 +119,26 @@ public class MenuButton: MonoBehaviour
         bC.IsActive = !value;
         //bC.Image.enabled = !value;
         //bC.Text.enabled = !value;
+    }
+
+    public void MouseHoverEvent()
+    {
+        menuButtonController.UpdateActiveIndex(thisIndex);
+    }
+    public void MouseClick()
+    {
+        if(animator.GetBool("selected"))
+        {
+            mouseClicked = true;
+        }
+        
+    }
+    public void OnMouseDown()
+    {
+        mouseClicked = true;
+    }
+    public void OnMouseUp()
+    {
+        mouseClicked = false;
     }
 }

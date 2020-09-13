@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.PlayerLoop;
+
 [RequireComponent(typeof(AudioSource))]
 public class MenuButtonController : MonoBehaviour
 {
@@ -10,14 +13,18 @@ public class MenuButtonController : MonoBehaviour
     [SerializeField]
     private Loading loading;
     public MenuCamMovement cam;
-    [SerializeField] bool keyDown;
-    [SerializeField] int maxIndex;
+    [SerializeField]
+    bool keyDown;
+    [SerializeField]
+    int maxIndex;
+    bool cursorLocked;
     public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        cursorLocked = true;
     }
 
     // Update is called once per frame
@@ -25,6 +32,11 @@ public class MenuButtonController : MonoBehaviour
     {
         if (inMenu)
         {
+            if (cursorLocked)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                cursorLocked = false;
+            }
             if (Input.GetAxis("Vertical") != 0)
             {
                 if (!keyDown)
@@ -62,12 +74,22 @@ public class MenuButtonController : MonoBehaviour
         }
         else
         {
+            if(!cursorLocked)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                cursorLocked = true;
+            }
             if(Input.GetKeyDown(KeyCode.Escape))
             {
                 PauseGame(true);
             }
 
         }
+    }
+
+    public void UpdateActiveIndex(int index)
+    {
+        this.index = index;
     }
 
     public IEnumerator SwitchToWindow(MenuWindowInfo next)
