@@ -7,7 +7,7 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Weeds01
+      name: Material.006
     second: {fileID: 2100000, guid: db367f4f99247a545b51dd8744da8b42, type: 2}
   materials:
     materialImportMode: 1
