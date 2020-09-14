@@ -12,6 +12,7 @@ public class State_DeadNature : AbstractState
     public override bool EnterState()
     {
         base.EnterState();
+        GameInfo.animatorGlobalVolume.SetBool("ToTwo", true);
         return true;
     }
 

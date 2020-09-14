@@ -18,6 +18,7 @@ public class State_MainDecay : AbstractState
         base.EnterState();
         lastbaBalanceUpdate = -1f;
         timeBetweenBalancing = 2f;
+        GameInfo.animatorGlobalVolume.SetBool("ToOne", true);
         return true;
     }
 

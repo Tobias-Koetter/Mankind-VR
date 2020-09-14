@@ -22,6 +22,7 @@ public class GameInfo : MonoBehaviour
     private LevelBalancing balancer;
     public FiniteStateMachine fsm;
     public Canvas canvas;
+    public Animator animatorGlobalVolume;
     private MenuButtonController mBC;
     private static List<IPauseListener> listener;
     public static void AddPauseListener(IPauseListener iPL) { listener.Add(iPL); iPL.UpdateListener(menuOpen); }
