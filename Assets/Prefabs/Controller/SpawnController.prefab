@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a285595e11d0047824e05fb991a99d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  VisibleDebug: 0
   center:
   - {fileID: 0}
   - {fileID: 0}
@@ -76,6 +77,8 @@ MonoBehaviour:
   - {fileID: 4888930615630362427, guid: 8fab74a59f807d64a8aec21a04135777, type: 3}
   spawnable_TrashAreas: []
   spawned_TrashAreas: []
+  DirtThrow: {fileID: 3068222819834430908, guid: 009efe0427904714ca2a1eb44e9e6099,
+    type: 3}
 --- !u!114 &7902048671191015980
 MonoBehaviour:
   m_ObjectHideFlags: 0

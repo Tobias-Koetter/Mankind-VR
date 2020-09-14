@@ -72,8 +72,9 @@ MonoBehaviour:
     et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
     sanctus est Lorem ipsum dolor sit amet.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9cde5caeecf3d7845b79f3adbd83c6f8, type: 2}
+  m_sharedMaterial: {fileID: 125430995703692030, guid: 9cde5caeecf3d7845b79f3adbd83c6f8,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -115,7 +116,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 499
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -144,7 +145,7 @@ MonoBehaviour:
     spaceCount: 99
     wordCount: 100
     linkCount: 0
-    lineCount: 18
+    lineCount: 20
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -334,6 +335,3 @@ MonoBehaviour:
   ownWindow: {fileID: 0}
   animator: {fileID: 1014477372678522604}
   animatorFunctions: {fileID: 900625936042003847}
-  thisIndex: 0
-  nextMenuWindow: {fileID: 0}
-  nextSceneIndex: 0

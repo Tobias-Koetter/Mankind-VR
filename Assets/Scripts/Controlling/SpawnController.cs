@@ -38,6 +38,9 @@ public class SpawnController : MonoBehaviour
     public Spawned[] Prefabs_TrashAreas;
     public SpawnedList[] spawnable_TrashAreas;
     public SpawnedList[] spawned_TrashAreas;
+    public ParticleSystem DirtThrow;
+
+    //private ParticleSystem dTInstance;
 
     private SpawnTrashArea trashAreaHandler;
     private KeyCode[] codes;
@@ -110,7 +113,9 @@ public class SpawnController : MonoBehaviour
             SpawnedList spawned_temp = new SpawnedList();
             spawned_SmallTrash[i] = spawned_temp;
         }
-
+        /*dTInstance = GameObject.Instantiate(DirtThrow);
+        dTInstance.transform.position = Vector3.up * -10f;
+        dTInstance.Stop();*/
 
         codes = new KeyCode[] { KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5};
 
@@ -365,16 +370,47 @@ public class SpawnController : MonoBehaviour
 
     IEnumerator GrowToSize(Spawned currentPlaced)
     {
+        // Mögliche Erweiterung: 
+        //   -> Object wächst aus Mitte heraus zu voller Größe...
+        /*
         currentPlaced.transform.localScale = Vector3.zero;
         Vector3 growing = Vector3.zero;
         for (float i = 0.02f; i <= 1f; i += 0.05f)
         {
             growing = Vector3.one * i;
-            Debug.Log("growing: " + growing+"/ i: "+i);
+            //Debug.Log("growing: " + growing+"/ i: "+i);
             currentPlaced.transform.localScale = growing;
             yield return new WaitForFixedUpdate();
         }
         currentPlaced.transform.localScale = Vector3.one;
+        <-... bis hier. */
+
+        Vector3 posTarget = currentPlaced.transform.position;
+        Vector3 posStart = posTarget - Vector3.up*2f;
+        Vector3 posCur = posStart;
+        Vector3 help = Vector3.zero;
+
+        ParticleSystem dTInstance = GameObject.Instantiate(DirtThrow);
+        dTInstance.transform.position = currentPlaced.transform.position;
+        dTInstance.transform.Translate(Vector3.up * 0.03f);
+
+        currentPlaced.transform.position = posCur;
+
+        dTInstance.Play();
+        for(float value = 0f; value <= 1f; value+= Time.deltaTime* 1f)
+        {
+            help.y = (1 - value) * posStart.y + value * posTarget.y;
+            help.x = posCur.x;
+            help.z = posCur.z;
+
+            posCur = help;
+            currentPlaced.transform.position = posCur;
+            yield return new WaitForFixedUpdate();
+        }
+        currentPlaced.transform.position = posTarget;
+        Destroy(dTInstance.transform.GetChild(0).gameObject);
+        yield return new WaitForSeconds(4f);
+        Destroy(dTInstance);
         yield return null;
     }
 }

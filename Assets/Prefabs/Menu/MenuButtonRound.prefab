@@ -138,8 +138,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Back
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9cde5caeecf3d7845b79f3adbd83c6f8, type: 2}
+  m_sharedMaterial: {fileID: 125430995703692030, guid: 9cde5caeecf3d7845b79f3adbd83c6f8,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -281,10 +282,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f97270099af0e264f8debc73aba38a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   menuButtonController: {fileID: 0}
+  ownWindow: {fileID: 0}
   animator: {fileID: 159750084297235222}
   animatorFunctions: {fileID: 25900736743559293}
   thisIndex: 0
+  nextMenuWindow: {fileID: 0}
+  nextSceneIndex: 0
 --- !u!222 &4593375173241589125
 CanvasRenderer:
   m_ObjectHideFlags: 0
