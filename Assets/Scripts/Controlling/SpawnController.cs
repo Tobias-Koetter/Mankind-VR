@@ -410,7 +410,8 @@ public class SpawnController : MonoBehaviour
         currentPlaced.transform.position = posTarget;
         Destroy(dTInstance.transform.GetChild(0).gameObject);
         yield return new WaitForSeconds(4f);
-        Destroy(dTInstance);
+
+        Destroy(dTInstance.gameObject);
         yield return null;
     }
 }
