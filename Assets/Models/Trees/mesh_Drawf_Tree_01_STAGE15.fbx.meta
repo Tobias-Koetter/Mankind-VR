@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: 8aad3a34b1e6e014a9f629a2881111f5
+guid: b5156ef5fc0f9a64a8271c63a4bafbc2
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "Bl\xE4tter"
+    second: {fileID: 2100000, guid: f8b16352134fa094c83a19906d9554a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stamm
+    second: {fileID: 2100000, guid: 2aef418c7dac55146acbde4f0f04c95d, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -36,7 +46,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importVisibility: 1

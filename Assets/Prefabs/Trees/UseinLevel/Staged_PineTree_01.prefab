@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5309532937517469919}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stage2_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,6 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leaves: {fileID: 0}
   isDissolving: 0
+  currentActive: {fileID: 0}
 --- !u!1001 &1280430787427335535
 PrefabInstance:
   m_ObjectHideFlags: 0
