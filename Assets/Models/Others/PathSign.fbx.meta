@@ -8,14 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Board
-    second: {fileID: -7019844998633843185, guid: d58c07165adcb07459ca38cc7cc30a7c,
-      type: 3}
+    second: {fileID: 2100000, guid: 63ee5a9dd25651e4c9ca40128db45500, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Stick
-    second: {fileID: 3291926621068253372, guid: d58c07165adcb07459ca38cc7cc30a7c,
-      type: 3}
+    second: {fileID: 2100000, guid: 9376a43f861e9c842bc4d741de39614b, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
