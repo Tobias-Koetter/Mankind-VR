@@ -34,6 +34,7 @@ public class MenuButtonController : MonoBehaviour
         {
             if (cursorLocked)
             {
+                Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
                 cursorLocked = false;
             }
@@ -76,6 +77,7 @@ public class MenuButtonController : MonoBehaviour
         {
             if(!cursorLocked)
             {
+                Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
                 cursorLocked = true;
             }
