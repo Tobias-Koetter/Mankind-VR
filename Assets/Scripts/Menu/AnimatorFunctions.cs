@@ -11,7 +11,7 @@ public class AnimatorFunctions : MonoBehaviour
     {
         if(!disableOnce)
         {
-            menuButtonController.audioSource.PlayOneShot(whichSound);
+            menuButtonController.audioSource.PlayOneShot(whichSound,0.3f);
         }
         else
         {
