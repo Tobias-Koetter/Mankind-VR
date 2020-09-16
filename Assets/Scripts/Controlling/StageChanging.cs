@@ -28,9 +28,18 @@ public class StageChanging : MonoBehaviour
     public Transform Water;
     public float water_HighMark;
     public float water_LowMark;
+    [Header("River Values")]
+    public Transform river;
+    public float river_HighMark;
+    public float river_LowMark;
 
+    // Used for moving Lake plane down
     private Vector3 waterVector_50Percent;
     private Vector3 waterVector_66Percent;
+
+    // Used for moving river plane down
+    private Vector3 riverVector_50Percent;
+    private Vector3 riverVector_66Percent;
 
     [Header("Ground Values")]
     public Ground ground;
@@ -48,6 +57,7 @@ public class StageChanging : MonoBehaviour
 
     void Start()
     {
+        // Calculate Vectors for the Lake
         float waterMark_66Percent;
         float waterMark_50Percent;
         float absoluteWaterRange = Mathf.Abs(water_HighMark) + Mathf.Abs(water_LowMark);
@@ -59,6 +69,17 @@ public class StageChanging : MonoBehaviour
         waterVector_66Percent = new Vector3(pos.x, waterMark_66Percent, pos.z);
         pos.Set(pos.x,water_HighMark,pos.z);
         Water.position = pos;
+
+        // Calculate Vectors for the River
+        absoluteWaterRange = Mathf.Abs(river_HighMark) + Mathf.Abs(river_LowMark);
+        waterMark_50Percent = river_HighMark - (absoluteWaterRange / 2);
+        waterMark_66Percent = river_HighMark - (absoluteWaterRange / 3);
+
+        pos = river.position;
+        riverVector_50Percent = new Vector3(pos.x, waterMark_50Percent, pos.z);
+        riverVector_66Percent = new Vector3(pos.x, waterMark_66Percent, pos.z);
+        pos.Set(pos.x, river_HighMark, pos.z);
+        river.position = pos;
 
         parentContainer = new GrassParentContainer[grassParent.Length];
         for(int i = 0; i < grassParent.Length; i++)
