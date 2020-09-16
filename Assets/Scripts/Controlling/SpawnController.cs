@@ -153,24 +153,27 @@ public class SpawnController : MonoBehaviour
 
     void Update()
     {
-        if (Input.anyKeyDown)
+        if (GlobalSettingsManager.debugActive)
         {
-            if (Input.GetKeyDown(KeyCode.P))
+            if (Input.anyKeyDown)
             {
-                last = SpawnOnTimer();
-            }
-            else if (Input.GetKeyDown(KeyCode.O) && last != null)
-            {
-                despawnObjectWithID(last.poolNumber);
-            }
-            else
-            {
-                for (int i = 0; i < codes.Length; i++)
+                if (Input.GetKeyDown(KeyCode.P))
                 {
-
-                    if (Input.GetKeyDown(codes[i]))
+                    last = SpawnOnTimer();
+                }
+                else if (Input.GetKeyDown(KeyCode.O) && last != null)
+                {
+                    despawnObjectWithID(last.poolNumber);
+                }
+                else
+                {
+                    for (int i = 0; i < codes.Length; i++)
                     {
-                        SpawnSpecificTrashArea(i);
+
+                        if (Input.GetKeyDown(codes[i]))
+                        {
+                            SpawnSpecificTrashArea(i);
+                        }
                     }
                 }
             }
