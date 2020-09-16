@@ -1,6 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Deployment.Internal;
 using UnityEngine;
 
 public class FallenBigTree : PoI
