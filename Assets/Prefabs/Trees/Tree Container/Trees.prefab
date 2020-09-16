@@ -370,6 +370,7 @@ Transform:
   - {fileID: 8815220596322167984}
   - {fileID: 857471165287833941}
   - {fileID: 7074705410904324638}
+  - {fileID: 3701960117691756200}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16857,6 +16858,96 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6087604758572976242, guid: 4ab297f9a141e1a42ba6db12145935af,
     type: 3}
   m_PrefabInstance: {fileID: 698875437665889067}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &698875437667936831
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 698875436479418931}
+    m_Modifications:
+    - target: {fileID: 4196865109344085520, guid: db58dff49ed00ee4885ebe308dcfd46a,
+        type: 3}
+      propertyPath: m_Name
+      value: Staged_Dwarf_Tree_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238703761425384599, guid: db58dff49ed00ee4885ebe308dcfd46a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 186.60751
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238703761425384599, guid: db58dff49ed00ee4885ebe308dcfd46a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 48.589638
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238703761425384599, guid: db58dff49ed00ee4885ebe308dcfd46a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -102.07745
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238703761425384599, guid: db58dff49ed00ee4885ebe308dcfd46a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.08257844
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238703761425384599, guid: db58dff49ed00ee4885ebe308dcfd46a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.39562553
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238703761425384599, guid: db58dff49ed00ee4885ebe308dcfd46a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.18689466
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238703761425384599, guid: db58dff49ed00ee4885ebe308dcfd46a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8953947
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238703761425384599, guid: db58dff49ed00ee4885ebe308dcfd46a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 343
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238703761425384599, guid: db58dff49ed00ee4885ebe308dcfd46a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238703761425384599, guid: db58dff49ed00ee4885ebe308dcfd46a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -47.676
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238703761425384599, guid: db58dff49ed00ee4885ebe308dcfd46a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -23.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238703761425384599, guid: db58dff49ed00ee4885ebe308dcfd46a,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238703761425384599, guid: db58dff49ed00ee4885ebe308dcfd46a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.39200005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238703761425384599, guid: db58dff49ed00ee4885ebe308dcfd46a,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.86999995
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: db58dff49ed00ee4885ebe308dcfd46a, type: 3}
+--- !u!4 &3701960117691756200 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4238703761425384599, guid: db58dff49ed00ee4885ebe308dcfd46a,
+    type: 3}
+  m_PrefabInstance: {fileID: 698875437667936831}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &698875437688078727
 PrefabInstance:
