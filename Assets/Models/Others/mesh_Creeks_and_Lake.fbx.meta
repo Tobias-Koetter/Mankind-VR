@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 17f3d5d5590464640b3025d62d7669ef
+guid: 74ca76cd29239f1458ba73a7a7a373d7
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
@@ -7,28 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: GesteinBoden
-    second: {fileID: 2100000, guid: 193184e4fa1a02a469c3a4ed514bb401, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Gesteinspfad
-    second: {fileID: 2100000, guid: 193184e4fa1a02a469c3a4ed514bb401, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: GrasBoden
-    second: {fileID: 2100000, guid: 0de5f9c1517cbcf43aaaf69d9c872d3b, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: SandBoden
-    second: {fileID: 2100000, guid: 19dbc5d419b59424f97de3ae24a0cc9f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Schlamm
-    second: {fileID: 2100000, guid: a385a0ebb3f9d5444b1916751a83f480, type: 2}
+      name: wasser
+    second: {fileID: 2100000, guid: 57cdabdec7ee3544d90b1758eaa3301d, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
