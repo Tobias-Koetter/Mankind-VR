@@ -305,6 +305,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2965364779846026757, guid: f2c745a01719d194f82a5e76126ba97b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2c745a01719d194f82a5e76126ba97b, type: 3}
 --- !u!4 &3909079752768052605 stripped
@@ -385,6 +390,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 3921612981793611341, guid: 5b534412c0bb26a4c911c64a9d6ee1a6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5777385822880468492, guid: 5b534412c0bb26a4c911c64a9d6ee1a6,
         type: 3}
       propertyPath: m_Layer
@@ -411,6 +421,11 @@ PrefabInstance:
       value: prefab_Dwarf_Tree_01_STAGE15
       objectReference: {fileID: 0}
     - target: {fileID: 437383784626262543, guid: 59e79f16593e58644b4d0fdcab2a3bd4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 934801520042156970, guid: 59e79f16593e58644b4d0fdcab2a3bd4,
         type: 3}
       propertyPath: m_Layer
       value: 9
@@ -490,6 +505,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8004101530403253125}
     m_Modifications:
+    - target: {fileID: 542244034973073888, guid: abb5d1c15c6a73241b0270e37f58fc46,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2856494407836659745, guid: abb5d1c15c6a73241b0270e37f58fc46,
         type: 3}
       propertyPath: m_Layer
@@ -575,6 +595,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 313334723871582152}
     m_Modifications:
+    - target: {fileID: 411413051968489106, guid: ff26827d7e3b60d4a9bec7de4e8923ba,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1242225165407618874, guid: ff26827d7e3b60d4a9bec7de4e8923ba,
         type: 3}
       propertyPath: m_Layer

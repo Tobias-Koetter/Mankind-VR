@@ -32,7 +32,14 @@ public class TreeInformation : MonoBehaviour
         {
             try{
                 renderersInLOD[i] = lods[i].renderers[0];
-                dissolveMats[i] = renderersInLOD[i].materials[1];
+                Material[] mats = renderersInLOD[i].materials;
+                for (int j=0; j < mats.Length; j++)
+                {
+                    if (mats[j].name.Contains("leaves"))
+                    {
+                        dissolveMats[i] = renderersInLOD[i].materials[j];
+                    }
+                }
             }catch(IndexOutOfRangeException)
             {
                 renderersInLOD[i] = null;
