@@ -50,7 +50,7 @@ public class State_StartDecay : AbstractState
                 {
                     GameInfo.PlantDestroyer.DestroyRandomTreeInMiddleState();
                 }
-                lastbaBalanceUpdate = GameInfo.spentSecondsIngame;
+                lastbaBalanceUpdate = GameInfo.SpentSecondsIngame;
             }
         }
         return this;
@@ -66,6 +66,6 @@ public class State_StartDecay : AbstractState
 
     private float LastBalanceInState()
     {
-        return GameInfo.spentSecondsIngame - lastbaBalanceUpdate;
+        return GameInfo.SpentSecondsIngame - lastbaBalanceUpdate;
     }
 }

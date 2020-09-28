@@ -40,6 +40,8 @@ public class SpawnController : MonoBehaviour
     public SpawnedList[] spawned_TrashAreas;
     public ParticleSystem DirtThrow;
 
+    public SpawnAreaTracker SpArTracker;
+
     //private ParticleSystem dTInstance;
 
     private SpawnTrashArea trashAreaHandler;
@@ -66,7 +68,6 @@ public class SpawnController : MonoBehaviour
             spawnArea[i] = center[i].gameObject.GetComponent<MeshFilter>();
         }
 
-        
         if (maxSpawnRadius < minSpawnRadius)
         {
             throw new System.Exception("SpawnController: maxRadius is smaller then the planed min Distance to the player.");
@@ -170,7 +171,8 @@ public class SpawnController : MonoBehaviour
 
                     if (Input.GetKeyDown(codes[i]))
                     {
-                        SpawnSpecificTrashArea(i);
+                        int indexSpawnArea = Random.Range(0, spawnArea.Length);
+                        SpawnSpecificTrashArea(i,indexSpawnArea);
                     }
                 }
             }
@@ -208,7 +210,6 @@ public class SpawnController : MonoBehaviour
             //spawnObject();
             for (int i= 0; i < spawnArea.Length;i++)
             {
-
                 ret = SpawnObjectInMesh(i,index);
             }
         }
@@ -233,18 +234,38 @@ public class SpawnController : MonoBehaviour
     public Spawned SpawnTrashArea()
     {
         Spawned ret = null;
-        int index = Random.Range(0, maxSpawnIndexTrashAreas);
-        SpawnSpecificTrashArea(index);
+        int indexMeshForm = Random.Range(0, maxSpawnIndexTrashAreas);
+
+        int indexSpawnArea = Random.Range(0, spawnArea.Length);
+        if(center[indexSpawnArea] == SpArTracker.getCurrentVisited())
+        {
+            indexSpawnArea = (indexSpawnArea + 1) % spawnArea.Length;
+        }
+        SpawnSpecificTrashArea(indexMeshForm,indexSpawnArea);
+
+        if(maxSpawnIndexTrashAreas >= 3 && maxSpawnIndexTrashAreas < 5)
+        {
+            Transform extraArea = SpArTracker.getVisitedArea();
+            indexSpawnArea = System.Array.IndexOf<Transform>(center, extraArea);
+            SpawnSpecificTrashArea(indexMeshForm, indexSpawnArea);
+        }
+
+        if(maxSpawnIndexTrashAreas == 5)
+        {
+            Transform extraArea = SpArTracker.getCurrentVisited();
+            indexSpawnArea = System.Array.IndexOf<Transform>(center, extraArea);
+            SpawnSpecificTrashArea(indexMeshForm, indexSpawnArea);
+        }
         return ret;
     }
 
-    public Spawned SpawnSpecificTrashArea(int index)
+    public Spawned SpawnSpecificTrashArea(int indexForm, int indexSpawnArea)
     {
         Spawned ret = null;
-        TA_SHAPES current = TA_SHAPES.Plane_Small;
+        TA_SHAPES standard = TA_SHAPES.Plane_Small;
 
-        SpawnedList spawnable_curList = spawnable_TrashAreas[index];
-        SpawnedList spawned_curList = spawned_TrashAreas[index];
+        SpawnedList spawnable_curList = spawnable_TrashAreas[indexForm];
+        SpawnedList spawned_curList = spawned_TrashAreas[indexForm];
 
         Spawned curPopped;
         int lastPos;
@@ -258,14 +279,14 @@ public class SpawnController : MonoBehaviour
         }
         else
         {
-            lastPos = spawnable_TrashAreas[index].Count - 1;
+            lastPos = spawnable_TrashAreas[indexForm].Count - 1;
             curPopped = spawnable_curList[lastPos];
         }
 
         curPopped.gameObject.SetActive(true);
         //trashAreaHandler.Spawn(current + i, spawnArea[/*Random.Range(0, spawnArea.Length)*/4], curPopped);
-        bool spawnedCorrectly = false;
-        spawnedCorrectly = trashAreaHandler.Spawn(current + index, spawnArea[Random.Range(0, spawnArea.Length)], curPopped,Random.Range(100,160));
+        
+        bool spawnedCorrectly = trashAreaHandler.Spawn(standard + indexForm, spawnArea[indexSpawnArea], curPopped, Random.Range(100, 160));
 
         if (spawnedCorrectly)
         {
@@ -281,7 +302,6 @@ public class SpawnController : MonoBehaviour
 
         return ret;
     }
-
 
     private Spawned SpawnObjectInMesh(int index, int trashArrayPos)
     {

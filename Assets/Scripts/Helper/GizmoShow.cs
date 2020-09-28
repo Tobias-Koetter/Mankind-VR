@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GizmoShow : MonoBehaviour
 {
-    private void OnDrawGizmos()
+    public Color gizmoColor;
+    private void OnDrawGizmos() 
     {
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawSphere(transform.position, 2f);
+        Gizmos.color = gizmoColor; 
+        Gizmos.DrawSphere(transform.position, 2f); 
     }
 }

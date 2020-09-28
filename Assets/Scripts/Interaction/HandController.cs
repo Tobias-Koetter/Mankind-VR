@@ -14,11 +14,9 @@ public class HandController : MonoBehaviour
     private Material normalMat;
     private Renderer ownRender;
 
-    bool isCollision;
 
     void Start()
     {
-        isCollision = false;
 
         //Debug Interaction stuff
         ownRender = objectCenter.GetComponent<Renderer>();
@@ -45,17 +43,6 @@ public class HandController : MonoBehaviour
                     GameObject colliderObject = hitInfo.collider.gameObject;
                     Debug.Log(colliderObject);
 
-                    //Collider[] hitColliders = Physics.OverlapSphere(objectCenter.position, checkDistance, collisionMask);
-
-
-                    //isCollision = hitColliders.Length > 0;
-
-                    //if left mouse button is clicked and there is a colliding object
-                    //if (isCollision) {
-
-                    //for (int i = 0; i < hitColliders.Length; i++)
-                    //{
-                    //GameObject colliderObject = hitColliders[i].gameObject;
                     if (colliderObject.activeSelf)
                     {
                         Interactable current = colliderObject.GetComponent<Interactable>();
@@ -71,18 +58,15 @@ public class HandController : MonoBehaviour
                             //Debug.Log($"Got called because of {colliderObject}");
                             tree.Controller.handleTreeDestroy(tree);
                         }
-                        else if (colliderObject.tag.Equals("PointOfInterest"))
+                        else if (colliderObject.CompareTag("PointOfInterest"))
                         {
                             PoI p = colliderObject.GetComponent<PoI>();
                             p.Controller.handlePoIDestroy(p);
                         }
                         else
                         {
-                            //print("The current Object: \"" + colliderObject.name + "\" was not spawned by a spawnController");
 
                         }
-
-                        //}
 
                     }
 
@@ -92,7 +76,6 @@ public class HandController : MonoBehaviour
                 {
                     print("Nothing there to interact with!");
                 }
-                isCollision = false;
                 ownRender.material = normalMat;
             }
         }
@@ -101,7 +84,7 @@ public class HandController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Debug Interaction stuff
-        if (other.tag == "PointOfInterest")
+        if (other.CompareTag("PointOfInterest"))
         {
             ownRender.material = interactMat;
         }

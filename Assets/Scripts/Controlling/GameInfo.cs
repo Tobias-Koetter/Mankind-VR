@@ -17,7 +17,7 @@ public class GameInfo : MonoBehaviour
     public SpawnController TrashSpawner;
     public DestroyVegetation PlantDestroyer;
     public StageChanging changer;
-    private LevelBalancing balancer;
+    //private LevelBalancing balancer;
     public FiniteStateMachine fsm;
     public Canvas canvas;
     public Animator animatorGlobalVolume;
@@ -26,16 +26,13 @@ public class GameInfo : MonoBehaviour
     public static void AddPauseListener(IPauseListener iPL) { listener.Add(iPL); iPL.UpdateListener(menuOpen); }
 
     public float Timer{ get; private set; }
-    private int numberOfStates;
-    private bool gameOverFlag = false;
 
-    public bool firstTreeDestroyed { get; private set; } = false;
+    public bool FirstTreeDestroyed { get; private set; } = false;
 
-    public float spentSecondsIngame => totalTime - Timer;
+    public float SpentSecondsIngame => totalTime - Timer;
 
-    public void setGameOver() 
+    public void SetGameOver() 
     { 
-        gameOverFlag = true;
         mBC.StartLoading(0);
 
     }
@@ -47,13 +44,10 @@ public class GameInfo : MonoBehaviour
         totalTime += GlobalSettingsManager.GetTotalGameTime();
         currentState = GlobalSettingsManager.firstState;
 
-        // Takes the amount of states created in the enum STATE
-        numberOfStates = Enum.GetValues(typeof(STATE)).GetUpperBound(0) + 1;
-
         Timer = totalTime;
         PlantDestroyer.Setup(this);
 
-        balancer = new LevelBalancing();
+        new LevelBalancing();
         //fsm = this.GetComponent<FiniteStateMachine>();
         DebugMode = GlobalSettingsManager.debugActive;
         if(!DebugMode)
@@ -82,53 +76,6 @@ public class GameInfo : MonoBehaviour
         }
         //if (Timer > 0f)
         {
-            AbstractState current = fsm.currentState;
-
-            //float spTimer = current.SecondsToSpawnTrash;
-            /*
-            if (current.Name.Equals(STATE.NATURE))
-            {
-                int curMod = Mathf.FloorToInt(Timer % spTimer);
-                int curInt = Mathf.FloorToInt(Timer / spTimer);
-                if (curInt != lastInt && curMod == 0)
-                {
-                    //print("Spawn in STATE START");
-                    TrashSpawner.spawnOnTimer();
-                    lastInt = curInt;
-                }
-            }
-            if (currentState.Equals(STATE.DECAY_MAIN))
-            {
-                int curMod = Mathf.FloorToInt(Timer % 2f);
-                int curInt = Mathf.FloorToInt(Timer / 2f);
-                if (curInt != lastInt && curMod == 0)
-                {
-                    //print("Spawn in STATE MIDDLE");
-                    TrashSpawner.spawnOnTimer();
-                    lastInt = curInt;
-                }
-            }
-            if (currentState.Equals(STATE.FINAL))
-            {
-                int curMod = Mathf.FloorToInt(Timer % 1f);
-                int curInt = Mathf.FloorToInt(Timer / 1f);
-                if (curInt != lastInt && curMod == 0)
-                {
-                    print("Spawn in STATE FINAL");
-                    TrashSpawner.spawnOnTimer();
-                    lastInt = curInt;
-                }
-            }*/
-            /*
-             
-            // Use the enum value of currentState to create a specific time border for the next state change
-            // OR: If amount of trees are dead [ 30 ]
-            if (timer < totalTime - (timeInState * (float)currentState) 
-                || (currentState.Equals(STATE.NATURE) && plantDestroyer.deadTrees.Count == 5))
-            {
-                currentState += 1;
-            }
-            */
 
             Timer -= Time.deltaTime;
 
@@ -149,31 +96,14 @@ public class GameInfo : MonoBehaviour
                 UpdateLevelTimer(Timer);
             }
         }
-        /*
-        else if(Timer < 0f)
-        {
-            Timer = 0f;
-            int curMod = Mathf.FloorToInt(Timer % 1f);
-            int curInt = Mathf.FloorToInt(Timer / 1f);
-            if (curInt != lastInt && curMod == 0)
-            {
-                print("Spawn after STATE FINAL");
-                TrashSpawner.spawnOnTimer();
-                lastInt = curInt;
-            }
-        }
-        */
-
-
-
     }
 
     public void SwitchFirstTreeDestroyed()
     {
-        firstTreeDestroyed = true;
-        if(fsm.currentState is State_Alive cur)
+        FirstTreeDestroyed = true;
+        if(fsm.CurrentState is State_Alive cur)
         {
-            cur.UpdateTreeDestroyStatus(firstTreeDestroyed);
+            cur.UpdateTreeDestroyStatus(FirstTreeDestroyed);
         }
         
     }
@@ -203,9 +133,9 @@ public class GameInfo : MonoBehaviour
 
     private void jumpTimer()
     {
-        Debug.Log(Timer+ "|-|"+GlobalSettingsManager.GetStateTime(currentState)+"|-|"+ fsm.currentState.RemainingTimeInState+ "==>"+ (Timer - (GlobalSettingsManager.GetStateTime(currentState) - fsm.currentState.RemainingTimeInState)));
-        Debug.Log(fsm.currentState.StartTime + "|||" + fsm.currentState.SecondsToStateChange);
-        Timer = Timer - (GlobalSettingsManager.GetStateTime(currentState) - fsm.currentState.RemainingTimeInState);
+        Debug.Log(Timer+ "|-|"+GlobalSettingsManager.GetStateTime(currentState)+"|-|"+ fsm.CurrentState.RemainingTimeInState+ "==>"+ (Timer - (GlobalSettingsManager.GetStateTime(currentState) - fsm.CurrentState.RemainingTimeInState)));
+        Debug.Log(fsm.CurrentState.StartTime + "|||" + fsm.CurrentState.SecondsToStateChange);
+        Timer = Timer - (GlobalSettingsManager.GetStateTime(currentState) - fsm.CurrentState.RemainingTimeInState);
     }
     #endregion 
 }

@@ -21,7 +21,7 @@ public class State_DeadNature : AbstractState
         // anchor: ran out of Time in this state 
         if (RemainingTimeInState >= SecondsToStateChange)
         {
-            this.GameInfo.setGameOver();
+            this.GameInfo.SetGameOver();
         }
         // else spawn small Trash every time spawnTiming is hit;
         else

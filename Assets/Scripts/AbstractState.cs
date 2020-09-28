@@ -31,7 +31,7 @@ public abstract class AbstractState
     public virtual bool EnterState() 
     {
         ExecutionState = ExecutionState.ACTIVE;
-        StartTime = GameInfo.spentSecondsIngame;
+        StartTime = GameInfo.SpentSecondsIngame;
         GameInfo.TrashSpawner.MoveToNewState(this.Name);
         return true;
     }
@@ -46,8 +46,8 @@ public abstract class AbstractState
 
     protected bool SpawnTrashOverTime()
     {
-        int curMod = Mathf.FloorToInt(GameInfo.spentSecondsIngame % SecondsToSpawnTrash);
-        int curInt = Mathf.FloorToInt(GameInfo.spentSecondsIngame / SecondsToSpawnTrash);
+        int curMod = Mathf.FloorToInt(GameInfo.SpentSecondsIngame % SecondsToSpawnTrash);
+        int curInt = Mathf.FloorToInt(GameInfo.SpentSecondsIngame / SecondsToSpawnTrash);
         if (curInt != LastTimeForSpawn && curMod == 0)
         {
             //Debug.Log("Spawn in "+this.Name + " at time:"+ GameInfo.spentSecondsIngame);
@@ -58,5 +58,5 @@ public abstract class AbstractState
         return false;
     }
 
-    public float RemainingTimeInState =>(GameInfo.spentSecondsIngame - StartTime) ;
+    public float RemainingTimeInState =>(GameInfo.SpentSecondsIngame - StartTime) ;
 }

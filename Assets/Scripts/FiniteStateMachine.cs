@@ -8,7 +8,7 @@ public enum STATE { NONE = 0, NATURE = 1, DECAY_START = 2, DECAY_MAIN = 3, TRASH
 [RequireComponent(typeof(GameInfo))]
 public class FiniteStateMachine : MonoBehaviour
 {
-    public AbstractState currentState { get; protected set; }
+    public AbstractState CurrentState { get; protected set; }
     AbstractState next;
     AbstractState last;
 
@@ -18,7 +18,7 @@ public class FiniteStateMachine : MonoBehaviour
     {
         gameInfo = this.GetComponent<GameInfo>();
         gameInfo.fsm = this;
-        currentState = CreateStartState();
+        CurrentState = CreateStartState();
         next = null;
         last = null;
 
@@ -33,28 +33,28 @@ public class FiniteStateMachine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentState == null)
+        if (CurrentState == null)
         {
-            currentState = last;
+            CurrentState = last;
         }
         else
         {
-            if (currentState != null && currentState.ExecutionState == ExecutionState.NONE)
+            if (CurrentState != null && CurrentState.ExecutionState == ExecutionState.NONE)
             {
-                currentState.EnterState();
+                CurrentState.EnterState();
             }
             else
             {
-                next = currentState.UpdateState();
-                if(next != currentState)
+                next = CurrentState.UpdateState();
+                if(next != CurrentState)
                 {
-                    last = currentState;
+                    last = CurrentState;
                     last.ExitState();
-                    currentState = next;
-                    currentState.EnterState();
+                    CurrentState = next;
+                    CurrentState.EnterState();
 
-                    Debug.Log("Switching state from " + last.Name + " to " + currentState.Name);
-                    gameInfo.UpdateAbstractState(currentState);
+                    Debug.Log("Switching state from " + last.Name + " to " + CurrentState.Name);
+                    gameInfo.UpdateAbstractState(CurrentState);
                     
                 }
 
