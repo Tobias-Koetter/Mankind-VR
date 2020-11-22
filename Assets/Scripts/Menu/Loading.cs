@@ -24,7 +24,7 @@ public class Loading : MonoBehaviour
                 lastValue += 0.01f;
                 loadingFill.fillAmount = lastValue;
             }
-            Debug.Log(loadingFill.fillAmount);
+            //Debug.Log(loadingFill.fillAmount);
             yield return new WaitForSeconds(0.001f);
         }
 

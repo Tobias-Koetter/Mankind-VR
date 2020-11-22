@@ -17,7 +17,7 @@ public class State_MainDecay : AbstractState
     {
         base.EnterState();
         lastbaBalanceUpdate = -1f;
-        timeBetweenBalancing = 2f;
+        timeBetweenBalancing = 1f;
         GameInfo.animatorGlobalVolume.SetBool("ToOne", true);
         return true;
     }
@@ -44,6 +44,7 @@ public class State_MainDecay : AbstractState
             }
             else if (LevelBalancing.GetBalanceVariance() > Trees.startingNatureValue / 2f)
             {
+                //Debug.Log("Balancing is executing.");
                 GameInfo.PlantDestroyer.DestroyRandomTreeInMiddleState();
             }
             lastbaBalanceUpdate = GameInfo.SpentSecondsIngame;

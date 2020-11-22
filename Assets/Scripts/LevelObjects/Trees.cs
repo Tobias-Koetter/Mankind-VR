@@ -161,6 +161,7 @@ public class Trees : Interactable
 
     private List<TreeInformation> FindCurrentList()
     {
+        //Debug.Log(status);
         switch(status)
         {
             case TREE_STAGE.ALIVE1:
@@ -172,6 +173,8 @@ public class Trees : Interactable
             case TREE_STAGE.BETWEEN2:
                 return models2_2;
             case TREE_STAGE.DEAD:
+                return models3;
+            default:
                 return models3;
         }
         return null;

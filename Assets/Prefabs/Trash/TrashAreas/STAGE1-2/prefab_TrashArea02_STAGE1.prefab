@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d9b741371b383a4aa00fe90fec8cc2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  personalTrashValue: 1.5
   meshRndr: {fileID: 7917749414467456059}
   meshFltr: {fileID: 4530047620326371522}
   poolNumber: 0

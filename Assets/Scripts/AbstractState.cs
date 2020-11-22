@@ -58,5 +58,20 @@ public abstract class AbstractState
         return false;
     }
 
+    protected bool EndgameOverTime()
+    {
+        int curMod = Mathf.FloorToInt(GameInfo.SpentSecondsIngame % SecondsToSpawnTrash);
+        int curInt = Mathf.FloorToInt(GameInfo.SpentSecondsIngame / SecondsToSpawnTrash);
+        if (curInt != LastTimeForSpawn && curMod == 0)
+        {
+            //Debug.Log("Spawn in "+this.Name + " at time:"+ GameInfo.spentSecondsIngame);
+            GameInfo.PlantDestroyer.DestroyRandomTreeInRisingState();
+            GameInfo.TrashSpawner.SpawnOnTimer();
+            LastTimeForSpawn = curInt;
+            return true;
+        }
+        return false;
+    }
+
     public float RemainingTimeInState =>(GameInfo.SpentSecondsIngame - StartTime) ;
 }

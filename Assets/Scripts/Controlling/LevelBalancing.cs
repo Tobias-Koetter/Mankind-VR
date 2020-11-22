@@ -30,8 +30,8 @@ public class LevelBalancing
     /**
      * Returns the Balance Factor of the game regarding Trashspawns and Nature in total.
      *  0 => game is balanced
-     * >0 => game is unbalanced ||>> more Trash needs to be spawned
-     * <0 => game is unbalanced ||>> Nature must be destroyed
+     * <0 => game is unbalanced ||>> more Trash needs to be spawned
+     * >0 => game is unbalanced ||>> Nature must be destroyed
     **/
     public static float GetBalanceVariance() => (NatureValue + TrashValue) - BalancingValue;
     public static float GetCurrentNatureValue() => NatureValue;

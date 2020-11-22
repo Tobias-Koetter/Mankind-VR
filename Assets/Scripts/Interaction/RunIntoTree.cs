@@ -1,7 +1,23 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+
+public enum TypeOfParent{P_POI,P_INT}
+
+public struct ColliderInfo
+{
+    public Collider c;
+    public TypeOfParent pType;
+    public UnityEngine.Object parent;
+
+    public void Setup(Collider c, TypeOfParent t, UnityEngine.Object o)
+    {
+        this.c = c;
+        pType = t;
+        parent = o;
+    }
+}
 
 public class RunIntoTree : MonoBehaviour
 {
@@ -10,7 +26,7 @@ public class RunIntoTree : MonoBehaviour
     public LayerMask checkLayers;
 
     private float radius;
-    private List<Collider> lastTreeCollisions;
+    private List<ColliderInfo> lastTreeCollisions;
     
     // Start is called before the first frame update
     void Start()
@@ -20,7 +36,7 @@ public class RunIntoTree : MonoBehaviour
         endPoint.y = 0f;
         centerPoint.y = 0f;
         radius = Vector3.Distance(centerPoint,endPoint);
-        lastTreeCollisions = new List<Collider>();
+        lastTreeCollisions = new List<ColliderInfo>();
     }
 
     // Update is called once per frame
@@ -31,7 +47,7 @@ public class RunIntoTree : MonoBehaviour
         {
             foreach(Collider c in hits)
             {
-                if(lastTreeCollisions.Contains(c))
+                if(lastTreeCollisions.Select(items => items.c).Contains(c))
                 {
                     break;
                 }
@@ -44,7 +60,9 @@ public class RunIntoTree : MonoBehaviour
                         if(brokenPart.Alive)
                         {
                             fallen.DestroyPart(brokenPart);
-                            lastTreeCollisions.Add(c);
+                            ColliderInfo cInfo = new ColliderInfo(); 
+                            cInfo.Setup(c, TypeOfParent.P_POI, parent);
+                            lastTreeCollisions.Add(cInfo);
                         }
 
                     }
@@ -52,14 +70,30 @@ public class RunIntoTree : MonoBehaviour
                 else if (c.gameObject.layer == LayerMask.NameToLayer("Interactable"))
                 {
                     Interactable parent = GlobalMethods.FindParentWithTag(c.gameObject, "TreeLogic")?.GetComponent<Interactable>();
-                    if (parent is Trees tree && c.name.EndsWith("0"))
+
+                    if (parent is Trees tree)
                     {
-                        tree.Controller.handleTreeDestroy(tree);
-                        lastTreeCollisions.Add(c);
+                        if(c.name.EndsWith("0") && !tree.lDis.isDissolving)
+                        {
+                            tree.Controller.handleTreeDestroy(tree);
+                            ColliderInfo cInfo = new ColliderInfo();
+                            cInfo.Setup(c, TypeOfParent.P_INT, parent);
+                            lastTreeCollisions.Add(cInfo);
+                        }
                     }
                 }
             }
-            Collider[] tempCopy = lastTreeCollisions.ToArray();
+            Collider[] tempCopy = lastTreeCollisions.Select(item => item.c).ToArray();
+            for(int i = 0; i<tempCopy.Length;i++)
+            {
+                Collider c = tempCopy[i];
+                Collider found = hits.FirstOrDefault(pC => pC.name.Equals(c.name));
+                if (found == null)
+                {
+                    lastTreeCollisions.RemoveAt(i);
+                }
+            }
+            /*
             foreach(Collider c in tempCopy)
             {
                 Collider found = hits.FirstOrDefault(pC => pC.name.Equals(c.name));
@@ -68,6 +102,7 @@ public class RunIntoTree : MonoBehaviour
                     lastTreeCollisions.Remove(c);
                 }
             }
+            */
         }
         else
         {

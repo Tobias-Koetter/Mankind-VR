@@ -294,6 +294,7 @@ public class SpawnController : MonoBehaviour
             spawnable_curList.RemoveAt(lastPos);
             spawned_curList.Add(curPopped);
             ret = curPopped;
+            LevelBalancing.SetTrashValue(curPopped.personalTrashValue);
         }
         else if (!spawnedCorrectly)
         {
