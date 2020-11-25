@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ddfa0a61728b975478494a021f0f7fa0
+guid: 7dd77497d839cc4479a9b663e9297311
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
@@ -7,13 +7,33 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Grass Ground
+    second: {fileID: 2100000, guid: 0de5f9c1517cbcf43aaaf69d9c872d3b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ground rocks
+    second: {fileID: 2100000, guid: a385a0ebb3f9d5444b1916751a83f480, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone
+    second: {fileID: 2100000, guid: 193184e4fa1a02a469c3a4ed514bb401, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: farns
+    second: {fileID: 2100000, guid: 13b1f3fa793c5894e9b7b42b30f0dc36, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: leaves
-    second: {fileID: 2100000, guid: 1eb5869d2e98c18418cc86e4d446213d, type: 2}
+    second: {fileID: 2100000, guid: d023ffb72e80a7248a1a2806b63639f4, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: wood bark
-    second: {fileID: 2100000, guid: 63ee5a9dd25651e4c9ca40128db45500, type: 2}
+    second: {fileID: 2100000, guid: 9376a43f861e9c842bc4d741de39614b, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
