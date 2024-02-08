@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public enum TypeOfParent{P_POI,P_INT}
 
@@ -24,10 +25,11 @@ public class RunIntoTree : MonoBehaviour
     public Transform radiusEndpoint;
     public Transform centerOfSphere;
     public LayerMask checkLayers;
+    public DecalProjector m_decalProjector;
 
     private float radius;
     private List<ColliderInfo> lastTreeCollisions;
-    
+    private Camera cam;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,7 @@ public class RunIntoTree : MonoBehaviour
         centerPoint.y = 0f;
         radius = Vector3.Distance(centerPoint,endPoint);
         lastTreeCollisions = new List<ColliderInfo>();
+        cam = Camera.main;
     }
 
     // Update is called once per frame
@@ -75,6 +78,15 @@ public class RunIntoTree : MonoBehaviour
                     {
                         if(c.name.EndsWith("0") && !tree.lDis.isDissolving)
                         {
+                            RaycastHit rHit = new RaycastHit();
+                            Vector3 midPlayer = this.transform.position + (cam.transform.position - this.transform.position) * 0.75f;
+                            Physics.Raycast(midPlayer, -midPlayer + new Vector3(tree.transform.position.x, midPlayer.y, tree.transform.position.z), out rHit, 100f, checkLayers);
+                            m_decalProjector.transform.SetParent(this.transform);
+                            m_decalProjector.transform.position = midPlayer + (rHit.point - midPlayer );
+                            Vector3 worldLookAtPoint = new Vector3(tree.transform.position.x, rHit.point.y, tree.transform.position.z);
+                            m_decalProjector.transform.LookAt(worldLookAtPoint);
+                            m_decalProjector.transform.Translate(Vector3.back * 0.1f, Space.Self);
+                            m_decalProjector.transform.SetParent(null);
                             tree.Controller.handleTreeDestroy(tree);
                             ColliderInfo cInfo = new ColliderInfo();
                             cInfo.Setup(c, TypeOfParent.P_INT, parent);

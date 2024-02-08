@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class LeafDissolver : MonoBehaviour
 {
-    public Material leaves;
+    public Material[] leaves;
     public bool isDissolving = false;
     public TreeInformation currentActive;
     private float value = 0f;
@@ -47,7 +47,10 @@ public class LeafDissolver : MonoBehaviour
                 if (val > 1f || val+0.01f >= 1f)
                     val = 1f;
                 //Debug.Log(val);
-                leaves.SetFloat("Vector1_2E022231", val);
+                foreach (Material dissolving in leaves)
+                {
+                    dissolving.SetFloat("_dissolve", val);
+                }
                 yield return new WaitForSeconds(0.0025f);
             }
         }
@@ -58,7 +61,10 @@ public class LeafDissolver : MonoBehaviour
                 if(val < 0f || val - 0.01f <= 0f)
                     val = 0f;
                 //Debug.Log(val);
-                leaves.SetFloat("Vector1_2E022231", val);
+                foreach (Material dissolving in leaves)
+                {
+                    dissolving.SetFloat("_dissolve", val);
+                }
                 yield return new WaitForSeconds(0.0025f);
             }
         }
@@ -85,7 +91,10 @@ public class LeafDissolver : MonoBehaviour
             }
 
             //Debug.Log(val);
-            leaves.SetFloat("Vector1_2E022231", value);
+            foreach (Material dissolving in leaves)
+            {
+                dissolving.SetFloat("_dissolve", value);
+            }
         }
         else if (!dir)
         {
@@ -103,7 +112,10 @@ public class LeafDissolver : MonoBehaviour
                 return true;
             }
             //Debug.Log(val);
-            leaves.SetFloat("Vector1_2E022231", value);
+            foreach (Material dissolving in leaves)
+            {
+                dissolving.SetFloat("_dissolve", value);
+            }
         }
         return false;
     }

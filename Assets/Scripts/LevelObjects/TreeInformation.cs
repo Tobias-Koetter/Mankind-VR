@@ -7,7 +7,7 @@ public class TreeInformation : MonoBehaviour
 {
     public LODGroup lodGroup;
     public LOD[] lods;
-    public Material[] dissolveMats;
+    public List<Material> dissolveMats;
     public Renderer[] renderersInLOD;
     private List<MeshCollider> listOfColliders;
 
@@ -26,7 +26,7 @@ public class TreeInformation : MonoBehaviour
     {
         lodGroup = l;
         lods = l.GetLODs();
-        dissolveMats = new Material[lods.Length];
+        dissolveMats = new List<Material>();
         renderersInLOD = new Renderer[lods.Length];
         for (int i = 0; i < lods.Length; i++)
         {
@@ -35,15 +35,16 @@ public class TreeInformation : MonoBehaviour
                 Material[] mats = renderersInLOD[i].materials;
                 for (int j=0; j < mats.Length; j++)
                 {
-                    if (mats[j].name.Contains("leaves"))
+                    if (mats[j].name.Contains("leaves") || mats[j].name.Contains("Better"))
                     {
-                        dissolveMats[i] = renderersInLOD[i].materials[j];
+                        dissolveMats.Add( renderersInLOD[i].materials[j]);
                     }
+  
                 }
             }catch(IndexOutOfRangeException)
             {
                 renderersInLOD[i] = null;
-                dissolveMats[i] = null;
+                //dissolveMats[i] = null;
             }
         }
         listOfColliders = new List<MeshCollider>();

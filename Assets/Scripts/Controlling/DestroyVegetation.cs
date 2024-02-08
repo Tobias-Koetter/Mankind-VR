@@ -45,7 +45,7 @@ public class DestroyVegetation : MonoBehaviour
                 t.Controller = this;
                 aliveTrees.Add(t);
             }
-
+            print(aliveTrees.Count);
             float pNatVal= Trees.startingNatureValue;
 
             foreach (Trees t in aliveTrees)

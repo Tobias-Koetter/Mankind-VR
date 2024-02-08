@@ -52,10 +52,11 @@ public class Trees : Interactable
 
     public override void Interact()
     {
-        status += 1;
+        
         isDestroyed = true;
         if (status <= TREE_STAGE.BETWEEN2)
         {
+            status += 1;
             TreeInformation nextModel = GetModel(FindCurrentList());
             nextModel.gameObject.SetActive(true);
             currentModel.EnableColliders(false);
@@ -64,11 +65,13 @@ public class Trees : Interactable
         }
         else
         {
+            status += 1;
             currentModel.EnableColliders(true);
             currentModel.gameObject.SetActive(false);
             currentModel = GetModel(FindCurrentList());
             currentModel.gameObject.SetActive(true);
         }
+        
     }
 
     public override string ToString()
@@ -202,7 +205,7 @@ public class Trees : Interactable
 
     private void SetupLeafDissolver()
     {
-        lDis.leaves = currentModel.dissolveMats[0];
+        lDis.leaves = currentModel.dissolveMats.ToArray();
         lDis.currentActive = currentModel;
     }
 

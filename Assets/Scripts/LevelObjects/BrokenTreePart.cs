@@ -27,7 +27,7 @@ public class BrokenTreePart: MonoBehaviour
         lDis = gameObject?.GetComponent<LeafDissolver>();
         if(lDis)
         {
-            lDis.leaves = ownRenderer.material;
+            lDis.leaves = ownRenderer.materials;
         }
     }
 

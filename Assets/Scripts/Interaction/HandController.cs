@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering.Universal;
 
 public class HandController : MonoBehaviour
 {
@@ -10,10 +11,11 @@ public class HandController : MonoBehaviour
     public Image clickCursor;
 
     //Temporarily used to give feedback for the player. Exchange for proper Feedback 
+    public DecalProjector decalProjector;
     public Material interactMat;
     private Material normalMat;
     private Renderer ownRender;
-
+    
 
     void Start()
     {
@@ -33,7 +35,7 @@ public class HandController : MonoBehaviour
     {
         if (GlobalSettingsManager.clickActionActive)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetButton("Fire1"))
             {
                 RaycastHit hitInfo;
                 Vector3 lookDir = (cam.position + objectCenter.position).normalized;
@@ -55,6 +57,13 @@ public class HandController : MonoBehaviour
                         }
                         else if (parent is Trees tree /*&& colliderObject.name.EndsWith("0")*/)
                         {
+                            decalProjector.transform.SetParent(this.transform);
+                            decalProjector.transform.position = cam.transform.position + (hitInfo.point- cam.transform.position);
+                            Vector3 worldLookAtPoint = new Vector3(tree.transform.position.x,hitInfo.point.y,tree.transform.position.z);
+                            decalProjector.transform.LookAt(worldLookAtPoint);
+                            decalProjector.transform.Translate(Vector3.back * 0.1f, Space.Self);
+
+                            decalProjector.transform.SetParent(null);
                             //Debug.Log($"Got called because of {colliderObject}");
                             tree.Controller.handleTreeDestroy(tree);
                         }
