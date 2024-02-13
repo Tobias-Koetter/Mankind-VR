@@ -219,6 +219,8 @@ MonoBehaviour:
   models2_2: []
   models3: []
   lDis: {fileID: 5493183206440765249}
+  s: 
+  jumpOverBetween2: 1
 --- !u!114 &5493183206440765249
 MonoBehaviour:
   m_ObjectHideFlags: 0

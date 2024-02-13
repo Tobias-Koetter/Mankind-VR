@@ -34,6 +34,9 @@ public class Trees : Interactable
 
     public DestroyVegetation Controller { get => controller; set => controller = value; }
     public int TreeNumber { get => treeNumber; set => treeNumber = value; }
+    [Button("Interact")]
+    public string s;
+    public bool jumpOverBetween2 = false;
 
     public override void Start()
     {
@@ -57,6 +60,7 @@ public class Trees : Interactable
         if (status <= TREE_STAGE.BETWEEN2)
         {
             status += 1;
+            if (jumpOverBetween2 && status == TREE_STAGE.BETWEEN2) { status += 1; }
             TreeInformation nextModel = GetModel(FindCurrentList());
             nextModel.gameObject.SetActive(true);
             currentModel.EnableColliders(false);
@@ -66,6 +70,7 @@ public class Trees : Interactable
         else
         {
             status += 1;
+            if (jumpOverBetween2 && status == TREE_STAGE.BETWEEN2) { status += 1; }
             currentModel.EnableColliders(true);
             currentModel.gameObject.SetActive(false);
             currentModel = GetModel(FindCurrentList());
@@ -216,7 +221,10 @@ public class Trees : Interactable
         currentModel.gameObject.SetActive(false);
         currentModel = next;
         currentModel.gameObject.SetActive(true);
-        SetupLeafDissolver();
+
+        if(!currentModel.StartTreeCutting())
+        { SetupLeafDissolver(); }
+
         yield return null;
 
     }

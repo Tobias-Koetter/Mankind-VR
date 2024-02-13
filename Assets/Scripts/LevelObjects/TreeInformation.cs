@@ -10,6 +10,8 @@ public class TreeInformation : MonoBehaviour
     public List<Material> dissolveMats;
     public Renderer[] renderersInLOD;
     private List<MeshCollider> listOfColliders;
+    public bool hasRigidBody = false;
+    private TreeCutting cutter;
 
     public TreeInformation(LODGroup l)
     {
@@ -39,7 +41,6 @@ public class TreeInformation : MonoBehaviour
                     {
                         dissolveMats.Add( renderersInLOD[i].materials[j]);
                     }
-  
                 }
             }catch(IndexOutOfRangeException)
             {
@@ -49,6 +50,10 @@ public class TreeInformation : MonoBehaviour
         }
         listOfColliders = new List<MeshCollider>();
         GetColliders();
+        if (hasRigidBody)
+        {
+            cutter = GetComponent<TreeCutting>();
+        }
     }
 
     private void GetColliders()
@@ -79,5 +84,14 @@ public class TreeInformation : MonoBehaviour
             }
         }
         return ret == toCheck;
+    }
+    
+    public bool StartTreeCutting() {
+        bool ret;
+        if(ret = hasRigidBody)
+        {
+            cutter.enabled = true;
+        }
+        return ret;
     }
 }
