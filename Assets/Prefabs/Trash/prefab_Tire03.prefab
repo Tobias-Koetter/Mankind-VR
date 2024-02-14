@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.92387956, z: -0, w: 0.38268343}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4404168420984614777}
   m_RootOrder: 4
@@ -72,7 +73,8 @@ Transform:
   m_GameObject: {fileID: 1308680422214376379}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6299973384926011292}
   - {fileID: 4573871620537781087}
@@ -141,6 +143,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4404168420984614777}
   m_RootOrder: 3
@@ -186,6 +189,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4404168420984614777}
   m_RootOrder: 1
@@ -231,6 +235,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.38268343, z: -0, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4404168420984614777}
   m_RootOrder: 2
@@ -263,6 +268,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 42a4ba7ba7e19ed47915f13ae5c7e321,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 42a4ba7ba7e19ed47915f13ae5c7e321,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -278,6 +288,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 42a4ba7ba7e19ed47915f13ae5c7e321,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 42a4ba7ba7e19ed47915f13ae5c7e321,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -290,16 +305,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 42a4ba7ba7e19ed47915f13ae5c7e321,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 42a4ba7ba7e19ed47915f13ae5c7e321,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 42a4ba7ba7e19ed47915f13ae5c7e321,
         type: 3}
@@ -338,6 +343,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42a4ba7ba7e19ed47915f13ae5c7e321, type: 3}
+--- !u!23 &616145979445249373 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7307009975133851173, guid: 42a4ba7ba7e19ed47915f13ae5c7e321,
+    type: 3}
+  m_PrefabInstance: {fileID: 1302864811762627718}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6299973384926011292 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 42a4ba7ba7e19ed47915f13ae5c7e321,
@@ -347,12 +358,6 @@ Transform:
 --- !u!33 &8650867318873308708 stripped
 MeshFilter:
   m_CorrespondingSourceObject: {fileID: -1577744920237765982, guid: 42a4ba7ba7e19ed47915f13ae5c7e321,
-    type: 3}
-  m_PrefabInstance: {fileID: 1302864811762627718}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &616145979445249373 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7307009975133851173, guid: 42a4ba7ba7e19ed47915f13ae5c7e321,
     type: 3}
   m_PrefabInstance: {fileID: 1302864811762627718}
   m_PrefabAsset: {fileID: 0}

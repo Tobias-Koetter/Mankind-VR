@@ -164,7 +164,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.018
+  m_Radius: 0.02
   m_Height: 0.32
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
@@ -336,6 +336,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 63ee5a9dd25651e4c9ca40128db45500, type: 2}
     m_RemovedComponents:
     - {fileID: 4598441031825625897, guid: 3dae4abfa4774bd47b6bf863dec16322, type: 3}
+    - {fileID: -2563139095635322589, guid: 3dae4abfa4774bd47b6bf863dec16322, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3dae4abfa4774bd47b6bf863dec16322, type: 3}
 --- !u!23 &697709179311637005 stripped
 MeshRenderer:
@@ -402,6 +403,20 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7307119493846970615}
   m_PrefabAsset: {fileID: 0}
+--- !u!136 &292940789772929076
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3486618871180171609}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.0035
+  m_Height: 0.017
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.001, z: 0.007}
 --- !u!1 &5043551820388712640 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6875217760119427017, guid: 3dae4abfa4774bd47b6bf863dec16322,
@@ -416,13 +431,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5043551820388712640}
   serializedVersion: 2
-  m_Mass: 20
+  m_Mass: 100
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 64
   m_CollisionDetection: 0
 --- !u!135 &4183166346739572688
 SphereCollider:
@@ -464,6 +479,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  TriggerLayer:
+    serializedVersion: 2
+    m_Bits: 2147483648
 --- !u!23 &6149276187337463544 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 3476361560527480335, guid: 3dae4abfa4774bd47b6bf863dec16322,
