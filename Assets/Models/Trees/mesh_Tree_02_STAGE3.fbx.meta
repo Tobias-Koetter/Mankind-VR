@@ -1,19 +1,9 @@
 fileFormatVersion: 2
-guid: 46a8d4e8a7d67914a90e5c32b38a2c91
+guid: 440b8482bd6652c4d856babaf3faa9f8
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: GesteinBoden
-    second: {fileID: 2100000, guid: 528c060f35d0b8a43bfc35bbba021c82, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: GrasBoden
-    second: {fileID: 2100000, guid: 528c060f35d0b8a43bfc35bbba021c82, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
