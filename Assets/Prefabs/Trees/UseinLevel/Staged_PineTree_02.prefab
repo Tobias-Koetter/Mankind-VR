@@ -219,6 +219,8 @@ MonoBehaviour:
   models2_2: []
   models3: []
   lDis: {fileID: 5493183206440765249}
+  s: 
+  jumpOverBetween2: 1
 --- !u!114 &5493183206440765249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,16 +244,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5309532937517469919}
     m_Modifications:
-    - target: {fileID: 5302552345327700660, guid: b88b9b83e955b9e429363536fec45bea,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 891c506c81e77ef459a991c2bc0ede35, type: 2}
-    - target: {fileID: 5499207277614104892, guid: b88b9b83e955b9e429363536fec45bea,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 891c506c81e77ef459a991c2bc0ede35, type: 2}
     - target: {fileID: 6134899473071356579, guid: b88b9b83e955b9e429363536fec45bea,
         type: 3}
       propertyPath: m_RootOrder
@@ -311,6 +303,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: prefab_PineTree_02_STAGE2-3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8611244209731511994, guid: b88b9b83e955b9e429363536fec45bea,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b88b9b83e955b9e429363536fec45bea, type: 3}
@@ -382,21 +379,51 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1434614471516665679, guid: 2264f5b95257b7b49a70c5166376ba85,
+    - target: {fileID: 1631546530986746317, guid: 2264f5b95257b7b49a70c5166376ba85,
         type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 891c506c81e77ef459a991c2bc0ede35, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.0026
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709696654901321062, guid: 2264f5b95257b7b49a70c5166376ba85,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2501388359471983203, guid: 2264f5b95257b7b49a70c5166376ba85,
         type: 3}
       propertyPath: m_Name
       value: prefab_PineTree_02_STAGE3
       objectReference: {fileID: 0}
-    - target: {fileID: 6309889582137252267, guid: 2264f5b95257b7b49a70c5166376ba85,
+    - target: {fileID: 3800012448777742826, guid: 2264f5b95257b7b49a70c5166376ba85,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 891c506c81e77ef459a991c2bc0ede35, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115451037408658575, guid: 2264f5b95257b7b49a70c5166376ba85,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502274347721188548, guid: 2264f5b95257b7b49a70c5166376ba85,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5741442692373582501, guid: 2264f5b95257b7b49a70c5166376ba85,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775255312765774428, guid: 2264f5b95257b7b49a70c5166376ba85,
+        type: 3}
+      propertyPath: m_Height
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135173659697258015, guid: 2264f5b95257b7b49a70c5166376ba85,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2264f5b95257b7b49a70c5166376ba85, type: 3}
 --- !u!4 &3853820420105398371 stripped
@@ -412,11 +439,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2081206031812071523}
     m_Modifications:
-    - target: {fileID: 3221181285215951813, guid: fc48b2bdef56ef84aa57cc9734e07ce3,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 891c506c81e77ef459a991c2bc0ede35, type: 2}
     - target: {fileID: 4791813046410358954, guid: fc48b2bdef56ef84aa57cc9734e07ce3,
         type: 3}
       propertyPath: m_RootOrder
@@ -477,11 +499,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_PineTree_02_STAGE2
       objectReference: {fileID: 0}
-    - target: {fileID: 5384546946733707162, guid: fc48b2bdef56ef84aa57cc9734e07ce3,
+    - target: {fileID: 5002881386033776420, guid: fc48b2bdef56ef84aa57cc9734e07ce3,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 891c506c81e77ef459a991c2bc0ede35, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc48b2bdef56ef84aa57cc9734e07ce3, type: 3}
 --- !u!4 &7648626306374103380 stripped
@@ -497,26 +519,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5344789277545891210}
     m_Modifications:
-    - target: {fileID: 2096832433575504675, guid: ff856bb23cfccf044b52e3ffbb6d78c5,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 891c506c81e77ef459a991c2bc0ede35, type: 2}
     - target: {fileID: 2928493560580415771, guid: ff856bb23cfccf044b52e3ffbb6d78c5,
         type: 3}
       propertyPath: m_Name
       value: prefab_PineTree_02_STAGE1
       objectReference: {fileID: 0}
-    - target: {fileID: 6536435401440056042, guid: ff856bb23cfccf044b52e3ffbb6d78c5,
+    - target: {fileID: 2928493560580415771, guid: ff856bb23cfccf044b52e3ffbb6d78c5,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 891c506c81e77ef459a991c2bc0ede35, type: 2}
-    - target: {fileID: 7473540694106047773, guid: ff856bb23cfccf044b52e3ffbb6d78c5,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 891c506c81e77ef459a991c2bc0ede35, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8398959058302344110, guid: ff856bb23cfccf044b52e3ffbb6d78c5,
         type: 3}
       propertyPath: m_RootOrder
@@ -592,6 +604,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_PineTree_02_STAGE1-2
       objectReference: {fileID: 0}
+    - target: {fileID: 2351631818332600521, guid: d28951b9cde9be1449aba3cf17f36090,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3149858663534217704, guid: d28951b9cde9be1449aba3cf17f36090,
         type: 3}
       propertyPath: m_RootOrder
@@ -647,16 +664,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4515843615909883297, guid: d28951b9cde9be1449aba3cf17f36090,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 891c506c81e77ef459a991c2bc0ede35, type: 2}
-    - target: {fileID: 7853076012013889709, guid: d28951b9cde9be1449aba3cf17f36090,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 891c506c81e77ef459a991c2bc0ede35, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d28951b9cde9be1449aba3cf17f36090, type: 3}
 --- !u!4 &5572720208847188915 stripped

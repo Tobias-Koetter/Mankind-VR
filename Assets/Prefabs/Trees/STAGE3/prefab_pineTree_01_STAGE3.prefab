@@ -115,7 +115,7 @@ MonoBehaviour:
   bottomPart: {fileID: 3486618871180171609}
   totalTime_MidExplosion: 0.3
   totalTime_inBetween: 0.5
-  velocityDeadzone: 0
+  totalTime_dissolve: 2
   groundMask:
     serializedVersion: 2
     m_Bits: 0

@@ -12,10 +12,17 @@ public class TreeCutting : MonoBehaviour
     public float totalTime_MidExplosion = 0.3f;
     [Range(0.1f, 10f)]
     public float totalTime_inBetween = 0.1f;
-    [Range(0f, 1f)]
-    public float velocityDeadzone = 0.01f;
-    public LayerMask groundMask;
+    [Range(0.1f, 10f)]
+    public float totalTime_final = 10f;
+    [Range(0f, 10f)]
+    public float totalTime_dissolve = 4f;
+    public float strength_Force = 200f; 
+
     private float timer = 0f;
+
+    private Vector3 force;
+    Vector3[] start;
+    Vector3 end;
 
     private bool inMidExpl = true;
     private bool inBetween = false;
@@ -32,59 +39,113 @@ public class TreeCutting : MonoBehaviour
     {
         foreach (Rigidbody r in midParts) r.isKinematic = false;
         timer = 0f;
+        int dir = Random.Range(0, 4);   // 0,1,2,3 (Range(int inclusive ,int exclusive))
+        force = Vector3.zero; 
+        switch (dir)                    // Use x and y axis because the model has z as the height axis
+        {                               // We only want to create a force along the horizontal plane
+            case 0:
+                force = Vector3.left * strength_Force;
+                break;
+            case 1:
+                force = Vector3.right * strength_Force;
+                break;
+            case 2:
+                force = Vector3.up * strength_Force;
+                break;
+            case 3:
+                force = Vector3.down * strength_Force;
+                break;
+        }
+
+
+        
     }
 
     void Update() {
         if (inMidExpl)
         {
             timer += Time.deltaTime;
+
             if (timer >= totalTime_MidExplosion)
             {
 
-                Vector2 torque = new Vector2(Random.Range(-100f, 100f), Random.Range(-10f, 10f));
                 topPart.isKinematic = false;
-                SphereCollider col = topPart.GetComponent<SphereCollider>();
-                Vector3 forcePos = topPart.transform.TransformPoint(col.center);
-                forcePos = topPart.transform.position + (forcePos-topPart.transform.position)  * 0.8f;
-                Vector3 forceDir = Vector3.back;
-                float forceStrength = 100f;
-                //topPart.AddForceAtPosition(forceDir * forceStrength, forcePos - forceDir,ForceMode.Impulse);
-                topPart.AddRelativeTorque(200f, 0f, 0f, ForceMode.Force);
-                /*GameObject o = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                o.transform.position = forcePos - forceDir;*/
                 timer = 0f;
                 inMidExpl = false;
                 inBetween = true;
             }
         }
-        else if(inBetween)
+        else if (inBetween)
         {
             timer += Time.deltaTime;
-            topPart.AddRelativeTorque(200f, 0f, 0f, ForceMode.Force);
+            //topPart.AddForceAtPosition(force, topPart.transform.position + topPart.transform.forward * 1.5f);
+            topPart.AddRelativeTorque(force, ForceMode.Force);
             if (timer >= totalTime_inBetween)
             {
-                /*foreach (Rigidbody r in midParts)
-                {
-                    r.gameObject.SetActive(false);
-                }*/
+
                 timer = 0f;
                 inBetween = false;
                 inFinal = true;
             }
-            
+
         }
-        else if(inFinal)
+        else if (inFinal)
         {
-            if(isGrounded)
+            if (isGrounded)
             {
                 //topPart.isKinematic = true;
                 isDead = true;
                 inFinal = false;
+                foreach (Rigidbody r in midParts)
+                {
+                    r.isKinematic = true;
+                    r.gameObject.GetComponent<MeshCollider>().enabled = false;
+                }
+                //StopAllCoroutines();
+                //StartCoroutine(DissolveMidparts());
+                start = new Vector3[midParts.Length];
+
+                for (int i = 0; i < midParts.Length; i++)
+                {
+                    Vector3 pos = midParts[i].transform.position;
+                    start[i] = pos;
+                }
+                end = bottomPart.transform.position + Vector3.down * 0.5f;
+                timer = 0f;
             }
             else
-                topPart.AddRelativeTorque(200f, 0f, 0f, ForceMode.Force);
+            {
+                if (timer <= totalTime_final)
+                {
+                    timer += Time.deltaTime;
+                    //topPart.AddForceAtPosition(force, topPart.transform.position + topPart.transform.forward * 1.5f);
+                    topPart.AddRelativeTorque(force, ForceMode.Force);
+                }
+                else
+                {
+                    isGrounded = true;
+                    timer = 0f;
+                }
+            }
         }
+        else if (IsDead)
+        {
+            if (timer < totalTime_dissolve)
+            {
+                timer += Time.deltaTime;
+                if (timer > totalTime_dissolve) timer = totalTime_dissolve;
 
+                for (int i = 0; i < midParts.Length; i++)
+                {
+                    midParts[i].transform.position = Vector3.Lerp(start[i], end, timer / totalTime_dissolve);
+                    if (timer == totalTime_dissolve) midParts[i].gameObject.SetActive(false);
+                }
+            }
+            else
+            {
+                this.enabled = false;
+            }
+        }
     }
 
 }

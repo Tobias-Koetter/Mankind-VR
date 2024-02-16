@@ -51,7 +51,7 @@ public class StageChanging : MonoBehaviour
 
     [Header("Grass Values")]
     public GameObject[] grassParent;
-
+    public ChangeGrassOverTime shaderGrassChanger;
     private GrassParentContainer[] parentContainer;
     
     private float lerp_Value = 0f;
@@ -171,6 +171,7 @@ public class StageChanging : MonoBehaviour
 
     private void ChangeGrass()
     {
+        shaderGrassChanger.ChangeSettings();
         foreach(GrassParentContainer gPC in parentContainer)
         {
             foreach (Grass g in gPC.getChildren())
