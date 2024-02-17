@@ -85,7 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 364613262258337873}
   - component: {fileID: 3900443757772145133}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Collider1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3590492384748945557}
   - component: {fileID: 7647779809410417631}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,6 +183,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Convex
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8140907777167661945, guid: 71d47f159834a7d4192ec89983d79c40,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 71d47f159834a7d4192ec89983d79c40,
         type: 3}

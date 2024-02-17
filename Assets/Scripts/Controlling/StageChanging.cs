@@ -171,7 +171,7 @@ public class StageChanging : MonoBehaviour
 
     private void ChangeGrass()
     {
-        shaderGrassChanger.ChangeSettings();
+        //shaderGrassChanger.ChangeSettings();
         foreach(GrassParentContainer gPC in parentContainer)
         {
             foreach (Grass g in gPC.getChildren())

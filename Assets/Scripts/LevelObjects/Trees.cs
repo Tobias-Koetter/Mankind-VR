@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 public enum TREE_STAGE { ALIVE1, ALIVE2, BETWEEN1, BETWEEN2, DEAD };
 
+[SelectionBase]
 public class Trees : Interactable
 {
     //public Transform alive;

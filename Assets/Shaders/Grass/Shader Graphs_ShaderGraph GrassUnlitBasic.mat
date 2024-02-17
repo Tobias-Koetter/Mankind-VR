@@ -49,7 +49,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Blend: 0
-    - _BlendMult: 0
+    - _BlendMult: 3.66
     - _BlendOff: 0
     - _QueueControl: 0
     - _QueueOffset: 0

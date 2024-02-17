@@ -19,7 +19,7 @@ public class LightChange : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        daytime = new Vector3(90f, 180f, 90f);
+        daytime = new Vector3(60f, 155f, 90f);
         middletime = new Vector3(34f, 180f, 90f);
         latetime = new Vector3(8.5f, 180f, 90f);
         current = 1;

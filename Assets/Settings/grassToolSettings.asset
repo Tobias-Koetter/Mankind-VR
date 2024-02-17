@@ -14,40 +14,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerBlocking:
   - 1
+  - 0.539
   - 1
   - 1
   - 1
   - 1
   - 1
   - 1
-  - 1
-  layerFading: 0100000000000000
+  layerFading: 0101000000000000
   VertexColorSettings: 0
   VertexFade: 0
-  sizeWidth: 0.41
-  sizeLength: 1.501
+  sizeWidth: 0.299
+  sizeLength: 1.345
   adjustWidth: 0.151
   adjustLength: -0.553
   adjustWidthMax: 1.259
   adjustHeightMax: 0.958
   reprojectOffset: 1
-  rangeR: 0.305
-  rangeG: 0.131
-  rangeB: 0.014
-  AdjustedColor: {r: 0.4642697, g: 0.7735849, b: 0.28097185, a: 1}
+  rangeR: 0
+  rangeG: 0.069
+  rangeB: 0
+  AdjustedColor: {r: 0.4117647, g: 0.64705884, b: 0.20784314, a: 1}
   paintBlockMask:
     serializedVersion: 2
-    m_Bits: 1073750016
+    m_Bits: 1073758007
   hitMask:
     serializedVersion: 2
     m_Bits: 2147483648
   paintMask:
     serializedVersion: 2
     m_Bits: 2147483648
-  brushSize: 50
+  brushSize: 0.6
   brushFalloffSize: 0.347
   Flow: 3.19
   density: 1.64
-  normalLimit: 0.017
+  normalLimit: 0.086
   grassAmountToGenerate: 40000
   generationDensity: 1
