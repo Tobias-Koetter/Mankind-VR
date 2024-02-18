@@ -53,7 +53,7 @@ public class HandController : MonoBehaviour
                         {
                             int curID = spawn.PoolNumber;
 
-                            spawn.SpawnMaster.despawnObjectWithID(curID);
+                            spawn.SpawnMaster.DespawnObjectWithID(curID);
                         }
                         else if (parent is Trees tree /*&& colliderObject.name.EndsWith("0")*/)
                         {

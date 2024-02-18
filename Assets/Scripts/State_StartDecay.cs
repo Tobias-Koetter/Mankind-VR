@@ -46,9 +46,23 @@ public class State_StartDecay : AbstractState
                     
                     GameInfo.TrashSpawner.SpawnOnTimer();
                 }
-                else if(LevelBalancing.GetBalanceVariance() > Trees.startingNatureValue /2f)
+                else if (LevelBalancing.GetBalanceVariance() >= 0 && LevelBalancing.GetBalanceVariance() < 10f)
                 {
-                    Debug.Log("Balancing is executing.");
+                    Debug.Log("StartDecay -> Balancing is executing.");
+                    GameInfo.PlantDestroyer.DestroyRandomTreeInMiddleState();
+                }
+                else if (LevelBalancing.GetBalanceVariance() >=10 && LevelBalancing.GetBalanceVariance()< 20f)
+                {
+                    Debug.Log("StartDecay -> Balancing is executing.");
+                    GameInfo.PlantDestroyer.DestroyRandomTreeInMiddleState();
+                    GameInfo.PlantDestroyer.DestroyRandomTreeInMiddleState();
+                }
+                else if(LevelBalancing.GetBalanceVariance() >= 20f)
+                {
+                    Debug.Log("StartDecay -> Balancing is executing.");
+                    GameInfo.PlantDestroyer.DestroyRandomTreeInMiddleState();
+                    GameInfo.PlantDestroyer.DestroyRandomTreeInMiddleState();
+                    GameInfo.PlantDestroyer.DestroyRandomTreeInMiddleState();
                     GameInfo.PlantDestroyer.DestroyRandomTreeInMiddleState();
                 }
                 lastbaBalanceUpdate = GameInfo.SpentSecondsIngame;

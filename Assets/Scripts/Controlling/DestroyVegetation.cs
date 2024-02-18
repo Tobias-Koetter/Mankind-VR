@@ -20,18 +20,26 @@ public class DestroyVegetation : MonoBehaviour
     public List<Trees> deadTrees;
     public List<PoI> PoIList;
 
+    public bool AreAllTreesDead{get{return aliveTrees.Count == 0;}}
+
     private TreeComparer tC;
     private GameInfo state;
     private bool isInvokingMiddle = false;
     private bool isInvokingEnd = false;
 
+    private GameObject alive;
+    private GameObject dead;
     // Start is called before the first frame update
     void Start()
     {
         tC = new TreeComparer();
 
         int counter = 0;
+        alive = new GameObject("ALIVE",typeof(Transform));
+        dead = new GameObject("DEAD",typeof(Transform));
 
+        alive.transform.SetParent(treeParent.transform);
+        dead.transform.SetParent(treeParent.transform);
         if (treeParent == null)
         {
             Debug.LogError("treeParent is not selected in Editor.");
@@ -44,6 +52,7 @@ public class DestroyVegetation : MonoBehaviour
                 t.TreeNumber = counter++;
                 t.Controller = this;
                 aliveTrees.Add(t);
+                t.transform.SetParent(alive.transform);
             }
             print(aliveTrees.Count);
             float pNatVal= Trees.startingNatureValue;
@@ -134,8 +143,10 @@ public class DestroyVegetation : MonoBehaviour
             }
             else if (t.status == TREE_STAGE.DEAD)
             {
-                aliveTrees.RemoveAt(treeIndex);
+                //aliveTrees.RemoveAt(treeIndex);
+                aliveTrees.Remove(t);
                 deadTrees.Add(t);
+                t.transform.SetParent(dead.transform);
                 deadTrees.Sort(tC);
                 LevelBalancing.SetNatureValue(t.personalNatureValue);            // gets reduced by remaining 30% from original value
                 t.personalNatureValue = 0f;
@@ -156,9 +167,10 @@ public class DestroyVegetation : MonoBehaviour
         int nrCurState = (int)t.status;
         int nrLastState = (int)TREE_STAGE.DEAD;
 
-        if( amountOfStates >=  ( nrLastState - nrCurState )  )  // check if there are enough States to destroy for the given number of States
+        int val = t.jumpOverBetween2 ? 1 : 0;
+        if( amountOfStates >=  ( nrLastState - nrCurState  - val)  )  // check if there are enough States to destroy for the given number of States
         {
-            numberOfStates = (nrLastState - nrCurState);        // if not: destroy whole tree
+            numberOfStates = (nrLastState - nrCurState - val);        // if not: destroy whole tree
         }
         else{ numberOfStates = amountOfStates; }                // if yes: setup for destroy secence with given number of States
 
@@ -199,10 +211,14 @@ public class DestroyVegetation : MonoBehaviour
 
     public void DestroyRandomTreeInMiddleState()
     {
-        int index = Random.Range(0, aliveTrees.Count);
-        Trees t = aliveTrees.ElementAt<Trees>(index);
-        //handleTreeDestroy(t,index);
-        StartCoroutine(DestroyOverMoreStates(t, 3, index));
+        if (!AreAllTreesDead)
+        {
+            int index = Random.Range(0, aliveTrees.Count);
+            Trees t = aliveTrees.ElementAt<Trees>(index);
+            //handleTreeDestroy(t,index);
+            //StartCoroutine(DestroyOverMoreStates(t, 3, index));
+            StartCoroutine(DestroyOverMoreStates(t, 3));
+        }
     }
 
     public void DestroyRandomTreeInRisingState()
@@ -217,34 +233,46 @@ public class DestroyVegetation : MonoBehaviour
 
     public void DestroyTreesInAlive1()
     {
-        List<Trees> alive1Trees = aliveTrees.Where(t => t.status == TREE_STAGE.ALIVE1).ToList();
-        foreach(Trees t in alive1Trees)
+        if (!AreAllTreesDead)
         {
-            handleTreeDestroy(t);
+            List<Trees> alive1Trees = aliveTrees.Where(t => t.status == TREE_STAGE.ALIVE1).ToList();
+            foreach (Trees t in alive1Trees)
+            {
+                handleTreeDestroy(t);
+            }
         }
     }
     public void DestroyTreesInAlive2()
     {
-        List<Trees> alive1Trees = aliveTrees.Where(t => t.status == TREE_STAGE.ALIVE2).ToList();
-        foreach (Trees t in alive1Trees)
+        if (!AreAllTreesDead)
         {
-            handleTreeDestroy(t);
+            List<Trees> alive1Trees = aliveTrees.Where(t => t.status == TREE_STAGE.ALIVE2).ToList();
+            foreach (Trees t in alive1Trees)
+            {
+                handleTreeDestroy(t);
+            }
         }
     }
     public void DestroyTreesInBetween1()
     {
-        List<Trees> alive1Trees = aliveTrees.Where(t => t.status == TREE_STAGE.BETWEEN1).ToList();
-        foreach (Trees t in alive1Trees)
+        if (!AreAllTreesDead)
         {
-            handleTreeDestroy(t);
+            List<Trees> alive1Trees = aliveTrees.Where(t => t.status == TREE_STAGE.BETWEEN1).ToList();
+            foreach (Trees t in alive1Trees)
+            {
+                handleTreeDestroy(t);
+            }
         }
     }
     public void DestroyTreesInBetween2()
     {
-        List<Trees> alive1Trees = aliveTrees.Where(t => t.status == TREE_STAGE.BETWEEN2).ToList();
-        foreach (Trees t in alive1Trees)
+        if (!AreAllTreesDead)
         {
-            handleTreeDestroy(t);
+            List<Trees> alive1Trees = aliveTrees.Where(t => t.status == TREE_STAGE.BETWEEN2).ToList();
+            foreach (Trees t in alive1Trees)
+            {
+                handleTreeDestroy(t);
+            }
         }
     }
 }

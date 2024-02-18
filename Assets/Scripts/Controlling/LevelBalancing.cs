@@ -38,7 +38,7 @@ public class LevelBalancing
     public static float GetCurrentTrashValue() => TrashValue;
 
     public static void SetNatureValue(float valueDestroyed, bool normalUse = true) { _ = normalUse ? (NatureValue -= valueDestroyed) : (NatureValue += valueDestroyed); }
-    public static void SetTrashValue(float addedTrashValue, bool normalUse = true) { _ = normalUse ? (TrashValue += addedTrashValue) : (TrashValue += addedTrashValue); }
+    public static void SetTrashValue(float addedTrashValue, bool normalUse = true) { _ = normalUse ? (TrashValue += addedTrashValue) : (TrashValue -= addedTrashValue); }
 
 
 }

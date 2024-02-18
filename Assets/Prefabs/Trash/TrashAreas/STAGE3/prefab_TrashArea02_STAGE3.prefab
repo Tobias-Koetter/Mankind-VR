@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3642444696983739365}
   - component: {fileID: 4888930615630362427}
-  m_Layer: 31
+  m_Layer: 12
   m_Name: prefab_TrashArea02_STAGE3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d9b741371b383a4aa00fe90fec8cc2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  personalTrashValue: 6
+  personalTrashValue: 10
   meshRndr: {fileID: 5394711030820297624}
   meshFltr: {fileID: 1864864573289867105}
+  TrashAreaShape: 5
+  currentArea: {fileID: 0}
   poolNumber: 0
 --- !u!1001 &2432196701393630797
 PrefabInstance:
@@ -111,6 +113,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: f18139d5a3b01cd4f9d110183280fbd8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 23cd846dd37ef324899b3bb2f9e770b4, type: 2}
     - target: {fileID: -927199367670048503, guid: f18139d5a3b01cd4f9d110183280fbd8,
         type: 3}
       propertyPath: m_Name
@@ -119,7 +126,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: f18139d5a3b01cd4f9d110183280fbd8,
         type: 3}
       propertyPath: m_Layer
-      value: 31
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18139d5a3b01cd4f9d110183280fbd8, type: 3}

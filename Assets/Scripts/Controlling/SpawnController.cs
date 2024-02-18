@@ -18,6 +18,7 @@ public class SpawnedList
     public int Count => listObjects.Count;
     public void RemoveAt(int index) => listObjects.RemoveAt(index);
     public bool Remove(Spawned item) => listObjects.Remove(item);
+    public int BinarySearch(Spawned item) => listObjects.BinarySearch(item);
 
 
 
@@ -25,9 +26,15 @@ public class SpawnedList
 
 public class SpawnController : MonoBehaviour
 {
+    [System.Serializable]
+    public struct AreaOfSpawns
+    {
+        public MeshFilter[] AreaFilter;
+        public Area_Spawn[] AreaScript;
+    }
     public bool VisibleDebug;
     public Transform[] center;
-    private MeshFilter[] spawnArea;
+    private AreaOfSpawns spawnArea;
     public int totalNrCopies = 100;
     public float maxSpawnRadius = 20f;
     public float minSpawnRadius = 20f;
@@ -41,7 +48,7 @@ public class SpawnController : MonoBehaviour
     public ParticleSystem DirtThrow;
 
     public SpawnAreaTracker SpArTracker;
-
+    public bool cantSpawnTrashareas = false;
     //private ParticleSystem dTInstance;
 
     private SpawnTrashArea trashAreaHandler;
@@ -50,6 +57,7 @@ public class SpawnController : MonoBehaviour
     private Spawned last;
 
     private int maxSpawnIndexSmallTrash = 0;
+    private int minSpawnIndexTrashAreas = 0;
     private int maxSpawnIndexTrashAreas = 0;
     private bool TrashAreasCanSpawn = false;
 
@@ -62,10 +70,13 @@ public class SpawnController : MonoBehaviour
 
     void Start()
     {
-        spawnArea = new MeshFilter[center.Length];
+        spawnArea.AreaFilter = new MeshFilter[center.Length];
+        spawnArea.AreaScript = new Area_Spawn[center.Length];
+
         for (int i = 0; i < center.Length; i++)
         {
-            spawnArea[i] = center[i].gameObject.GetComponent<MeshFilter>();
+            spawnArea.AreaFilter[i] = center[i].gameObject.GetComponent<MeshFilter>();
+            spawnArea.AreaScript[i] = center[i].gameObject.GetComponent<Area_Spawn>();
         }
 
         if (maxSpawnRadius < minSpawnRadius)
@@ -129,6 +140,7 @@ public class SpawnController : MonoBehaviour
         // Create jagged Arrays for TrashArea Pooling
         spawnable_TrashAreas = new SpawnedList[Prefabs_TrashAreas.Length];
         spawned_TrashAreas = new SpawnedList[Prefabs_TrashAreas.Length];
+        TA_SHAPES standard = TA_SHAPES.Plane_Small;
         for (int i = 0; i< Prefabs_TrashAreas.Length; i++)
         {
             SpawnedList spawnable_temp = new SpawnedList();
@@ -139,6 +151,7 @@ public class SpawnController : MonoBehaviour
                 newAreaObject.SpawnMaster = this;
                 newAreaObject.PoolNumber = counter++;
                 newAreaObject.gameObject.SetActive(false);
+                newAreaObject.TrashAreaShape = standard + i;
             }
             spawnable_TrashAreas[i] = spawnable_temp;
 
@@ -162,7 +175,7 @@ public class SpawnController : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.O) && last != null)
             {
-                despawnObjectWithID(last.poolNumber);
+                DespawnObjectWithID(last.poolNumber);
             }
             else
             {
@@ -171,7 +184,7 @@ public class SpawnController : MonoBehaviour
 
                     if (Input.GetKeyDown(codes[i]))
                     {
-                        int indexSpawnArea = Random.Range(0, spawnArea.Length);
+                        int indexSpawnArea = Random.Range(0, spawnArea.AreaFilter.Length);
                         SpawnSpecificTrashArea(i,indexSpawnArea);
                     }
                 }
@@ -188,7 +201,8 @@ public class SpawnController : MonoBehaviour
             int val = Random.Range(0, 100);
             if (val <= 16 * maxSpawnIndexTrashAreas)           // maxSpawnIndexTrashAres liegt zwischen 1 und 5 -> max Wahrscheinlichkeit bei 80% in letzter Stufe
             {
-                ret = SpawnTrashArea();
+                ret = null;
+                if (!cantSpawnTrashareas) { ret = SpawnTrashArea(); }
             }
             else
                 ret = SpawnSmallTrash();
@@ -203,29 +217,35 @@ public class SpawnController : MonoBehaviour
     public Spawned SpawnSmallTrash()
     {
         Spawned ret = null;
-        int index = Random.Range(0, maxSpawnIndexSmallTrash);
+        int index = Random.Range(0, maxSpawnIndexSmallTrash);       //Choose which Object gets spawned out of the small trash 
 
-        if (spawnable_SmallTrash[index].Count >= spawnArea.Length)
+        if (spawnable_SmallTrash[index].Count >= spawnArea.AreaFilter.Length)
         {
             //spawnObject();
-            for (int i= 0; i < spawnArea.Length;i++)
+            for (int i= 0; i < spawnArea.AreaFilter.Length;i++)                // throw one small trash object in every spawnArea
             {
-                ret = SpawnObjectInMesh(i,index);
+                if (!spawnArea.AreaScript[i].InMountainMode)
+                {
+                    ret = SpawnObjectInMesh(i,index);
+                }
             }
         }
         else
         {
-            for (int i = 0; i < spawnArea.Length; i++)
+            for (int i = 0; i < spawnArea.AreaFilter.Length; i++)
             {
                 Spawned current = spawned_SmallTrash[index][0];
                 spawned_SmallTrash[index].RemoveAt(0);
                 spawnable_SmallTrash[index].Add(current);
+                LevelBalancing.SetTrashValue(current.personalTrashValue, false); // Trashvalue wird kurzfristig verringert
             }
             //spawnObject();
-            for (int i = 0; i < spawnArea.Length; i++)
+            for (int i = 0; i < spawnArea.AreaFilter.Length; i++)
             {
-
-                ret = SpawnObjectInMesh(i,index);
+                if (!spawnArea.AreaScript[i].InMountainMode)
+                {
+                    ret = SpawnObjectInMesh(i, index);
+                }
             }
         }
         return ret;
@@ -236,25 +256,49 @@ public class SpawnController : MonoBehaviour
         Spawned ret = null;
         int indexMeshForm = Random.Range(0, maxSpawnIndexTrashAreas);
 
-        int indexSpawnArea = Random.Range(0, spawnArea.Length);
-        if(center[indexSpawnArea] == SpArTracker.getCurrentVisited())
+        int indexSpawnArea = Random.Range(0, spawnArea.AreaFilter.Length);
+        int counter = 1;
+        /*while( (counter < center.Length) 
+            && 
+            ( center[indexSpawnArea] == SpArTracker.getCurrentVisited()
+            || spawnArea.AreaScript[indexSpawnArea].InMountainMode )
+            )
         {
-            indexSpawnArea = (indexSpawnArea + 1) % spawnArea.Length;
+            counter++;
+            indexSpawnArea = (indexSpawnArea + 1) % spawnArea.AreaFilter.Length;
+        }*/
+        if(spawnArea.AreaScript[indexSpawnArea].InMountainMode)
+        {
+            indexSpawnArea = -1;
+            for(int i= 0; i< spawnArea.AreaFilter.Length; i++)
+            {
+                if(!spawnArea.AreaScript[i].InMountainMode)
+                {
+                    indexSpawnArea = i;
+                }
+            }
         }
-        SpawnSpecificTrashArea(indexMeshForm,indexSpawnArea);
-
-        if(maxSpawnIndexTrashAreas >= 3 && maxSpawnIndexTrashAreas < 5)
+        if (indexSpawnArea != -1)//(counter < center.Length)
         {
-            Transform extraArea = SpArTracker.getVisitedArea();
-            indexSpawnArea = System.Array.IndexOf<Transform>(center, extraArea);
             SpawnSpecificTrashArea(indexMeshForm, indexSpawnArea);
+
+            if (maxSpawnIndexTrashAreas >= 3 && maxSpawnIndexTrashAreas < 5)
+            {
+                Transform extraArea = SpArTracker.getVisitedArea();
+                indexSpawnArea = System.Array.IndexOf<Transform>(center, extraArea);
+                SpawnSpecificTrashArea(indexMeshForm, indexSpawnArea);
+            }
+
+            if (maxSpawnIndexTrashAreas == 5)
+            {
+                Transform extraArea = SpArTracker.getCurrentVisited();
+                indexSpawnArea = System.Array.IndexOf<Transform>(center, extraArea);
+                SpawnSpecificTrashArea(indexMeshForm, indexSpawnArea);
+            }
         }
-
-        if(maxSpawnIndexTrashAreas == 5)
+        else
         {
-            Transform extraArea = SpArTracker.getCurrentVisited();
-            indexSpawnArea = System.Array.IndexOf<Transform>(center, extraArea);
-            SpawnSpecificTrashArea(indexMeshForm, indexSpawnArea);
+            cantSpawnTrashareas = true;
         }
         return ret;
     }
@@ -276,6 +320,7 @@ public class SpawnController : MonoBehaviour
             curPopped = spawned_curList[0];
             spawned_curList.RemoveAt(0);
             spawnable_curList.Add(curPopped);
+            LevelBalancing.SetTrashValue(curPopped.personalTrashValue, false); //normalUse == false => es wird der Wert reduziert
         }
         else
         {
@@ -286,7 +331,7 @@ public class SpawnController : MonoBehaviour
         curPopped.gameObject.SetActive(true);
         //trashAreaHandler.Spawn(current + i, spawnArea[/*Random.Range(0, spawnArea.Length)*/4], curPopped);
         
-        bool spawnedCorrectly = trashAreaHandler.Spawn(standard + indexForm, spawnArea[indexSpawnArea], curPopped, Random.Range(100, 160));
+        bool spawnedCorrectly = trashAreaHandler.Spawn(standard + indexForm, spawnArea.AreaFilter[indexSpawnArea],spawnArea.AreaScript[indexSpawnArea], curPopped, Random.Range(100, 160));
 
         if (spawnedCorrectly)
         {
@@ -306,7 +351,7 @@ public class SpawnController : MonoBehaviour
 
     private Spawned SpawnObjectInMesh(int index, int trashArrayPos)
     {
-        Mesh m = spawnArea[index].mesh;
+        Mesh m = spawnArea.AreaFilter[index].mesh;
         Transform t = center[index];
         SpawnedList curRow = spawnable_SmallTrash[trashArrayPos];
         Spawned current = curRow[curRow.Count-1];
@@ -325,6 +370,7 @@ public class SpawnController : MonoBehaviour
             curRow.Remove(current);
             spawned_SmallTrash[trashArrayPos].Add(current);
 
+            spawnArea.AreaScript[index].AddSpawnObject(current);
             LevelBalancing.SetTrashValue(current.personalTrashValue);
             return current;
         }
@@ -335,7 +381,7 @@ public class SpawnController : MonoBehaviour
         
     }
 
-    public void despawnObjectWithID(int PoolNumber)
+    public void DespawnObjectWithID(int PoolNumber)
     {
         Spawned current = null;
 
@@ -351,13 +397,28 @@ public class SpawnController : MonoBehaviour
         }
         current.gameObject.transform.position = transform.position;
         current.Interact();
+        current.currentArea.RemoveSpawnObject(current);
         current.gameObject.SetActive(false);
-
+        current.currentArea = null;
+        LevelBalancing.SetTrashValue(current.personalTrashValue, false); //normalUse == false => es wird der Wert reduziert
         spawnable_SmallTrash[row].Add(current);
         spawned_SmallTrash[row].Remove(current);
 
     }
+    
+    public void DespawnTrashArea(Spawned spawned) {
+        int indexForm = spawned.TrashAreaShape - TA_SHAPES.Plane_Small;
+        SpawnedList activeTAs = spawned_TrashAreas[indexForm];
+        SpawnedList inactiveTAs = spawnable_TrashAreas[indexForm];
+        spawned.gameObject.transform.position = transform.position;
+        spawned.currentArea.RemoveSpawnObject(spawned);
+        spawned.gameObject.SetActive(false);
+        spawned.currentArea = null;
 
+        LevelBalancing.SetTrashValue(spawned.personalTrashValue, false); //normalUse == false => es wird der Wert reduziert
+        inactiveTAs.Add(spawned);
+        activeTAs.Remove(spawned);
+    }
 
     public bool MoveToNewState(STATE nextState)
     {
@@ -375,10 +436,12 @@ public class SpawnController : MonoBehaviour
                 break;
             case STATE.DECAY_MAIN:
                 // + TrashAreas 2.0; weniger TA 1.5; weniger kleiner Müll näher an Spieler
+                minSpawnIndexTrashAreas = 1;
                 maxSpawnIndexTrashAreas = 2;
                 break;
             case STATE.TRASH_RISING:
                 // + TA 2.5;
+                minSpawnIndexTrashAreas = 2;
                 maxSpawnIndexTrashAreas = 4;
                 break;
             case STATE.FINAL:

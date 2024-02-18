@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 88367110590344164}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2791572796137480814}
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d9b741371b383a4aa00fe90fec8cc2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  personalTrashValue: 0.5
+  personalTrashValue: 1
   meshRndr: {fileID: 6720903533518239988}
   meshFltr: {fileID: 8920223996230167491}
   poolNumber: 0

@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d9b741371b383a4aa00fe90fec8cc2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  personalTrashValue: 0.7
+  personalTrashValue: 1
   meshRndr: {fileID: 4000153207511257647}
   meshFltr: {fileID: 3260223102110608370}
   poolNumber: 0
@@ -218,6 +218,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -4819712205784222418, guid: 4c900bf4fa8038f4ba8bf55124b6f403,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 85b38401b0d8f544b8a9d721d91199db, type: 2}
     - target: {fileID: -4216859302048453862, guid: 4c900bf4fa8038f4ba8bf55124b6f403,
         type: 3}
       propertyPath: m_RootOrder
@@ -273,6 +278,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2861406909754527973, guid: 4c900bf4fa8038f4ba8bf55124b6f403,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 85b38401b0d8f544b8a9d721d91199db, type: 2}
+    - target: {fileID: -2861406909754527973, guid: 4c900bf4fa8038f4ba8bf55124b6f403,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d815d323800526043851866c709f137b, type: 2}
     - target: {fileID: -927199367670048503, guid: 4c900bf4fa8038f4ba8bf55124b6f403,
         type: 3}
       propertyPath: m_Name
@@ -302,6 +317,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551014577142218206, guid: 4c900bf4fa8038f4ba8bf55124b6f403,
+        type: 3}
+      propertyPath: m_Size
+      value: 1.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551014577142218206, guid: 4c900bf4fa8038f4ba8bf55124b6f403,
+        type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.7909121
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551014577142218206, guid: 4c900bf4fa8038f4ba8bf55124b6f403,
+        type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0.4658414
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551014577142218206, guid: 4c900bf4fa8038f4ba8bf55124b6f403,
+        type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0.20648506
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551014577142218206, guid: 4c900bf4fa8038f4ba8bf55124b6f403,
+        type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0.038536996
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c900bf4fa8038f4ba8bf55124b6f403, type: 3}

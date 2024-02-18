@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class GrassParentContainer
 {
@@ -51,8 +52,10 @@ public class StageChanging : MonoBehaviour
 
     [Header("Grass Values")]
     public GameObject[] grassParent;
-    public ChangeGrassOverTime shaderGrassChanger;
     private GrassParentContainer[] parentContainer;
+    public ChangeGrassOverTime grassChanger;
+
+    public ControlSound soundControl;
     
     private float lerp_Value = 0f;
     private Vector3 lerp_Start;
@@ -101,6 +104,8 @@ public class StageChanging : MonoBehaviour
         dwarfHill.NextGroundStage();
         mountainRange.NextGroundStage();
         ChangeGrass();
+        grassChanger.UpdateGrass_Stage1_StartDecay();
+
 
         yield return null;
     }
@@ -113,7 +118,8 @@ public class StageChanging : MonoBehaviour
         dwarfHill.NextGroundStage();
         mountainRange.NextGroundStage();
         ChangeGrass();
-
+        grassChanger.UpdateGrass_Stage1_DecayMain();
+        soundControl.DecreaseNature();
         while (lerp_Value < 1f)
         {
             lerp_Value += (animSpeed * 0.01f) * Time.deltaTime;
@@ -132,6 +138,8 @@ public class StageChanging : MonoBehaviour
         dwarfHill.NextGroundStage();
         mountainRange.NextGroundStage();
         ChangeGrass();
+        grassChanger.UpdateGrass_Stage1_TrashRising();
+        soundControl.IncreaseWind();
 
         while (lerp_Value < 1f)
         {
@@ -141,6 +149,7 @@ public class StageChanging : MonoBehaviour
             yield return new WaitForSeconds(0.02f);
         }
         yield return null;
+
     }
     public IEnumerator ChangeToStage3()
     {
@@ -151,7 +160,8 @@ public class StageChanging : MonoBehaviour
         dwarfHill.NextGroundStage();
         mountainRange.NextGroundStage();
         ChangeGrass();
-
+        grassChanger.UpdateGrass_Stage1_Final();
+        soundControl.DecreaseMusic();
         while (lerp_Value < 1f)
         {
             lerp_Value += (animSpeed*0.01f) * Time.deltaTime;
@@ -171,7 +181,7 @@ public class StageChanging : MonoBehaviour
 
     private void ChangeGrass()
     {
-        //shaderGrassChanger.ChangeSettings();
+
         foreach(GrassParentContainer gPC in parentContainer)
         {
             foreach (Grass g in gPC.getChildren())

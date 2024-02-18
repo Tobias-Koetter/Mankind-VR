@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d9b741371b383a4aa00fe90fec8cc2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  personalTrashValue: 0.5
+  personalTrashValue: 1
   meshRndr: {fileID: 1925259390493114068}
   meshFltr: {fileID: 6356344205749534022}
   poolNumber: 0

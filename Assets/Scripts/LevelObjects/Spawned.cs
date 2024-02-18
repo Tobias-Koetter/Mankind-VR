@@ -6,7 +6,8 @@ public class Spawned : Interactable
     public float personalTrashValue;
     public MeshRenderer meshRndr;
     public MeshFilter meshFltr;
-
+    public TA_SHAPES TrashAreaShape = TA_SHAPES.NONE;
+    public Area_Spawn currentArea = null;
     private LODGroup lodG;
     private SpawnController spawnMaster;
     public SpawnController SpawnMaster { get => spawnMaster; set => spawnMaster = value; }

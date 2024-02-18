@@ -18,8 +18,10 @@ public class GrassComputeScript : MonoBehaviour
 
     // grass settings to send to the compute shader
     public SO_GrassSettings currentPresets;
+    // OWN CODE!!
     [Button("Reset")]
     public string s;
+    //___________________
 
     // interactors
     ShaderInteractor[] interactors;
@@ -43,7 +45,12 @@ public class GrassComputeScript : MonoBehaviour
     private ComputeShader m_InstantiatedComputeShader;
     // buffer that contains the ids of all visible instances
     private ComputeBuffer m_VisibleIDBuffer;
+
     [SerializeField] Material m_InstantiatedMaterial;
+    // OWN CODE!!
+    public Material GetInstantiatedMaterial() => m_InstantiatedMaterial;
+    //___________________
+
     // The id of the kernel in the grass compute shader
     private int m_IdGrassKernel;
     // The x dispatch size for the grass compute shader
@@ -482,10 +489,10 @@ public class GrassComputeScript : MonoBehaviour
 #endif
     }
 
-    public void FillshaderValues(float h, float w, Color c) {
+    public void FillshaderValues(float h/*, float w, Color c*/) {
         m_InstantiatedComputeShader.SetFloat("_MaxHeight", h);
-        m_InstantiatedComputeShader.SetFloat("_MaxWidth", w);
-        m_InstantiatedMaterial.SetColor("_BottomTint", c);
+        //m_InstantiatedComputeShader.SetFloat("_MaxWidth", w);
+        //m_InstantiatedMaterial.SetColor("_BottomTint", c);
     }
 
     // draw the bounds gizmos

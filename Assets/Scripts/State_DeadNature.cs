@@ -30,7 +30,7 @@ public class State_DeadNature : AbstractState
         // anchor: ran out of Time in this state 
         if (RemainingTimeInState >= SecondsToStateChange)
         {
-            this.GameInfo.SetGameOver();
+            //this.GameInfo.SetGameOver();
         }
         else if(RemainingTimeInState >= checkForGlobalDestroy1 && destroy1)
         {

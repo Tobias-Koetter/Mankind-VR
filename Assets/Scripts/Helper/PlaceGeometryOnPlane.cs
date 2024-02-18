@@ -269,7 +269,7 @@ public class PlaceGeometryOnPlane
 
         RotateCylinderToSide();
         PushCylinderDown();
-        RotateCylinderAtFinalPlace();
+        //RotateCylinderAtFinalPlace();
 
         if (inDebug)
         {

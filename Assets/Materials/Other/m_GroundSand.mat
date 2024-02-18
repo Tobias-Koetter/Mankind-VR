@@ -80,7 +80,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - StageValue: 0
+    - StageValue: 1.016
     - Vector1_19BBDA5C: 0.1
     - Vector1_24F7FA9A: 0.2
     - Vector1_73F2CDD5: 2

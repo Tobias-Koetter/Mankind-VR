@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 6083576454054225429}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3482208821239257098}
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d9b741371b383a4aa00fe90fec8cc2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  personalTrashValue: 0.5
+  personalTrashValue: 1
   meshRndr: {fileID: 2459986647662271492}
   meshFltr: {fileID: 2775643738300306258}
   poolNumber: 0
@@ -202,7 +202,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 61ad2ccc3ee13a344a913e2dc75eab0d, type: 2}
+      objectReference: {fileID: 2100000, guid: 108bec86cb3e4bb40bd717360461d4ab, type: 2}
     - target: {fileID: -927199367670048503, guid: 7d3e8f0d531d6cf44afb511cfd019b51,
         type: 3}
       propertyPath: m_Name

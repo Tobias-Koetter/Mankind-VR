@@ -11,13 +11,15 @@ public class SpawnAreaTracker : MonoBehaviour
 
     public Transform getVisitedArea()
     {
-        return touchedSpawnAreas[Random.Range(0, AreasToStore - 1)];
+        return touchedSpawnAreas[Random.Range(0, touchedSpawnAreas.Count)];
     }
     public Transform getCurrentVisited()
     {
-        return touchedSpawnAreas[AreasToStore - 1];
+        return touchedSpawnAreas[touchedSpawnAreas.Count - 1];
     }
-
+    public void Start() {
+        
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("SpawnArea"))

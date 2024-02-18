@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d9b741371b383a4aa00fe90fec8cc2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  personalTrashValue: 1.5
+  personalTrashValue: 4.5
   meshRndr: {fileID: 7917749414467456059}
   meshFltr: {fileID: 4530047620326371522}
+  TrashAreaShape: 5
+  currentArea: {fileID: 0}
   poolNumber: 0
 --- !u!1001 &503352294364848622
 PrefabInstance:
@@ -111,6 +113,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: c7c0031d89c48574c8d2614f1723e2df,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 23cd846dd37ef324899b3bb2f9e770b4, type: 2}
     - target: {fileID: -927199367670048503, guid: c7c0031d89c48574c8d2614f1723e2df,
         type: 3}
       propertyPath: m_Name

@@ -84,7 +84,7 @@ public class ReplaceTrashModel : MonoBehaviour
         foreach(Spawned s in found)
         {
             print($"NR [{s.poolNumber}] gets passed back to ready pool");
-            s.SpawnMaster.despawnObjectWithID(s.PoolNumber);
+            s.SpawnMaster.DespawnObjectWithID(s.PoolNumber);
             print($"NR [{s.poolNumber}] -> done!");
         }
         GameObject newTr = GameObject.Instantiate(biggerTrash);
@@ -96,6 +96,6 @@ public class ReplaceTrashModel : MonoBehaviour
         Quaternion newRot = Quaternion.Euler(0f, rotVal, 0f);
         newTr.transform.rotation = newRot;
 
-        ownSpawnScript.SpawnMaster.despawnObjectWithID(ownSpawnScript.PoolNumber);
+        ownSpawnScript.SpawnMaster.DespawnObjectWithID(ownSpawnScript.PoolNumber);
     }
 }

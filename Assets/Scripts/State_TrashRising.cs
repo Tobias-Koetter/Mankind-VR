@@ -19,7 +19,7 @@ public class State_TrashRising : AbstractState
     {
         base.EnterState();
         lastbaBalanceUpdate = -1f;
-        timeBetweenBalancing = 0.8f;
+        timeBetweenBalancing = 1f;
         return true;
     }
 

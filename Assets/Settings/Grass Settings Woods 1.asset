@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f69f28639a652d48b15e1daf7263e26, type: 3}
-  m_Name: Grass Settings 1_2
+  m_Name: Grass Settings Woods 1
   m_EditorClassIdentifier: 
   shaderToUse: {fileID: 7200000, guid: a7a98a59a5a3a564fa69b3fe3e926921, type: 3}
   materialToUse: {fileID: 2100000, guid: d3c0427e4946a1b438cca74d0ede99d9, type: 2}
   grassRandomHeightMin: 0.062708735
-  grassRandomHeightMax: 0.9223298
+  grassRandomHeightMax: 0.45211035
   bladeRadius: 1.364
   bladeForwardAmount: 1
   bladeCurveAmount: 1.472
@@ -23,16 +23,16 @@ MonoBehaviour:
   MinWidth: 0.03691262
   MinHeight: 0.20424272
   MaxWidth: 0.07508983
-  MaxHeight: 0.60015535
+  MaxHeight: 0.37129822
   windSpeed: 2
   windStrength: 0.128
   allowedBladesPerVertex: 10
   allowedSegmentsPerBlade: 4
   affectStrength: 1
-  topTint: {r: 0.5933845, g: 0.64705884, b: 0.20784314, a: 1}
-  bottomTint: {r: 0.4117647, g: 0.64705884, b: 0.20784314, a: 1}
+  topTint: {r: 0.8584906, g: 0.70663494, b: 0.5547793, a: 1}
+  bottomTint: {r: 0.7075472, g: 0.59907883, b: 0.49061057, a: 1}
   drawBounds: 0
   minFadeDistance: 50
-  maxDrawDistance: 80
+  maxDrawDistance: 100
   cullingTreeDepth: 1
   castShadow: 0

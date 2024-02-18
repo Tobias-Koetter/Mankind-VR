@@ -31,10 +31,10 @@ MonoBehaviour:
   adjustWidthMax: 1.259
   adjustHeightMax: 0.958
   reprojectOffset: 1
-  rangeR: 0
-  rangeG: 0.069
-  rangeB: 0
-  AdjustedColor: {r: 0.4117647, g: 0.64705884, b: 0.20784314, a: 1}
+  rangeR: 0.034
+  rangeG: 0
+  rangeB: 0.038
+  AdjustedColor: {r: 0.6415094, g: 0.5895175, b: 0.5355998, a: 1}
   paintBlockMask:
     serializedVersion: 2
     m_Bits: 1073758007
@@ -44,7 +44,7 @@ MonoBehaviour:
   paintMask:
     serializedVersion: 2
     m_Bits: 2147483648
-  brushSize: 0.6
+  brushSize: 12.8
   brushFalloffSize: 0.347
   Flow: 3.19
   density: 1.64
