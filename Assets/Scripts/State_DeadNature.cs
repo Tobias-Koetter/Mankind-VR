@@ -22,6 +22,7 @@ public class State_DeadNature : AbstractState
         GameInfo.PlantDestroyer.DestroyTreesInAlive2();
         checkForGlobalDestroy1 = (SecondsToStateChange / 100f * 10f);
         checkForGlobalDestroy2 = (SecondsToStateChange / 100f * 50f);
+        GameInfo.TrashSpawner.ForceMountainSpawn(0);
         return true;
     }
 

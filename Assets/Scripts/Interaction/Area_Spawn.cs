@@ -101,4 +101,10 @@ public class Area_Spawn : MonoBehaviour
         spawned.currentArea = null;
 
     }
+    public void MoveUpManually() {
+        inMountainMode = true;
+        inActionState = true;
+        foreach (GameObject g in trashMountain)
+            g.SetActive(true);
+    }
 }

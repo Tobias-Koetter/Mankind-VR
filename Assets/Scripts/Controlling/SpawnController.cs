@@ -498,4 +498,9 @@ public class SpawnController : MonoBehaviour
         Destroy(dTInstance.gameObject);
         yield return null;
     }
+
+    public void ForceMountainSpawn(int index) {
+        if (!spawnArea.AreaScript[index].InMountainMode)
+            spawnArea.AreaScript[index].MoveUpManually();
+    }
 }
