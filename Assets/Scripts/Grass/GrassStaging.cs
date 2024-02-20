@@ -9,6 +9,10 @@ public class GrassStaging : MonoBehaviour
         public Color bottomTint;
     }
     [SerializeField] private GrassComputeScript currentGrass;
+    [Header("Initial Colors")]
+    public Color topTint_N;
+    public Color bottomTint_N;
+    [Header("Changing Properties")]
     public bool doStartDecay = false;
     [ConditionalHide("doStartDecay", true, false)] public GrassComputeScript switchModel_SD;
     [ConditionalHide("doStartDecay", true, false)] public Color topTint_SD;

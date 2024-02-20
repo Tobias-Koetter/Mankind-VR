@@ -21,16 +21,16 @@ MonoBehaviour:
   bladeCurveAmount: 1.472
   bottomWidth: 1
   MinWidth: 0.03691262
-  MinHeight: 0.20424272
+  MinHeight: 0.13055341
   MaxWidth: 0.07508983
-  MaxHeight: 0.60015535
+  MaxHeight: 0.4079227
   windSpeed: 2
   windStrength: 0.128
   allowedBladesPerVertex: 10
   allowedSegmentsPerBlade: 4
   affectStrength: 1
-  topTint: {r: 0.5933845, g: 0.64705884, b: 0.20784314, a: 1}
-  bottomTint: {r: 0.4117647, g: 0.64705884, b: 0.20784314, a: 1}
+  topTint: {r: 0.6431373, g: 0.8509804, b: 0.19607843, a: 1}
+  bottomTint: {r: 0.5176471, g: 0.67058825, b: 0.1882353, a: 1}
   drawBounds: 0
   minFadeDistance: 50
   maxDrawDistance: 80
