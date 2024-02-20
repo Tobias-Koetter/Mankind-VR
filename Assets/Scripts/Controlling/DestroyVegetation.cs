@@ -223,10 +223,10 @@ public class DestroyVegetation : MonoBehaviour
 
     public void DestroyRandomTreeInRisingState()
     {
-        DestroyRandomTreeInMiddleState();
-        DestroyRandomTreeInMiddleState(); 
-        DestroyRandomTreeInMiddleState();
-        DestroyRandomTreeInMiddleState();
+        //DestroyRandomTreeInMiddleState();
+        //DestroyRandomTreeInMiddleState(); 
+        //DestroyRandomTreeInMiddleState();
+        //DestroyRandomTreeInMiddleState();
         DestroyRandomTreeInMiddleState();
 
     }

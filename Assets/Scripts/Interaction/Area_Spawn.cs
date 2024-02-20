@@ -7,8 +7,11 @@ public class Area_Spawn : MonoBehaviour
     [SerializeField] private List<Spawned> addedSmallTrash;
     [SerializeField] private List<Spawned> addedTAs;
     [SerializeField] private int threshold_MountainSpawn = 10;
+    [SerializeField] private List<float> restingPosY;
     [SerializeField] private bool inMountainMode = false;
     [SerializeField] private List<GameObject> trashMountain;
+    [SerializeField] private List<Spawned> insideColliders;
+    private List<MeshCollider> colliders;
     private List<float> trashtimings;
     private List<float> totalTimes;
     private List<Vector3> startPositions;
@@ -20,13 +23,16 @@ public class Area_Spawn : MonoBehaviour
         trashtimings = new List<float>();
         totalTimes = new List<float>();
         startPositions = new List<Vector3>();
-        foreach (GameObject g in trashMountain)
+        colliders = new List<MeshCollider>();
+        for (int i = 0; i <trashMountain.Count; i++)
         {
+            GameObject g = trashMountain[i];
             g.SetActive(false);
-            g.transform.Translate(Vector3.back * 100f);
+            g.transform.Translate(Vector3.forward * restingPosY[i]);
             startPositions.Add(g.transform.position);
             trashtimings.Add(0f);
             totalTimes.Add(Random.Range(5f, 8f));
+            colliders.Add(g.GetComponent<MeshCollider>());
         }
     }
 
@@ -39,13 +45,9 @@ public class Area_Spawn : MonoBehaviour
                 trashMountain[i].transform.position = Vector3.Lerp(startPositions[i], Vector3.zero, trashtimings[i] / totalTimes[i]);
                 if(addedSmallTrash.Count >0)
                 {
-                    addedSmallTrash[0].SpawnMaster.DespawnObjectWithID(addedSmallTrash[0].PoolNumber);
-                    //addedSmallTrash.RemoveAt(0);
                 }
                 if(addedTAs.Count >0)
                 {
-                    addedTAs[0].SpawnMaster.DespawnTrashArea(addedTAs[0]);
-                    //addedTAs.RemoveAt(0);
                 }
             }
             bool endReached = true;
@@ -59,16 +61,22 @@ public class Area_Spawn : MonoBehaviour
             }
             if(endReached)
             {
-                for(int i = addedSmallTrash.Count-1; i >=0; i-- )
+                for (int i = insideColliders.Count - 1; i >= 0; i--)
                 {
-                    addedSmallTrash[i].SpawnMaster.DespawnObjectWithID(addedSmallTrash[i].PoolNumber);
-                    //addedSmallTrash.RemoveAt(i);
+                    Spawned spawned = insideColliders[i];
+                    insideColliders.RemoveAt(i);
+                    if (spawned.TrashAreaShape == TA_SHAPES.NONE)
+                    {
+                        //spawned.SpawnMaster.DespawnObjectWithID(spawned.poolNumber);
+                    }
+                    else
+                        spawned.SpawnMaster.DespawnTrashArea(spawned);
                 }
+                /*
                 for (int i = addedTAs.Count - 1; i >= 0; i--)
                 {
-                    addedTAs[i].SpawnMaster.DespawnTrashArea(addedTAs[i]);
-                    //addedTAs.RemoveAt(i);
-                }
+                    //addedasTAs[i].SpawnMaster.DespawnTrashArea(addedTAs[i]);
+                }*/
                 inActionState = false;
             }
         }
@@ -106,5 +114,8 @@ public class Area_Spawn : MonoBehaviour
         inActionState = true;
         foreach (GameObject g in trashMountain)
             g.SetActive(true);
+    }
+    public void MarkAsInsideCollider(Spawned spawned) {
+        insideColliders.Add(spawned);
     }
 }

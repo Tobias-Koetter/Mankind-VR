@@ -115,10 +115,9 @@ MonoBehaviour:
   bottomPart: {fileID: 3486618871180171609}
   totalTime_MidExplosion: 0.3
   totalTime_inBetween: 0.5
+  totalTime_final: 10
   totalTime_dissolve: 2
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 0
+  strength_Force: 200
   isDead: 0
   isGrounded: 0
 --- !u!1 &8088730917122940222
@@ -464,7 +463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b09fef50d9b774594075f2e0294b62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggeredEvent:
+  triggeredEvent_Enter:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4847827508339484589}
@@ -479,9 +478,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  triggeredEvent_Exit:
+    m_PersistentCalls:
+      m_Calls: []
+  triggeredEvent_Stay:
+    m_PersistentCalls:
+      m_Calls: []
   TriggerLayer:
     serializedVersion: 2
     m_Bits: 2147483648
+  useEnter: 1
+  useExit: 0
+  useStay: 0
 --- !u!23 &6149276187337463544 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 3476361560527480335, guid: 3dae4abfa4774bd47b6bf863dec16322,

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -22,10 +23,13 @@ public struct ColliderInfo
 
 public class RunIntoTree : MonoBehaviour
 {
+    private WaitForSeconds wait3Sec = new WaitForSeconds(3f);
+
     public Transform radiusEndpoint;
     public Transform centerOfSphere;
     public LayerMask checkLayers;
-    public DecalProjector m_decalProjector;
+    //public DecalProjector m_decalProjector;
+    public GameObject m_decalProjector;
 
     private float radius;
     private List<ColliderInfo> lastTreeCollisions;
@@ -40,6 +44,7 @@ public class RunIntoTree : MonoBehaviour
         radius = Vector3.Distance(centerPoint,endPoint);
         lastTreeCollisions = new List<ColliderInfo>();
         cam = Camera.main;
+        m_decalProjector.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -81,12 +86,16 @@ public class RunIntoTree : MonoBehaviour
                             RaycastHit rHit = new RaycastHit();
                             Vector3 midPlayer = this.transform.position + (cam.transform.position - this.transform.position) * 0.75f;
                             Physics.Raycast(midPlayer, -midPlayer + new Vector3(tree.transform.position.x, midPlayer.y, tree.transform.position.z), out rHit, 100f, checkLayers);
-                            m_decalProjector.transform.SetParent(this.transform);
-                            m_decalProjector.transform.position = midPlayer + (rHit.point - midPlayer );
+                            //DecalProjector newDecal = Instantiate<DecalProjector>(m_decalProjector);
+                            GameObject newDecal = Instantiate<GameObject>(m_decalProjector);
+                            newDecal.transform.SetParent(this.transform);
+                            newDecal.transform.position = midPlayer + (rHit.point - midPlayer );
                             Vector3 worldLookAtPoint = new Vector3(tree.transform.position.x, rHit.point.y, tree.transform.position.z);
-                            m_decalProjector.transform.LookAt(worldLookAtPoint);
-                            m_decalProjector.transform.Translate(Vector3.back * 0.1f, Space.Self);
-                            m_decalProjector.transform.SetParent(null);
+                            newDecal.transform.LookAt(worldLookAtPoint);
+                            newDecal.transform.Translate(Vector3.back * 0.1f, Space.Self);
+                            newDecal.transform.SetParent(null);
+                            newDecal.gameObject.SetActive(true);
+                            StartCoroutine(ResetBumbFeedback(newDecal));
                             tree.Controller.handleTreeDestroy(tree);
                             ColliderInfo cInfo = new ColliderInfo();
                             cInfo.Setup(c, TypeOfParent.P_INT, parent);
@@ -120,5 +129,13 @@ public class RunIntoTree : MonoBehaviour
         {
             lastTreeCollisions.Clear();
         }
+    }
+    private IEnumerator ResetBumbFeedback(DecalProjector decal) {
+        yield return wait3Sec;
+        DestroyImmediate(decal.gameObject);
+    }
+    private IEnumerator ResetBumbFeedback(GameObject decal) {
+        yield return wait3Sec;
+        DestroyImmediate(decal);
     }
 }

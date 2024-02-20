@@ -257,7 +257,6 @@ public class SpawnController : MonoBehaviour
         int indexMeshForm = Random.Range(0, maxSpawnIndexTrashAreas);
 
         int indexSpawnArea = Random.Range(0, spawnArea.AreaFilter.Length);
-        int counter = 1;
         /*while( (counter < center.Length) 
             && 
             ( center[indexSpawnArea] == SpArTracker.getCurrentVisited()
@@ -386,7 +385,7 @@ public class SpawnController : MonoBehaviour
         Spawned current = null;
 
         int row = PoolNumber / totalNrCopies;
-        Debug.Log(PoolNumber + "<----------->" + row);
+        //Debug.Log(PoolNumber + "<----------->" + row);
         foreach (Spawned i in spawned_SmallTrash[row].listObjects)
         {
             if (i.PoolNumber == PoolNumber)

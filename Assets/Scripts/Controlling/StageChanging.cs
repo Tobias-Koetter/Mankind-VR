@@ -120,6 +120,7 @@ public class StageChanging : MonoBehaviour
         ChangeGrass();
         grassChanger.UpdateGrass_Stage1_DecayMain();
         soundControl.DecreaseNature();
+        soundControl.IncreaseTrees(true);
         while (lerp_Value < 1f)
         {
             lerp_Value += (animSpeed * 0.01f) * Time.deltaTime;
@@ -140,6 +141,7 @@ public class StageChanging : MonoBehaviour
         ChangeGrass();
         grassChanger.UpdateGrass_Stage1_TrashRising();
         soundControl.IncreaseWind();
+        soundControl.IncreaseTrees(false);
 
         while (lerp_Value < 1f)
         {
@@ -162,6 +164,7 @@ public class StageChanging : MonoBehaviour
         ChangeGrass();
         grassChanger.UpdateGrass_Stage1_Final();
         soundControl.DecreaseMusic();
+        soundControl.IncreaseTrees(false);
         while (lerp_Value < 1f)
         {
             lerp_Value += (animSpeed*0.01f) * Time.deltaTime;

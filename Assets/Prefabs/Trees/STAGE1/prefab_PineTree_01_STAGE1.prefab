@@ -56,11 +56,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7536692947013029439}
     m_Modifications:
+    - target: {fileID: -9199899253624407041, guid: d196e90c02ed8974489696b7988d422a,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8447554130221045440, guid: d196e90c02ed8974489696b7988d422a,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 200c77ec6df973f4583a836144548465, type: 2}
+    - target: {fileID: -7742747785989560545, guid: d196e90c02ed8974489696b7988d422a,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -5205219204736922106, guid: d196e90c02ed8974489696b7988d422a,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
@@ -155,6 +165,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 983693271590735185, guid: d196e90c02ed8974489696b7988d422a,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2023478377162512984, guid: d196e90c02ed8974489696b7988d422a,
         type: 3}

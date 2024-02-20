@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
+using System.Collections;
 
 public class HandController : MonoBehaviour
 {
@@ -11,11 +12,15 @@ public class HandController : MonoBehaviour
     public Image clickCursor;
 
     //Temporarily used to give feedback for the player. Exchange for proper Feedback 
-    public DecalProjector decalProjector;
+    //public DecalProjector decalProjector;
+    public GameObject decalProjector;
     public Material interactMat;
     private Material normalMat;
     private Renderer ownRender;
-    
+
+    private WaitForSeconds wait3Sec = new WaitForSeconds(3f);
+
+
 
     void Start()
     {
@@ -35,12 +40,13 @@ public class HandController : MonoBehaviour
     {
         if (GlobalSettingsManager.clickActionActive)
         {
-            if (Input.GetButton("Fire1"))
+            if (Input.GetButtonDown("Fire1"))
             {
                 RaycastHit hitInfo;
                 Vector3 lookDir = (cam.position + objectCenter.position).normalized;
                 float distance = Vector3.Distance(cam.position, objectCenter.position);
-                if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, distance, collisionMask))
+                if (Physics.BoxCast(cam.position, objectCenter.transform.localScale * 0.5f, cam.transform.forward, out hitInfo, Quaternion.identity, distance, collisionMask))
+                //if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, distance, collisionMask))
                 {
                     GameObject colliderObject = hitInfo.collider.gameObject;
                     Debug.Log(colliderObject);
@@ -57,13 +63,15 @@ public class HandController : MonoBehaviour
                         }
                         else if (parent is Trees tree /*&& colliderObject.name.EndsWith("0")*/)
                         {
-                            decalProjector.transform.SetParent(this.transform);
-                            decalProjector.transform.position = cam.transform.position + (hitInfo.point- cam.transform.position);
+                            GameObject newDecal = Instantiate<GameObject>(decalProjector);
+                            newDecal.transform.SetParent(this.transform);
+                            newDecal.transform.position = cam.transform.position + (hitInfo.point- cam.transform.position);
                             Vector3 worldLookAtPoint = new Vector3(tree.transform.position.x,hitInfo.point.y,tree.transform.position.z);
-                            decalProjector.transform.LookAt(worldLookAtPoint);
-                            decalProjector.transform.Translate(Vector3.back * 0.1f, Space.Self);
-
-                            decalProjector.transform.SetParent(null);
+                            newDecal.transform.LookAt(worldLookAtPoint);
+                            newDecal.transform.Translate(Vector3.back * 0.1f, Space.Self);
+                            newDecal.transform.SetParent(null);
+                            newDecal.gameObject.SetActive(true);
+                            ResetBumbFeedback(newDecal);
                             //Debug.Log($"Got called because of {colliderObject}");
                             tree.Controller.handleTreeDestroy(tree);
                         }
@@ -83,7 +91,7 @@ public class HandController : MonoBehaviour
                 }
                 else
                 {
-                    print("Nothing there to interact with!");
+                    //print("Nothing there to interact with!");
                 }
                 ownRender.material = normalMat;
             }
@@ -106,5 +114,8 @@ public class HandController : MonoBehaviour
         ownRender.material = normalMat;
     }
 
-
+    private IEnumerator ResetBumbFeedback(GameObject decal) {
+        yield return wait3Sec;
+        DestroyImmediate(decal);
+    }
 }

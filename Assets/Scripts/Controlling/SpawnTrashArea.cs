@@ -9,6 +9,7 @@ public class SpawnTrashArea
     public LayerMask Mask_smallTrash;
     public LayerMask Mask_trashArea;
     public LayerMask Mask_collision;
+    public LayerMask Mask_mountain;
     public Spawned[] objects = new Spawned[4];
     public PlaceGeometryOnPlane geometryHandler;
 
@@ -17,21 +18,14 @@ public class SpawnTrashArea
     private bool hitTArea;
     private RaycastHit groundHit;
 
-    public SpawnTrashArea(bool inDebug)
+    public SpawnTrashArea(bool inDebug = false)
     {
         this.Mask_ground = LayerMask.GetMask("Ground");
         this.Mask_smallTrash = LayerMask.GetMask("Trash");
         this.Mask_trashArea = LayerMask.GetMask("TArea");
-        this.Mask_collision = Mask_trashArea | Mask_smallTrash | Mask_ground;
+        this.Mask_mountain = LayerMask.GetMask("Mountain");
+        this.Mask_collision = Mask_trashArea | Mask_smallTrash | Mask_ground | Mask_mountain;
         geometryHandler = new PlaceGeometryOnPlane(Mask_ground,inDebug);
-    }
-    public SpawnTrashArea()
-    {
-        this.Mask_ground = LayerMask.GetMask("Ground");
-        this.Mask_smallTrash = LayerMask.GetMask("Trash");
-        this.Mask_trashArea = LayerMask.GetMask("TArea");
-        this.Mask_collision = Mask_trashArea | Mask_smallTrash | Mask_ground;
-        geometryHandler = new PlaceGeometryOnPlane(Mask_ground);
     }
 
     public bool Spawn(TA_SHAPES shape, MeshFilter spawnArea,Area_Spawn script, Spawned geometry,int visiblePercentage)

@@ -12,14 +12,14 @@ public class State_TrashRising : AbstractState
         NextState = new State_DeadNature(info);
         Name = STATE.TRASH_RISING;
         SecondsToStateChange = GlobalSettingsManager.GetStateTime(this.Name);
-        this.SecondsToSpawnTrash = 0.5f;
+        this.SecondsToSpawnTrash = 1.2f;
     }
 
     public override bool EnterState()
     {
         base.EnterState();
         lastbaBalanceUpdate = -1f;
-        timeBetweenBalancing = 1f;
+        timeBetweenBalancing = 1.2f;
         return true;
     }
 

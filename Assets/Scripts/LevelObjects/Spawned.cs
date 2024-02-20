@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+[SelectionBase]
 public class Spawned : Interactable
 {
     public float personalTrashValue;

@@ -28,16 +28,18 @@ public class PickupManager : MonoBehaviour
     private Material[] oldMat;
     private Spawned lastPickup;
     private Quaternion inHandRotation = Quaternion.Euler(-65f,150f,90f);
+    private BoxCollider pointerCollider;
+    private EventAtTrigger pointerTriggerEvents;
 
     private List<RotAndPos> wayPoints;
     [Range(0f,1f)]
     public float wayTraveled = 0;
-    private Vector3 idleVec = new Vector3(0.487f, 0.796f, 0.322f);
-    private Vector3 lookAtVec = new Vector3(0.567f, 0.969f, 0.45f);
+    private Vector3 idleVec = new Vector3(0.795f,2.13f,0.687f);//(0.487f, 0.796f, 0.322f);
+    private Vector3 lookAtVec = new Vector3(0.646f, 2.933f, 1.292f);
     private Vector3 resetVector = Vector3.one * -10f;
     private Vector3 curStart;
     private Vector3 curEnd;
-    private Quaternion lookAtRot = Quaternion.Euler(-25f, -45f, 35f);
+    private Quaternion lookAtRot = Quaternion.Euler(-25f, -9f,40f);
     private Quaternion inPickUpRot = Quaternion.Euler(11f, 7.5f, 170f);
     private Quaternion idleRot = Quaternion.Euler(59f, -12f, 105f);
     private Quaternion curStartRot;
@@ -47,7 +49,7 @@ public class PickupManager : MonoBehaviour
     private bool inDropDown = false;
 
     private Vector3 originalScale;
-
+    RaycastHit hitInfo;
     void Start()
     {
         wayPoints = new List<RotAndPos>();
@@ -55,22 +57,26 @@ public class PickupManager : MonoBehaviour
         curEnd = resetVector;
 
         maxDist = Vector3.Distance(Camera.main.transform.position,fingerPointer.position);
+        hitInfo = new RaycastHit();
+        pointerCollider = fingerPointer.GetComponent<BoxCollider>();
+        pointerTriggerEvents = fingerPointer.GetComponent<EventAtTrigger>();
     }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetButtonDown("Fire1"))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hitInfo;
-            bool hit = Physics.Raycast(ray, out hitInfo, maxDist, hitLayers);
+            bool hit = Physics.BoxCast(ray.origin, fingerPointer.transform.localScale * 0.5f, ray.direction,out hitInfo,Quaternion.identity,maxDist,hitLayers);
+            //bool hit = Physics.Raycast(ray, out hitInfo, maxDist, hitLayers);
             if (lastPickup == null && hit)
             {
                 if (hitInfo.collider.CompareTag("Small Trash"))
                 {
                     lastPickup = hitInfo.collider.attachedRigidbody.gameObject.GetComponent<Spawned>();
-                    Debug.Log("Pickup Triggered with " + lastPickup);
-                    //Debug.Log(lastPickup);
+                    pointerCollider.enabled = false;
+                    if (pointerTriggerEvents.useExit) { pointerTriggerEvents.triggeredEvent_Exit.Invoke(); }
+                    //Debug.Log("Pickup Triggered with " + lastPickup);
                     /*
                     MeshRenderer mR = lastPickup.getRenderer();
                     Material[] mats = mR.materials;
@@ -100,9 +106,9 @@ public class PickupManager : MonoBehaviour
 
                 }
             }
-            else if (!inPickup && lastPickup != null && !hit && inDropDown)
+            else if (!inPickup && lastPickup != null /*&& !hit*/ && inDropDown)
             {
-                Debug.Log("Do we get here?");
+                
                 /*
                 MeshRenderer mR = lastPickup.getRenderer();
                 Material[] mats = mR.materials;
@@ -159,6 +165,8 @@ public class PickupManager : MonoBehaviour
         lastPickup.getBody().isKinematic = false;
         lastPickup.transform.localScale = originalScale;
         lastPickup = null;
+        yield return new WaitForSeconds(2f);
+        pointerCollider.enabled = true;
         yield return null;
     }
 

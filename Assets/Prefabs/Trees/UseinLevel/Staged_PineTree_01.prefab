@@ -454,11 +454,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_pineTree_01_STAGE3
       objectReference: {fileID: 0}
-    - target: {fileID: 7492448252242322786, guid: 972eb591822a90943b9900f6784cccc8,
-        type: 3}
-      propertyPath: m_Drag
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 972eb591822a90943b9900f6784cccc8, type: 3}
 --- !u!4 &8293108048350186042 stripped
