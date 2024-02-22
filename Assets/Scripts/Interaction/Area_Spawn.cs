@@ -11,6 +11,7 @@ public class Area_Spawn : MonoBehaviour
     [SerializeField] private bool inMountainMode = false;
     [SerializeField] private List<GameObject> trashMountain;
     [SerializeField] private List<Spawned> insideColliders;
+    [SerializeField] private string LayerToChangeTo;
     private List<MeshCollider> colliders;
     private List<float> trashtimings;
     private List<float> totalTimes;
@@ -61,6 +62,15 @@ public class Area_Spawn : MonoBehaviour
             }
             if(endReached)
             {
+                int layerNr = LayerMask.NameToLayer(LayerToChangeTo);
+                foreach(GameObject gO in trashMountain)
+                {
+                    gO.layer = layerNr;
+                    /*foreach(Transform child in gO.transform)
+                    {
+                        child.gameObject.layer = layerNr;
+                    }*/
+                }
                 for (int i = insideColliders.Count - 1; i >= 0; i--)
                 {
                     Spawned spawned = insideColliders[i];

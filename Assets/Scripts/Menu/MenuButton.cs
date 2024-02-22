@@ -87,7 +87,7 @@ public class MenuButton: MonoBehaviour
     public void OnClick()
     {
         
-        if (menuButtonController.index == thisIndex)
+        //if (menuButtonController.index == thisIndex)
         {
             
             switch (type)
